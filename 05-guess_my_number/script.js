@@ -9,7 +9,6 @@ document.querySelector(".highscore").textContent = highscore;
 
 document.querySelector(".check").addEventListener("click", e => {
     const guess = Number(document.querySelector(".guess").value);
-    console.log(guess, typeof guess);
 
     // when there's no input
     if (!guess) {
