@@ -15,7 +15,10 @@ for (let i = 0; i < btnsOpenModal.length; i++) {
     });
 };
 
-btnCloseModal.addEventListener("click", () => {
+btnCloseModal.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+const closeModal = () => {
     modal.classList.add("hidden");
     overlay.classList.add("hidden");
-});
+}
