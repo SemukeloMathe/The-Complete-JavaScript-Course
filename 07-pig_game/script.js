@@ -105,7 +105,4 @@ btnHold.addEventListener("click", () => {
 });
 
 // New game functionality
-btnNew.addEventListener("click", () => {
-    // reset game state
-    initGame();
-});
+btnNew.addEventListener("click", initGame);
