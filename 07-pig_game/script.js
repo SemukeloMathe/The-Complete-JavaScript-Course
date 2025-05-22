@@ -13,8 +13,10 @@ const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
 
-// game scores
-let currentScore = 0; 
+// game mechanics
+const scores = [0, 0];
+let currentScore = 0;
+let activePlayer = 0;
 
 // starting conditions
 score0El.textContent = 0;
@@ -32,9 +34,15 @@ btnRoll.addEventListener("click", () => {
     if (dice !== 1) {
         // add dice to current score
         currentScore += dice;
-        current0El.textContent = currentScore; // note: change later
+        // dynamically getting the active player
+        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+        // current0El.textContent = currentScore; // note: change later
     } else {
         // if true, switch to next player
-
+        // 1. reset currentScore to 0
+        currentScore = 0
+        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+        // 2. change the active player
+        activePlayer = activePlayer === 0 ? 1 : 0;
     }
 });
