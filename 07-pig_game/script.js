@@ -16,21 +16,41 @@ const btnHold = document.querySelector(".btn--hold");
 const player0El = document.querySelector(".player--0");
 const player1El = document.querySelector(".player--1");
 
-// game state
-let scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true;
+// game state variables
+let scores, currentScore, activePlayer, playing;
 
-// starting conditions
-score0El.textContent = 0;
-score1El.textContent = 0;
-dicEl.classList.add("hidden");
+const initGame = () => {
+    // game state initialization
+    scores = new Array(0, 0);
+    currentScore = 0;
+    activePlayer = 0;
+    playing = true;
+    // ui elements starting conditions
+    score0El.textContent = 0;
+    score1El.textContent = 0;
+    score0El.textContent = 0;
+    score1El.textContent = 0;
+    current0El.textContent = 0;
+    current1El.textContent = 0;
+    // reset class names
+    dicEl.classList.add("hidden");
+    player0El.classList.remove("player--winner");
+    player1El.classList.remove("player--winner");
+    player0El.classList.add("player--active")
+    player1El.classList.remove("player--active");
+};
+// start game
+initGame();
+
+// resets the current score of the active player.
+const resetCurrentScore = () => {
+    currentScore = 0
+    document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+}
 
 const switchPlayer = () => {
     // 1. reset currentScore to 0
-    currentScore = 0
-    document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+    resetCurrentScore();
     // 2. change the active player
     activePlayer = activePlayer === 0 ? 1 : 0;
     player0El.classList.toggle("player--active");
@@ -71,8 +91,7 @@ btnHold.addEventListener("click", () => {
             // 3. if score >=, game over. active player wins
             playing = false;
             // set current score to 0;
-            currentScore = 0
-            document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+            resetCurrentScore();
             // add player--winner class & remove--active player class
             document.querySelector(`.player--${activePlayer}`).classList.add("player--winner");
             document.querySelector(`.player--${activePlayer}`).classList.remove("player--active");
@@ -88,20 +107,5 @@ btnHold.addEventListener("click", () => {
 // New game functionality
 btnNew.addEventListener("click", () => {
     // reset game state
-    scores = new Array(0, 0);
-    currentScore = 0;
-    activePlayer = 0;
-    playing = true;
-
-    // reset ui elements
-    score0El.textContent = 0;
-    score1El.textContent = 0;
-    current0El.textContent = 0;
-    current1El.textContent = 0;
-
-    player0El.classList.remove("player--winner");
-    player1El.classList.remove("player--winner");
-
-    player0El.classList.add("player--active")
-    player1El.classList.remove("player--active");
+    initGame();
 });
