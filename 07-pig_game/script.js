@@ -71,7 +71,6 @@ btnRoll.addEventListener("click", () => {
             currentScore += dice;
             // dynamically getting the active player
             document.getElementById(`current--${activePlayer}`).textContent = currentScore;
-            // current0El.textContent = currentScore; // note: change later
         } else {
             // if true, switch to next player
             switchPlayer();
