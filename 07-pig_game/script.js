@@ -16,8 +16,8 @@ const btnHold = document.querySelector(".btn--hold");
 const player0El = document.querySelector(".player--0");
 const player1El = document.querySelector(".player--1");
 
-// game mechanics
-const scores = [0, 0];
+// game state
+let scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 let playing = true;
@@ -67,9 +67,13 @@ btnHold.addEventListener("click", () => {
         document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
 
         // 2. check score >= 100
-        if (scores[activePlayer] >= 10) {
+        if (scores[activePlayer] >= 20) {
             // 3. if score >=, game over. active player wins
             playing = false;
+            // set current score to 0;
+            currentScore = 0
+            document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+            // add player--winner class & remove--active player class
             document.querySelector(`.player--${activePlayer}`).classList.add("player--winner");
             document.querySelector(`.player--${activePlayer}`).classList.remove("player--active");
             // remove dice
@@ -79,4 +83,25 @@ btnHold.addEventListener("click", () => {
             switchPlayer();
         }
     }
+});
+
+// New game functionality
+btnNew.addEventListener("click", () => {
+    // reset game state
+    scores = new Array(0, 0);
+    currentScore = 0;
+    activePlayer = 0;
+    playing = true;
+
+    // reset ui elements
+    score0El.textContent = 0;
+    score1El.textContent = 0;
+    current0El.textContent = 0;
+    current1El.textContent = 0;
+
+    player0El.classList.remove("player--winner");
+    player1El.classList.remove("player--winner");
+
+    player0El.classList.add("player--active")
+    player1El.classList.remove("player--active");
 });
