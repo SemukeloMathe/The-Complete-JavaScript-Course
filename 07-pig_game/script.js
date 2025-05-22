@@ -72,6 +72,8 @@ btnHold.addEventListener("click", () => {
             playing = false;
             document.querySelector(`.player--${activePlayer}`).classList.add("player--winner");
             document.querySelector(`.player--${activePlayer}`).classList.remove("player--active");
+            // remove dice
+            dicEl.classList.add("hidden");
         } else {
             // 4. else switch player
             switchPlayer();
