@@ -32,7 +32,6 @@ console.log(printForecast(testData2));
 
 // 1. Understand the problem
 // How to add "..." in the beginning and end of the string.
-//
 
 // 2. Break into sub problems
 // add at the end of the string.
