@@ -35,4 +35,7 @@ console.log(printForecast(testData2));
 // How to keep track of days?
 
 // 2. Break into sub problems
-// add at the end of the string.
+// transform each element to string with °C.
+// string must contain day.
+// add "..." at the end of the string.
+// log string to console.
