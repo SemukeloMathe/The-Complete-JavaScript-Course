@@ -10,7 +10,7 @@
  * Create a function "printForecast" which takes in an array "arr" and logs a
  * string like that to the console.
  * Use the problem solving framework: Understand the problem and break it up 
- * into sub-pronlems!
+ * into sub-problems!
  * 
  * TEST DATA 1: [17, 21, 23]
  * TEST DATA 2: [12, 5, -5, 0, 4]
@@ -31,7 +31,8 @@ console.log(printForecast(testData1));
 console.log(printForecast(testData2));
 
 // 1. Understand the problem
-// How to add "..." in the beginning and end of the string.
+// How to add "..." in the beginning and end of the string?
+// How to keep track of days?
 
 // 2. Break into sub problems
 // add at the end of the string.
