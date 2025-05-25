@@ -35,3 +35,12 @@ const birthYear = 1998;
 
 var job = "programmer";
 job = "engineer";
+
+console.log(typeof $function);
+const isEqual = typeof null === typeof {};
+console.log(isEqual);
+
+let x, y;
+x = y = 10
+y = 23;
+console.log(x, y)
