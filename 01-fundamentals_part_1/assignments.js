@@ -57,7 +57,7 @@ const _country = "South Africa";
  * 4. The average population of a country is 33 million people. Does your
  * country have less people than the average country?
  * 5. Based on the variables you created, create a new variable "description"
- * which contains a string with this format: "Portugal is in Europe, and it's 
+ * which contains a string with this format: "Portugal is in Europe, and it's
  * 11 million people speak portuguese"
  */
 
@@ -68,5 +68,12 @@ const finlandPopulation = 6;
 console.log(population > finlandPopulation);
 const averageCountryPopulation = 33;
 console.log(population > averageCountryPopulation);
-const description = country + " is in " + continent + " and it's " + population.toFixed(2) + " million people speak " + language;
+const description =
+    country +
+    " is in " +
+    continent +
+    " and it's " +
+    population.toFixed(2) +
+    " million people speak " +
+    language;
 console.log(description);
