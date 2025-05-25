@@ -31,3 +31,17 @@ console.log("Type of isIsland: " + typeof isIsland);
 console.log("Type of population: " + typeof population);
 console.log("Type of country: " + typeof country);
 console.log("Type of language: " + typeof language);
+
+/**
+ * Lecture: let, const & var
+ * 1. Set the value of "language" to the language spoken where you live.
+ * 2. Think about which variables should be const variables. Then change these
+ * variables to const.
+ * 3. Try to change one of the changed variables and observe what happens.
+ */
+
+language = "Zulu";
+const _isIsland = false;
+const _continent = "Africa";
+const _country = "South Africa";
+// _continent = "Asia";
