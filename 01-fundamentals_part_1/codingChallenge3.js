@@ -37,15 +37,15 @@ console.log(
 console.log(`===================================`);
 if (dolphinsAverageScore < 100 && koalasAverageScore < 100) {
     console.log(`No team won !`);
-} else if (dolphinsAverageScore > 100 && koalasAverageScore < 100) {
+} else if (dolphinsAverageScore >= 100 && koalasAverageScore < 100) {
     console.log(`Dolphins win the competition 🏆`);
-} else if (dolphinsAverageScore < 100 && koalasAverageScore > 100) {
+} else if (dolphinsAverageScore < 100 && koalasAverageScore >= 100) {
     console.log(`Koalas win the competition 🏆`);
-} else if (dolphinsAverageScore > 100 && koalasAverageScore > 100) {
+} else if (dolphinsAverageScore >= 100 && koalasAverageScore >= 100) {
     if (dolphinsAverageScore > koalasAverageScore)
         console.log(`Dolphins win the competition 🏆`);
-    if (dolphinsAverageScore < koalasAverageScore)
+    else if (dolphinsAverageScore < koalasAverageScore)
         console.log(`Koalas win the competition 🏆`);
-    if (dolphinsAverageScore === koalasAverageScore)
+    else
         console.log(`Match is drawn!`);
 }
