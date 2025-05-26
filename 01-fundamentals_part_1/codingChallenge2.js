@@ -7,6 +7,8 @@
  * message can be either "Mark's BMI is higher than John's!"
  * 2. Use a template string to include the BMI values in the outputs. Example:
  * "Mark's BMI (28.3) is higher than John's (23.9)"
+ * 
+ * HINT: use an if/else statement
  */
 
 // Test Data 1
