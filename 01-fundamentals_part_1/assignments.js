@@ -68,7 +68,7 @@ const finlandPopulation = 6;
 console.log(population > finlandPopulation);
 const averageCountryPopulation = 33;
 console.log(population > averageCountryPopulation);
-const description =
+let description =
     country +
     " is in " +
     continent +
@@ -77,3 +77,13 @@ const description =
     " million people speak " +
     language;
 console.log(description);
+
+/**
+ * Lecture: Strings & Template Literals
+ * 1. Recreate the "description" variable from the last assignment, this time
+ * using the template literal syntax
+ */
+
+description = `${country} is in ${continent} and it's ${population.toFixed(
+    2
+)} million people speak ${language}`;
