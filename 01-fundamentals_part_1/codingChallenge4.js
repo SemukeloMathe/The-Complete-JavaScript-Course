@@ -19,18 +19,30 @@
  */
 
 // Test Data 1
-// const bill = 275;
+let bill = 275;
+let tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+console.log(
+    `The bill was R ${bill.toFixed(2)}, the tips was R ${tip.toFixed(
+        2
+    )} and the total value R ${(bill + tip).toFixed(2)}`
+);
 
 // Test Data 2
-// const bill = 40;
+bill = 40;
+tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+console.log(
+    `The bill was R ${bill.toFixed(2)}, the tips was R ${tip.toFixed(
+        2
+    )} and the total value R ${(bill + tip).toFixed(2)}`
+);
 
 // Test Data 3
-const bill = 430;
-
-const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
-
+bill = 430;
+tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 console.log(
-    `The bill was R${bill.toFixed(2)}, the tips was R${tip.toFixed(
+    `The bill was R ${bill.toFixed(2)}, the tips was R ${tip.toFixed(
         2
-    )} and the total value R${(bill + tip).toFixed(2)}`
+    )} and the total value R ${(bill + tip).toFixed(2)}`
 );
+
+
