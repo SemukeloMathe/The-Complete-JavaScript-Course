@@ -98,7 +98,7 @@ description = `${country} is in ${continent} and it's ${population.toFixed(
  * original.
  */
 
-population = 130
+population = 130;
 
 if (population > averageCountryPopulation) {
     console.log(`${country}'s population is above average.`);
@@ -135,11 +135,39 @@ switch (language) {
         console.log("3rd place");
         break;
     case "hindi":
-        console.log("Number 4")
+        console.log("Number 4");
         break;
     case "arabic":
-        console.log("5th most spoken language")
+        console.log("5th most spoken language");
         break;
     default:
         console.log("Great language tooo :D");
 }
+
+/**
+ * Lecture: The conditional (ternary) operator
+ * 1. If your country's population is greater than 33 million, use the ternary
+ * operator to log a string like this to console: "Portugal's population is
+ * above average". Otherwise, simply log "Portugal's population is below
+ * average". Notice how only one word changes between these two sentences!
+ * 2. After checking the result, change the population temporarily to 13 and
+ * then to 130. See the different results, and set the population back to
+ * original.
+ */
+
+console.log(
+    `${country}'s population is ${population > averageCountryPopulation ? "above" : "below"
+    } average.`
+);
+// set population to 13
+population = 13;
+console.log(
+    `${country}'s population is ${population > averageCountryPopulation ? "above" : "below"
+    } average.`
+);
+// set population to 130
+population = 130;
+console.log(
+    `${country}'s population is ${population > averageCountryPopulation ? "above" : "below"
+    } average.`
+);
