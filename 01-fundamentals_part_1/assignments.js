@@ -112,10 +112,6 @@ if (population > averageCountryPopulation) {
 }
 
 /**
- * Lecture: Equality operators: == vs ===
- */
-
-/**
  * Lecture: Logical Operators
  * 1. Sarah is looking for a new country to live in. She wants to live in a
  * country that speaks english, has less than 50 million people & is not an
