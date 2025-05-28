@@ -89,6 +89,7 @@ description = `${country} is in ${continent} and it's ${population.toFixed(
 )} million people speak ${language}`;
 
 /**
+ * Lecture: Taking Decisions: if/else statement
  * 1. If your country's population is greater than 33 million, log a string
  * like this to the console: "Portugal's population is above average".
  * Otherwise log a string like this: "Portugal's population is 22 million below
@@ -104,7 +105,8 @@ if (population > averageCountryPopulation) {
     console.log(`${country}'s population is above average.`);
 } else {
     console.log(
-        `${country}'s population is ${averageCountryPopulation - population
+        `${country}'s population is ${
+            averageCountryPopulation - population
         } million below avergae.`
     );
 }
@@ -156,18 +158,21 @@ switch (language) {
  */
 
 console.log(
-    `${country}'s population is ${population > averageCountryPopulation ? "above" : "below"
+    `${country}'s population is ${
+        population > averageCountryPopulation ? "above" : "below"
     } average.`
 );
 // set population to 13
 population = 13;
 console.log(
-    `${country}'s population is ${population > averageCountryPopulation ? "above" : "below"
+    `${country}'s population is ${
+        population > averageCountryPopulation ? "above" : "below"
     } average.`
 );
 // set population to 130
 population = 130;
 console.log(
-    `${country}'s population is ${population > averageCountryPopulation ? "above" : "below"
+    `${country}'s population is ${
+        population > averageCountryPopulation ? "above" : "below"
     } average.`
 );
