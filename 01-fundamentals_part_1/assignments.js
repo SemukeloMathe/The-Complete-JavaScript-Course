@@ -112,6 +112,27 @@ if (population > averageCountryPopulation) {
 }
 
 /**
+ * Lecture: Equality operators: == vs ===
+ */
+
+/**
+ * Lecture: Logical Operators
+ * 1. Sarah is looking for a new country to live in. She wants to live in a
+ * country that speaks english, has less than 50 million people & is not an
+ * island.
+ * 2. Write an if statement to help sarah figure out if your country is right
+ * for her.
+ * 3. If your's is the right country, log a string like this: "You should live
+ * in Portugal :)". If not, log "Portugal does not meet your criteria :(".
+ */
+
+if (!isIsland && population < 50 && language === "english") {
+    console.log(`You should live in ${country} :)`);
+} else {
+    console.log(`${country} does not meet your criteria :(`);
+}
+
+/**
  * Lecture: The switch statement
  * 1. Use a switch statement to log the following string for the given
  * "language":
