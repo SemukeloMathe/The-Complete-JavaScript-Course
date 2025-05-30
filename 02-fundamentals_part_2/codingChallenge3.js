@@ -49,5 +49,5 @@ const calcAverage = (arr) => {
     return sum / arr.length;
 };
 
-console.log(`Tips average: ${calcAverage(tips).toFixed(2)}`);
-console.log(`Totals average: ${calcAverage(totals).toFixed(2)}`);
+console.log(`Tips average: $${calcAverage(tips).toFixed(2)}`);
+console.log(`Totals average: $${calcAverage(totals).toFixed(2)}`);
