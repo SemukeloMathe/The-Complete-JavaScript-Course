@@ -77,3 +77,25 @@ const tanzaniaPer = percentageOfWorld1(44).toFixed(2);
 console.log(kenyaPer);
 console.log(angolaPer);
 console.log(tanzaniaPer);
+
+/**
+ * Lecture: Functions calling other functions
+ * 1. Create a function called "describePopulation". Use the function type you
+ * like the most. This function takes in two arguments "country" and "population"
+ * and returns a string like this: "China has 1441 million people which is about
+ * 18.2% of the world."
+ * 2. Call "describePopulation" with data for 3 countries of your choice.
+ */
+
+const describePopulation = (country, population) =>
+    `${country} has ${population
+    } million people which is about ${percentageOfWorld1(population).toFixed(2)
+    }% of the world.`;
+
+const southAfrPopDesc = describePopulation("South Africa", 61.18);
+const zimPopDesc = describePopulation("Zimbabwe", 14.20);
+const namPopDesc = describePopulation("Namibia", 3.05);
+
+console.log(southAfrPopDesc);
+console.log(zimPopDesc);
+console.log(namPopDesc);
