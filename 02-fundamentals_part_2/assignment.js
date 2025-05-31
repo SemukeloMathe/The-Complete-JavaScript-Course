@@ -122,3 +122,27 @@ const myCountry = {
     population: 61.19,
     neighbors: ["Lesotho", "Swaziland", "Zimbabwe", "Mozambique", "Namibia"]
 };
+
+/**
+ * Lecture: Dot vs Bracket Notation
+ */
+
+/**
+ * Lecture: Object Methods
+ */
+
+/**
+ * Lecture: Iteration - the for loop
+ */
+
+/**
+ * Lecture: Looping Arrays, Breaking & Continuing
+ */
+
+/**
+ * Lecture: Looping Backwards & Nested Loops
+ */
+
+/**
+ * Lecture: The while loop
+ */
