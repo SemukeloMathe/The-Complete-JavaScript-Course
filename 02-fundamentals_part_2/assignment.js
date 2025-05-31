@@ -60,3 +60,20 @@ console.log(mozambiquePer);
 console.log(zambiaPer);
 console.log(malawiPer);
 
+/**
+ * Lecture: Arrow Functions
+ * 1. Recreate the last assignment but this time create an arrow function 
+ * called "percentageOfWorld3"
+ */
+
+const percentageOfWorld3 = (population) => {
+    return (population / 7900) * 100;
+}
+
+const kenyaPer = percentageOfWorld1(33).toFixed(2);
+const angolaPer = percentageOfWorld1(15).toFixed(2);
+const tanzaniaPer = percentageOfWorld1(44).toFixed(2);
+
+console.log(kenyaPer);
+console.log(angolaPer);
+console.log(tanzaniaPer);
