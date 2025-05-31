@@ -99,3 +99,26 @@ const namPopDesc = describePopulation("Namibia", 3.05);
 console.log(southAfrPopDesc);
 console.log(zimPopDesc);
 console.log(namPopDesc);
+
+/**
+ * Lecture: Introduction to Arrays
+ */
+
+/**
+ * Lecture: Basic Array Operations (Methods)
+ */
+
+/**
+ * Lecture: Introduction to Objects
+ * 1. Create an object called "myCountry" for a country of your choice
+ * containing properties "country", "capital", "language", "population" and
+ * "neighbours" (an array)
+ */
+
+const myCountry = {
+    country: "South Africa",
+    capital: "Pretoria",
+    language: "Zulu",
+    population: 61.19,
+    neighbors: ["Lesotho", "Swaziland", "Zimbabwe", "Mozambique", "Namibia"]
+};
