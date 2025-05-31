@@ -48,3 +48,15 @@ console.log(zimbabwePer);
 console.log(namibiaPer);
 
 // function expression
+const percentageOfWorld2 = function (population) {
+    return (population / 7900) * 100;
+};
+
+const mozambiquePer = percentageOfWorld1(7).toFixed(2);
+const zambiaPer = percentageOfWorld1(8).toFixed(2);
+const malawiPer = percentageOfWorld1(10).toFixed(2);
+
+console.log(mozambiquePer);
+console.log(zambiaPer);
+console.log(malawiPer);
+
