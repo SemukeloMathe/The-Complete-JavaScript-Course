@@ -11,3 +11,14 @@
  * console.
  */
 
+function describeCountry(country, population, capitalCity) {
+    return `${country} has ${population} million people and its capital city is ${capitalCity}`;
+}
+
+const southAfricaDescr = describeCountry("South Africa", 61.19, "Pretoria");
+const zimbabweDescr = describeCountry("Zimbabwe", 14.2, "Harare");
+const namibiaDescr = describeCountry("Namibia", 61.19, "Windhoek");
+
+console.log(southAfricaDescr);
+console.log(zimbabweDescr);
+console.log(namibiaDescr);
