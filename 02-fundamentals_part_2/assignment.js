@@ -33,3 +33,18 @@ console.log(namibiaDescr);
  * 3. Create a function expression which does the exact same thing called
  * "percentageOfWorld2" and call it with 3 country populations.
  */
+
+// function declaration
+function percentageOfWorld1(population) {
+    return (population / 7900) * 100;
+}
+
+const southAfricaPer = percentageOfWorld1(61.18).toFixed(2);
+const zimbabwePer = percentageOfWorld1(14).toFixed(2);
+const namibiaPer = percentageOfWorld1(3).toFixed(2);
+
+console.log(southAfricaPer);
+console.log(zimbabwePer);
+console.log(namibiaPer);
+
+// function expression
