@@ -22,3 +22,14 @@ const namibiaDescr = describeCountry("Namibia", 61.19, "Windhoek");
 console.log(southAfricaDescr);
 console.log(zimbabweDescr);
 console.log(namibiaDescr);
+
+/**
+ * Lecture: Function Declaration vs Function Expression
+ * 1. The world population is 7900 million people. Create a function declaration
+ * called "percentageOfWorld1" which receives a "population" value  and returns
+ * the percentage of the world population that the given population represents.
+ * 2. Call "percentageOfWorld1" for 3 populations of countries of your choice,
+ * store the results in a variable and log to the console.
+ * 3. Create a function expression which does the exact same thing called
+ * "percentageOfWorld2" and call it with 3 country populations.
+ */
