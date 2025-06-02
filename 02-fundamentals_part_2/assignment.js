@@ -137,7 +137,30 @@ console.log(percentages);
  * "Sweden" in the array, and then replace it with "Republic of Sweden".  
  */
 
+const neigbours = [
+    "South Africa",
+    "Mozambique",
+    "Zambia",
+    "Botswana",
+    "Namibia",
+];
+const newCountry = "Utopia";
+neigbours.push(newCountry);
+console.log(neigbours);
+neigbours.pop();
 
+if (!neigbours.includes("Germany")) {
+    console.log("Probably not a central European country :D");
+}
+
+const renameCountry = neigbours.indexOf("Germany`");
+if (renameCountry !== -1) {
+    neigbours[renameCountry] = `Republic of ${neigbours[renameCountry]}`;
+    console.log(neigbours);
+} else {
+    console.log("Error: country not found!");
+    console.log(neigbours);
+}
 
 /**
  * Lecture: Introduction to Objects
