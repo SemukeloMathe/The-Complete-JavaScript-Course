@@ -110,7 +110,15 @@ console.log(namPopDesc);
  * that you created earlier to compute the 4 percentage values 
  */
 
-
+const populations = new Array(63, 14, 393, 1441);
+console.log(
+    `Array ${populations.length === 4 ? "has" : "doesnt have"} 4 elements.`
+);
+const percentages = new Array();
+for (let i = 0; i < populations.length; i++) {
+    percentages.push(percentageOfWorld1(populations[i]));
+}
+console.log(percentages);
 
 /**
  * Lecture: Basic Array Operations (Methods)
