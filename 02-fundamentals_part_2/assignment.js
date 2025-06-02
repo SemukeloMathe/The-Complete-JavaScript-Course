@@ -122,7 +122,22 @@ console.log(percentages);
 
 /**
  * Lecture: Basic Array Operations (Methods)
+ * 1. Create an array containing all neighbouring countries of a country of your
+ * choice. Choose a country with atleast 2 or 3 neighbours. Store the array
+ * into a variable called "neighbours".
+ * 2. A new country called "Utopia" is created in the neighborhood of your
+ * country. Add it to the end of the "neighbours" array.
+ * 3. After some time, the new country is dissolved. Remove it from the end of
+ * the array.
+ * 4. If the "neigbours" array does not include the country "Germany", log to
+ * the console: "Probably not a central European country :D".
+ * 5. Change the name of one of your neighbouring countries. To do that, find
+ * the index of the country in the "neighbours" array, and the use that index
+ * to change the array at that index position. For example, you can search for
+ * "Sweden" in the array, and then replace it with "Republic of Sweden".  
  */
+
+
 
 /**
  * Lecture: Introduction to Objects
