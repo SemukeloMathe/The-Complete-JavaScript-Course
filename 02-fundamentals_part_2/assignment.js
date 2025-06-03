@@ -178,11 +178,6 @@ const myCountry = {
 };
 
 /**
- * Lecture: Dot vs Bracket Notation
- * 
- */
-
-/**
  * Lecture: Object Methods
  * 1. Add a method called "describe" to the "myCountry" object. This method will
  * log a string to the console, similar to the string logged in the previous
@@ -194,7 +189,17 @@ const myCountry = {
  * -wise. Use the ternary operator to set the property.
  */
 
-
+myCountry.describe = function () {
+    console.log(
+        `${this.country} has ${this.population} million people and its capital city is ${this.capital}`
+    );
+};
+myCountry.describe();
+myCountry.checkIsIsland = function () {
+    this.isIsland = this.neighbors.length !== 0 ? false : true;
+};
+myCountry.checkIsIsland();
+console.log(myCountry.isIsland);
 
 /**
  * Lecture: Iteration - the for loop
