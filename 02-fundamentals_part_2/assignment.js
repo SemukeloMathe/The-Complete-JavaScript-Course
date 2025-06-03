@@ -4,7 +4,7 @@
  * Lecture: Functions
  * 1. Write a function called "describeCountry" which takes three parameters
  * "country", "population", & "capitalCity". Based on this input, the function
- * returns a string in this format: "Finland has 6 million people and its 
+ * returns a string in this format: "Finland has 6 million people and its
  * capital city is Helsinki".
  * 2. Call the function 3 timed with input data for 3 different countries.
  * Store the returned valies in 3 different variables and log them to the
@@ -12,7 +12,8 @@
  */
 
 function describeCountry(country, population, capitalCity) {
-    return `${country} has ${population} million people and its capital city is ${capitalCity}`;
+    return `${country} has ${population
+    } million people and its capital city is ${capitalCity}`;
 }
 
 const southAfricaDescr = describeCountry("South Africa", 61.19, "Pretoria");
@@ -62,13 +63,13 @@ console.log(malawiPer);
 
 /**
  * Lecture: Arrow Functions
- * 1. Recreate the last assignment but this time create an arrow function 
+ * 1. Recreate the last assignment but this time create an arrow function
  * called "percentageOfWorld3"
  */
 
 const percentageOfWorld3 = (population) => {
     return (population / 7900) * 100;
-}
+};
 
 const kenyaPer = percentageOfWorld1(33).toFixed(2);
 const angolaPer = percentageOfWorld1(15).toFixed(2);
@@ -89,11 +90,11 @@ console.log(tanzaniaPer);
 
 const describePopulation = (country, population) =>
     `${country} has ${population
-    } million people which is about ${percentageOfWorld1(population).toFixed(2)
-    }% of the world.`;
+    } million people which is about ${percentageOfWorld1(population
+    ).toFixed(2)}% of the world.`;
 
 const southAfrPopDesc = describePopulation("South Africa", 61.18);
-const zimPopDesc = describePopulation("Zimbabwe", 14.20);
+const zimPopDesc = describePopulation("Zimbabwe", 14.2);
 const namPopDesc = describePopulation("Namibia", 3.05);
 
 console.log(southAfrPopDesc);
@@ -107,7 +108,7 @@ console.log(namPopDesc);
  * 2. Log to the console whether the array has 4 elements or not (true or false)
  * 3. Create an array called "percentages" containing the percentages of the
  * world population for these 4 populations. Use the function "percentageOfWorld1"
- * that you created earlier to compute the 4 percentage values 
+ * that you created earlier to compute the 4 percentage values
  */
 
 const populations = new Array(63, 14, 393, 1441);
@@ -134,7 +135,7 @@ console.log(percentages);
  * 5. Change the name of one of your neighbouring countries. To do that, find
  * the index of the country in the "neighbours" array, and the use that index
  * to change the array at that index position. For example, you can search for
- * "Sweden" in the array, and then replace it with "Republic of Sweden".  
+ * "Sweden" in the array, and then replace it with "Republic of Sweden".
  */
 
 const neigbours = [
@@ -174,7 +175,7 @@ const myCountry = {
     capital: "Pretoria",
     language: "Zulu",
     population: 61.19,
-    neighbors: ["Lesotho", "Swaziland", "Zimbabwe", "Mozambique", "Namibia"]
+    neighbors: ["Lesotho", "Swaziland", "Zimbabwe", "Mozambique", "Namibia"],
 };
 
 /**
@@ -191,7 +192,8 @@ const myCountry = {
 
 myCountry.describe = function () {
     console.log(
-        `${this.country} has ${this.population} million people and its capital city is ${this.capital}`
+        `${this.country} has ${this.population
+        } million people and its capital city is ${this.capital}`
     );
 };
 myCountry.describe();
