@@ -179,6 +179,7 @@ const myCountry = {
 
 /**
  * Lecture: Dot vs Bracket Notation
+ * 
  */
 
 /**
@@ -195,8 +196,15 @@ const myCountry = {
 
 /**
  * Lecture: Looping Backwards & Nested Loops
+ * 1. Store this array of arrays into a variable called "listOfNeigbours" [
+ * ["Canada", "Mexico"], ["Spain"], ["Norway", "Sweden", "Russia"]]
+ * 2. Log only the neighbouring countries to the console, one by one, not the
+ * entire arrays. Log a string like "Neighbour: Canada" for each country.
  */
 
-/**
- * Lecture: The while loop
- */
+const listOfNeigbours = [
+    ["Canada", "Mexico"],
+    ["Spain"],
+    ["Norway", "Sweden", "Russia"],
+];
+
