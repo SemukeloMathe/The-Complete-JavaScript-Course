@@ -208,3 +208,8 @@ const listOfNeigbours = [
     ["Norway", "Sweden", "Russia"],
 ];
 
+for (let i = 0; i < listOfNeigbours.length; i++) {
+    for (let j = 0; j < listOfNeigbours[i].length; j++) {
+        console.log(`Neighbour: ${listOfNeigbours[i][j]}`);
+    }
+}
