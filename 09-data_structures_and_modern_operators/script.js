@@ -161,3 +161,13 @@ console.log(restaurant, restaurantCopy);
 const arr = [2, 3, ...[3, 4]];
 const [a, b, ...others] = arr;
 console.log(a, b, others);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+// rest param on objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
