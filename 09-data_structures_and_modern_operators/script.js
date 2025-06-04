@@ -44,6 +44,9 @@ const restaurant = {
       `"Order received!" ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here's your delicious pasta with ${ing1}, ${ing2} & ${ing3}`);
+  },
 
   openingHours: {
     thu: {
@@ -86,7 +89,7 @@ console.log(p, q, r);
 */
 
 // Destructuring objects
-
+/**
 const { name, categories, openingHours } = restaurant;
 console.log(name, categories, openingHours);
 // to make variable names different from property names.
@@ -121,3 +124,32 @@ restaurant.orderDelivery({
   address: "Via del Sole 21",
   starterIndex: 2,
 });
+*/
+
+// spread operator
+const arr = [7, 8, 9];
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+const newMenu = [...restaurant.mainMenu, "Gnocci"];
+console.log(newMenu);
+// creates a shallow copy
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// koin 2 arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+// the spread operator doesn't work on objects
+// console.log(...restaurant);
+const ingredients = ["Mushroom", "Asparagus", "Cheese"];
+restaurant.orderPasta(...ingredients);
+
+// As of es2018, spread works on objects.
+const newRestaurant = { ...restaurant, founder: "Guiseppe", foundedIn: 1998 };
+console.log(newRestaurant);
+
+// create object copy.
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = "Ristorante Roma";
+
+console.log(restaurant, restaurantCopy);
