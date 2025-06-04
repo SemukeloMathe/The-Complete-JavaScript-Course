@@ -126,7 +126,9 @@ restaurant.orderDelivery({
 });
 */
 
+
 // spread operator
+/**
 const arr = [7, 8, 9];
 const newArr = [1, 2, ...arr];
 console.log(newArr);
@@ -153,3 +155,9 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Ristorante Roma";
 
 console.log(restaurant, restaurantCopy);
+*/
+
+// Rest pattern & params.
+const arr = [2, 3, ...[3, 4]];
+const [a, b, ...others] = arr;
+console.log(a, b, others);
