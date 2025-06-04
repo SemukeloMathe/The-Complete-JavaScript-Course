@@ -33,6 +33,17 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+  orderDelivery: function ({
+    starterIndex = 0,
+    mainIndex = 0,
+    time = "20:00",
+    address,
+  }) {
+    // console.log(starterIndex, mainIndex, time, address);
+    console.log(
+      `"Order received!" ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 
   openingHours: {
     thu: {
@@ -50,6 +61,7 @@ const restaurant = {
   },
 };
 
+/** 
 // Array destructuring.
 const arr = [2, 3, 4];
 const [a, b, c] = arr;
@@ -71,3 +83,41 @@ console.log(i, j, k);
 // Default values in destructuring.
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
+*/
+
+// Destructuring objects
+
+const { name, categories, openingHours } = restaurant;
+console.log(name, categories, openingHours);
+// to make variable names different from property names.
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+// you can set default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+// mutating variables whilst destructuring.
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+// the trick is to wrap the destructuring in parenthesis.
+({ a, b } = obj);
+// nested objects.
+const {
+  fri: { open: o = 4, close: c = 4 },
+} = restaurant.openingHours;
+console.log(o, c);
+
+restaurant.orderDelivery({
+  time: "22:30",
+  address: "Via del Sole 21",
+  mainIndex: 2,
+  starterIndex: 2,
+});
+restaurant.orderDelivery({
+  address: "Via del Sole 21",
+  starterIndex: 2,
+});
