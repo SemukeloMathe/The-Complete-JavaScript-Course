@@ -47,6 +47,9 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here's your delicious pasta with ${ing1}, ${ing2} & ${ing3}`);
   },
+  orderPizza: function (mainIng, ...otherIng) {
+    console.log(`${mainIng}, ${otherIng}`);
+  },
 
   openingHours: {
     thu: {
@@ -126,7 +129,6 @@ restaurant.orderDelivery({
 });
 */
 
-
 // spread operator
 /**
 const arr = [7, 8, 9];
@@ -171,3 +173,18 @@ console.log(pizza, risotto, otherFood);
 // rest param on objects
 const { sat, ...weekdays } = restaurant.openingHours;
 console.log(weekdays);
+
+// functions
+const add = (...numbers) => {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  return sum;
+};
+console.log(add(2, 5));
+console.log(add(5, 3, 7, 2));
+console.log(add(8, 2, 5, 3, 2, 1, 4));
+
+const x = [23, 5, 7];
+console.log(add(...x));
+
+restaurant.orderPizza("Mushroom", "Olives", "Onion", "Spinach");
