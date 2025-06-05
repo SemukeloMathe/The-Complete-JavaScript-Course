@@ -8,7 +8,7 @@
  * (We already studied how to calculate averages, you can go check if you don't
  * remember)
  *
- * 3. Print the 3 odds to the console, but in a nice formatted way, exaclty
+ * 3. Print the 3 odds to the console, but in a nice formatted way, exactly
  * like this:
  *      Odd of victory Bayern Munich: 1.33
  *      Odd of draw: 3.25
@@ -64,3 +64,24 @@ const game = {
         team2: 6.5,
     },
 };
+
+// 1.
+for (const [i, scorer] of game.scored.entries()) {
+    console.log(`Goal ${i + 1}: ${scorer}`);
+}
+
+// 2.
+const gameOdds = Object.entries(game.odds);
+let sum = 0;
+for (const [key, value] of gameOdds) {
+    sum += value;
+};
+console.log(`Average odd: ${(sum / gameOdds.length).toFixed(2)}`);
+
+// 3.
+for (const [key, value] of gameOdds) {
+    // console.log(key, value);
+    console.log(`Odd of ${game[key] ? "Victory" : "Draw"} ${game[key] ?? ""}: ${value}`);    
+}
+
+// Bonus.
