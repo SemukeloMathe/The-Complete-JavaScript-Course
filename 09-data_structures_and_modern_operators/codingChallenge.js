@@ -35,44 +35,44 @@
  */
 
 const game = {
-  team1: "Bayern Munich",
-  team2: "Borrussia Dortmund",
-  players: [
-    [
-      "Neuer",
-      "Pavard",
-      "Martinez",
-      "Alaba",
-      "Davies",
-      "Kimmich",
-      "Goretzka",
-      "Coman",
-      "Muller",
-      "Gnabry",
-      "Lewandowski",
+    team1: "Bayern Munich",
+    team2: "Borrussia Dortmund",
+    players: [
+        [
+            "Neuer",
+            "Pavard",
+            "Martinez",
+            "Alaba",
+            "Davies",
+            "Kimmich",
+            "Goretzka",
+            "Coman",
+            "Muller",
+            "Gnabry",
+            "Lewandowski",
+        ],
+        [
+            "Burki",
+            "Schulz",
+            "Hummels",
+            "Akanji",
+            "Hakimi",
+            "Weigl",
+            "Witsel",
+            "Hazard",
+            "Brandt",
+            "Sancho",
+            "Gotze",
+        ],
     ],
-    [
-      "Burki",
-      "Schulz",
-      "Hummels",
-      "Akanji",
-      "Hakimi",
-      "Weigl",
-      "Witsel",
-      "Hazard",
-      "Brandt",
-      "Sancho",
-      "Gotze",
-    ],
-  ],
-  score: "4:0",
-  scored: ["Lewandowski", "Gnabry", "Lewandowski", "Hummels"],
-  date: "Nov 9th, 2037",
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
+    score: "4:0",
+    scored: ["Lewandowski", "Gnabry", "Lewandowski", "Hummels"],
+    date: "Nov 9th, 2037",
+    odds: {
+        team1: 1.33,
+        x: 3.25,
+        team2: 6.5,
+    },
 };
 
 // 1.
@@ -100,23 +100,23 @@ console.log(team1, draw, team2);
 const testData = ["Davies", "Muller", "Lewandowski", "Kimmich"];
 
 const printGoals = function (...arr) {
-  const res = [];
-  const goals = [];
+    const res = [];
+    const goals = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    if (res.includes(arr[i])) {
-      const index = res.indexOf(arr[i]);
-      goals[index] += 1;
-    } else {
-      res.push(arr[i]);
-      goals.push(1);
+    for (let i = 0; i < arr.length; i++) {
+        if (res.includes(arr[i])) {
+            const index = res.indexOf(arr[i]);
+            goals[index] += 1;
+        } else {
+            res.push(arr[i]);
+            goals.push(1);
+        }
     }
-  }
-  console.log("Goals Scored: ");
+    console.log("Goals Scored: ");
 
-  for (let i = 0; i < res.length; i++) {
-    console.log(`${res[i]}: ${goals[i]}`);
-  }
+    for (let i = 0; i < res.length; i++) {
+        console.log(`${res[i]}: ${goals[i]}`);
+    }
 };
 
 // printGoals(...testData);
