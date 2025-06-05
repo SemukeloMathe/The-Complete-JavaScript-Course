@@ -214,6 +214,7 @@ if (restaurant.orderPizza) {
 restaurant.orderPizza && restaurant.orderPizza("Mushrooms", "spinach");
  */
 
+/**
 // Nullish coalescing operator
 restaurant.numGuests = 0;
 const guests1 = restaurant.numGuests || 10;
@@ -221,4 +222,36 @@ console.log(guests1);
 
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect);
-console.log("" ?? null)
+console.log("" ?? null);
+ */
+
+// Logical Assignment operators
+const rest1 = {
+  name: "Capri",
+  numGuests: 0,
+};
+const rest2 = {
+  name: "La Piazza",
+  owner: "Sem Mathe",
+};
+
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest1.numGuests || 10;
+// console.log(rest1);
+// console.log(rest2);
+
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+console.log(rest1);
+console.log(rest2);
+
+
+// assigns a value to a variable if it is currently truthy
+// rest1.owner = rest1.owner && "<Anonymous>";
+// rest2.owner = rest2.owner && "<Anonymous>";
+rest1.owner &&= "<Anonymous>";
+rest2.owner &&= "<Anonymous>";
+console.log(rest1);
+console.log(rest2);
