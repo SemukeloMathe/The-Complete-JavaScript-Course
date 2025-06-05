@@ -346,6 +346,7 @@ const users = [];
 console.log(users[0]?.name ?? "user array empty");
 */
 
+/** 
 // Looping objects: object keys, values, entries.
 const openingHours = {
     thu: {
@@ -372,3 +373,33 @@ const entry = Object.entries(openingHours);
 for (const [key, {open, close}] of entry) {
     console.log(`On ${key} we open at ${open} and close at ${close}`);
 };
+*/
+
+/**
+// Sets
+const orderSet = new Set(["Pasta", "Pizza", "Pizza", "Risotto", "Pasta", "Pizza"]);
+// console.log(orderSet);
+// console.log(new Set());
+// get the size of a set.
+// console.log(orderSet.size);
+// check if a certain element is in a set.
+// console.log(orderSet.has("Pizza"));
+// console.log(orderSet.has("pizza"));
+// add new elements to a set.
+orderSet.add("Garlic Bread");
+orderSet.add("Garlic Bread");
+// console.log(orderSet);
+// delete elements in a set.
+orderSet.delete("Risotto");
+// console.log(orderSet);
+// to retrieve values in a set.
+// there's no way of getting values out of a set.
+// deleting all the elements in set.
+// orderSet.clear();
+// console.log(orderSet);
+const staff = ["Waiter", "Chef", "Manager", "Waiter", "Chef", "Waiter"];
+const uniqueStaff = new Set(staff);
+console.log(uniqueStaff);
+*/
+
+// Maps
