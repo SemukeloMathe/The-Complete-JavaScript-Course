@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /** 
 // Data needed for a later exercise
 const flights =
@@ -25,46 +25,48 @@ const mexicanFoods = new Set([
 
 // Data needed for first part of the section
 const restaurant = {
-  name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-  orderDelivery: function ({
-    starterIndex = 0,
-    mainIndex = 0,
-    time = "20:00",
-    address,
-  }) {
-    // console.log(starterIndex, mainIndex, time, address);
-    console.log(
-      `"Order received!" ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-    );
-  },
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(`Here's your delicious pasta with ${ing1}, ${ing2} & ${ing3}`);
-  },
-  orderPizza: function (mainIng, ...otherIng) {
-    console.log(`${mainIng}, ${otherIng}`);
-  },
+    name: "Classico Italiano",
+    location: "Via Angelo Tavanti 23, Firenze, Italy",
+    categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+    starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+    mainMenu: ["Pizza", "Pasta", "Risotto"],
+    order: function (starterIndex, mainIndex) {
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    },
+    orderDelivery: function ({
+        starterIndex = 0,
+        mainIndex = 0,
+        time = "20:00",
+        address,
+    }) {
+        // console.log(starterIndex, mainIndex, time, address);
+        console.log(
+            `"Order received!" ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+        );
+    },
+    orderPasta: function (ing1, ing2, ing3) {
+        console.log(
+            `Here's your delicious pasta with ${ing1}, ${ing2} & ${ing3}`
+        );
+    },
+    orderPizza: function (mainIng, ...otherIng) {
+        console.log(`${mainIng}, ${otherIng}`);
+    },
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
+    openingHours: {
+        thu: {
+            open: 12,
+            close: 22,
+        },
+        fri: {
+            open: 11,
+            close: 23,
+        },
+        sat: {
+            open: 0, // Open 24 hours
+            close: 24,
+        },
     },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
 };
 
 /** 
@@ -225,6 +227,7 @@ console.log(guestCorrect);
 console.log("" ?? null);
  */
 
+/** 
 // Logical Assignment operators
 const rest1 = {
   name: "Capri",
@@ -255,3 +258,16 @@ rest1.owner &&= "<Anonymous>";
 rest2.owner &&= "<Anonymous>";
 console.log(rest1);
 console.log(rest2);
+*/
+
+// The for of loop.
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+// to get the index of an array using the entries method.
+for (const [i, el] of menu.entries()) {
+    console.log(`${i + 1}: ${el}`);
+}
+
+// console.log([...menu.entries()])
