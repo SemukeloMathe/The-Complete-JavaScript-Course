@@ -403,3 +403,40 @@ console.log(uniqueStaff);
 */
 
 // Maps
+const restMap = new Map();
+// to add elements to a map, use the set method.
+// set takes in a key and value.
+restMap.set("name", "Classico Italiano");
+restMap.set(1, "Firenze, Italy");
+restMap.set(2, "Lisbo Portugal");
+// because the set method returns the set, this allows for chaining methods.
+restMap
+    .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+    .set("open", 11)
+    .set("close", 23)
+    .set(true, "We are open! :D")
+    .set(false, "We are closed :(");
+// console.log(restMap);
+// to read data from a map, use the get method.
+// console.log(restMap.get("name"));
+// console.log(restMap.get(true));
+const time = 21;
+// console.log(
+//     restMap.get(time > restMap.get("open") && time < restMap.get("close"))
+// );
+// check if a map contains a certain key.
+// console.log(restMap.has("categories"));
+// delete elements from the map. use the key
+// restMap.delete(2);
+// console.log(restMap);
+// maps have the size property aswell
+// console.log(restMap.size);
+// we can also clear all the elements from the map.
+// console.log(restMap.clear());
+// we can also use objects as map keys.
+restMap.set([1, 2], "Test");
+console.log(restMap.get([1, 2])); // results in undefined.
+// console.log(restMap);
+const arr = [1, 2];
+restMap.set(arr, "Test");
+console.log(restMap.get(arr));
