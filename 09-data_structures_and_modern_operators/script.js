@@ -158,7 +158,7 @@ restaurantCopy.name = "Ristorante Roma";
 
 console.log(restaurant, restaurantCopy);
 */
-
+/** 
 // Rest pattern & params.
 const arr = [2, 3, ...[3, 4]];
 const [a, b, ...others] = arr;
@@ -188,3 +188,27 @@ const x = [23, 5, 7];
 console.log(add(...x));
 
 restaurant.orderPizza("Mushroom", "Olives", "Onion", "Spinach");
+*/
+
+// Short circuiting / Short-circuit evaluation
+console.log("-------OR--------");
+console.log(3 || "sem");
+console.log("" || "sem");
+console.log(true || 0);
+console.log(undefined || null);
+
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log("-------AND-------")
+console.log(0 && "sem");
+console.log(7 && "Jonas");
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("Mushrooms", "spinach");
+}
+
+restaurant.orderPizza && restaurant.orderPizza("Mushrooms", "spinach");
