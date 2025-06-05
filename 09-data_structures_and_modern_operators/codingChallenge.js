@@ -112,14 +112,14 @@ const printGoals = function (...arr) {
             goals.push(1);
         }
     }
-    console.log("Goals Scored: ");
+    console.log(`${arr.length} Goals were scored: `);
 
     for (let i = 0; i < res.length; i++) {
         console.log(`${res[i]}: ${goals[i]}`);
     }
 };
 
-// printGoals(...testData);
+printGoals(...testData);
 printGoals(...game.scored);
 
 // 7.
