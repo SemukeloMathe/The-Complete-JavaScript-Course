@@ -325,6 +325,7 @@ console.log(rest3);
 */
 
 // Optional chaining
+/**
 // if a certain property doesn't exist, undefined is returned immediately.
 console.log(restaurant.openingHours.mon?.open);
 console.log(restaurant.openingHours?.mon?.open);
@@ -343,5 +344,31 @@ console.log(restaurant.orderRissoto?.(0, 1) ?? "Method does not exist");
 // on arrays, used to check if array is empty
 const users = [];
 console.log(users[0]?.name ?? "user array empty");
+*/
 
 // Looping objects: object keys, values, entries.
+const openingHours = {
+    thu: {
+        open: 12,
+        close: 22,
+    },
+    fri: {
+        open: 11,
+        close: 23,
+    },
+    sat: {
+        open: 0, // Open 24 hours
+        close: 24,
+    },
+};
+// propert names
+// for (const day of Object.keys(openingHours)) console.log(day);
+// property values
+const values = Object.values(openingHours);
+// console.log(values);
+// entries
+const entry = Object.entries(openingHours);
+// console.log(entry);
+for (const [key, {open, close}] of entry) {
+    console.log(`On ${key} we open at ${open} and close at ${close}`);
+};
