@@ -189,7 +189,7 @@ console.log(add(...x));
 
 restaurant.orderPizza("Mushroom", "Olives", "Onion", "Spinach");
 */
-
+/**
 // Short circuiting / Short-circuit evaluation
 console.log("-------OR--------");
 console.log(3 || "sem");
@@ -212,3 +212,13 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza("Mushrooms", "spinach");
+ */
+
+// Nullish coalescing operator
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests || 10;
+console.log(guests1);
+
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+console.log("" ?? null)
