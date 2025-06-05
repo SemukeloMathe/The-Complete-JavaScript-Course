@@ -88,9 +88,7 @@ for (const [key, value] of gameOdds) {
 
 // Bonus.
 const scorers = {};
-for (const [i, name] of [...game.scored.entries()]) {
-    if (Object.keys(scorers).includes(name)) {
-        scorers[name] += 1;
-    } else scorers[name] = 1;
-}
+for (const name of game.scored)
+    Object.keys(scorers).includes(name) ? scorers[name]++ : (scorers[name] = 1);
+
 console.log(scorers);
