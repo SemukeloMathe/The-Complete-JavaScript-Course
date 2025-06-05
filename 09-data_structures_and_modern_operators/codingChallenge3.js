@@ -27,3 +27,26 @@ const gameEvents = new Map([
     [80, "⚽️ GOAL"],
     [92, "🔶 Yellow card"],
 ]);
+
+// 1.
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2.
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3.
+let sum = 0;
+for (const key of [...gameEvents.keys()]) sum += key;
+let average = sum / (90 + 2);
+console.log(
+    `An event happened, on average, every ${average.toFixed(2)} minutes`
+);
+
+// 4.
+for (const [key, value] of gameEvents) {
+    console.log(
+        `${key < 45 ? "[FIRST HALF]" : "[SECOND HALF]"} ${key}: ${value}`
+    );
+}
