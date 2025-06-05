@@ -73,15 +73,24 @@ for (const [i, scorer] of game.scored.entries()) {
 // 2.
 const gameOdds = Object.entries(game.odds);
 let sum = 0;
-for (const [key, value] of gameOdds) {
+for (const [, value] of gameOdds) {
     sum += value;
-};
+}
 console.log(`Average odd: ${(sum / gameOdds.length).toFixed(2)}`);
 
 // 3.
 for (const [key, value] of gameOdds) {
     // console.log(key, value);
-    console.log(`Odd of ${game[key] ? "Victory" : "Draw"} ${game[key] ?? ""}: ${value}`);    
+    console.log(
+        `Odd of ${game[key] ? "Victory" : "Draw"} ${game[key] ?? ""}: ${value}`
+    );
 }
 
 // Bonus.
+const scorers = {};
+for (const [i, name] of [...game.scored.entries()]) {
+    if (Object.keys(scorers).includes(name)) {
+        scorers[name] += 1;
+    } else scorers[name] = 1;
+}
+console.log(scorers);
