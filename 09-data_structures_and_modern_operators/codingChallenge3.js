@@ -37,12 +37,8 @@ gameEvents.delete(64);
 console.log(gameEvents);
 
 // 3.
-let sum = 0;
-for (const key of [...gameEvents.keys()]) sum += key;
-let average = sum / (90 + 2);
-console.log(
-    `An event happened, on average, every ${average.toFixed(2)} minutes`
-);
+let average = 90 / gameEvents.size;
+console.log(`An event happened, on average, every ${average} minutes.`);
 
 // 4.
 for (const [key, value] of gameEvents) {
