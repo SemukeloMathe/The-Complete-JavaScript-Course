@@ -22,7 +22,7 @@ const mexicanFoods = new Set([
   'garlic',
 ]);
 */
-
+/** 
 // Data needed for first part of the section
 const restaurant = {
     name: "Classico Italiano",
@@ -68,7 +68,7 @@ const restaurant = {
         },
     },
 };
-
+*/
 /** 
 // Array destructuring.
 const arr = [2, 3, 4];
@@ -401,7 +401,7 @@ const staff = ["Waiter", "Chef", "Manager", "Waiter", "Chef", "Waiter"];
 const uniqueStaff = new Set(staff);
 console.log(uniqueStaff);
 */
-
+/** 
 // Maps
 const restMap = new Map();
 // to add elements to a map, use the set method.
@@ -440,7 +440,8 @@ const time = 21;
 // const arr = [1, 2];
 // restMap.set(arr, "Test");
 // console.log(restMap.get(arr));
-
+*/
+/** 
 // creating a new map, use a nested array.
 const question = new Map([
     ["question", "What is the best programming language in the world?"],
@@ -492,3 +493,46 @@ console.log([...question]);
 console.log([...question.entries()]);
 console.log([...question.values()]);
 console.log([...question.keys()]);
+*/
+
+const flights =
+    "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+
+const airplane = "TAP Air Portugal";
+const plane = "A320";
+
+// Strings
+// get char at certain index position.
+console.log()
+// read length of strings
+
+const capitalizeName = function (name) {
+    const names = name.split(" ");
+    const namesUpper = [];
+
+    for (const name of names) {
+        // namesUpper.push(name[0].toUpperCase() + name.slice(1));
+        namesUpper.push(name.replace(name[0], name[0].toUpperCase()));
+    }
+    console.log(namesUpper.join(" "));
+}
+
+capitalizeName("jessica ann smith davis");
+capitalizeName("semukelo mathe");
+
+// function that masks a credit card number.
+const maskCreditCard = function (number) {
+    const str = number + "";
+    const last = str.slice(-4);
+
+    return last.padStart(str.length, "*");
+}
+
+console.log(maskCreditCard(6232389289830));
+console.log(maskCreditCard(371973083393));
+
+// repeat method, repeats the same string multiple times
+const message = "Bad Weather...All departures delayed...";
+
+console.log(message.repeat(5));
