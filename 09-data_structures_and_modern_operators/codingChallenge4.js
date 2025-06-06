@@ -58,17 +58,3 @@ document.querySelector("button").addEventListener("click", (e) => {
         checks += "✅";
     }
 });
-
-// data =
-//     "underscore_case\nfirst_name\nSome_Variable\ncalculate_AGE\ndelayed_departure";
-
-
-
-
-// convertToCamelCase("underscore_case");
-// convertToCamelCase("first_name");
-// convertToCamelCase("Some_Variable");
-// convertToCamelCase("calculate_AGE");
-// convertToCamelCase("delayed_departure");
-// convertToCamelCase("HELLO_WORLD");
-// convertToCamelCase("jaCK_RabbIT");
