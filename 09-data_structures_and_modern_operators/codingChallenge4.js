@@ -33,4 +33,40 @@
 
 document.body.append(document.createElement("textarea"));
 document.body.append(document.createElement("button"));
-const text = document.querySelector("textarea").value;
+
+document.querySelector("button").addEventListener("click", (e) => {
+    const text = document.querySelector("textarea").value;
+
+    const modifyStr = (str) => {
+        const splitStr = str.split("\n");
+        return splitStr;
+    };
+
+    const convertToCamelCase = (word) => {
+        let [firstVar, secondVar] = word.toLowerCase().split("_");
+        secondVar = secondVar[0].toUpperCase() + secondVar.slice(1);
+        const finalVar = firstVar + secondVar;
+        return finalVar;
+    };
+
+    const dataMod = modifyStr(text);
+
+    for (const str of dataMod) {
+        const variable = convertToCamelCase(str);
+        console.log(`${variable.padEnd(20, " ")}`);
+    }
+});
+
+// data =
+//     "underscore_case\nfirst_name\nSome_Variable\ncalculate_AGE\ndelayed_departure";
+
+
+
+
+// convertToCamelCase("underscore_case");
+// convertToCamelCase("first_name");
+// convertToCamelCase("Some_Variable");
+// convertToCamelCase("calculate_AGE");
+// convertToCamelCase("delayed_departure");
+// convertToCamelCase("HELLO_WORLD");
+// convertToCamelCase("jaCK_RabbIT");
