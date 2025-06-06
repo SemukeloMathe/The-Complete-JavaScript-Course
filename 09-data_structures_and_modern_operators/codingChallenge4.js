@@ -36,6 +36,7 @@ document.body.append(document.createElement("button"));
 
 document.querySelector("button").addEventListener("click", (e) => {
     const text = document.querySelector("textarea").value;
+    let checks = "✅";
 
     const modifyStr = (str) => {
         const splitStr = str.split("\n");
@@ -53,7 +54,8 @@ document.querySelector("button").addEventListener("click", (e) => {
 
     for (const str of dataMod) {
         const variable = convertToCamelCase(str);
-        console.log(`${variable.padEnd(20, " ")}`);
+        console.log(`${variable.padEnd(20, " ")}${checks}`);
+        checks += "✅";
     }
 });
 
