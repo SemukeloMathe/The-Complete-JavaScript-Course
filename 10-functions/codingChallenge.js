@@ -38,12 +38,24 @@
  * the poll object! So what shoud the this keyword look like in this situation?
  * BONUS TEST DATA 1: [5, 2, 3]
  * BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
-
-GOOD LUCK 😀
-*/
+ */
 
 const poll = {
     question: "What is your favourite programming language?",
     options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
     answers: new Array(4).fill(0),
+
+    // 1.
+    registerNewAnswer: function () {
+        let str = "";
+        for (const option of this.options) str += `\n${option}`;
+
+        const pollAnswer = Number(prompt(`${this.question}${str}`));
+        console.log(pollAnswer);
+        // increment the position of the respective index in the answers array
+        this.answers[pollAnswer]++;
+        console.log(this.answers);
+    }
 };
+
+document.addEventListener("click", poll.registerNewAnswer.bind(poll));
