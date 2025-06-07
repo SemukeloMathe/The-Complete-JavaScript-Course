@@ -14,6 +14,7 @@
  *      1: Python
  *      2: Rust
  *      3: C++
+ *      4: Java
  *      (Write option number)
  *  1.2. Based on the input number, update the answers array. For example, if
  *  the option is 3, increase the value AT POSITION 3 of the array by 1. Make
@@ -42,8 +43,8 @@
 
 const poll = {
     question: "What is your favourite programming language?",
-    options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
-    answers: new Array(4).fill(0),
+    options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++", "4: Java", "5: PHP"],
+    answers: new Array(6).fill(0),
 
     // 1.
     registerNewAnswer: function () {
@@ -52,9 +53,15 @@ const poll = {
 
         const pollAnswer = Number(prompt(`${this.question}${str}`));
         console.log(pollAnswer);
-        // increment the position of the respective index in the answers array
-        this.answers[pollAnswer]++;
-        console.log(this.answers);
+
+        if (typeof pollAnswer === "number" && pollAnswer >= 0 && pollAnswer < this.options.length) {
+            // increment the position of the respective index in the answers array
+            this.answers[pollAnswer]++;
+            console.log(this.answers);
+        } else {
+            alert("Invalid Choice. Please choose either provided option!");
+            return
+        }
     }
 };
 
