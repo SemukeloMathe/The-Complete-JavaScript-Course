@@ -43,7 +43,14 @@
 
 const poll = {
     question: "What is your favourite programming language?",
-    options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++", "4: Java", "5: PHP"],
+    options: [
+        "0: JavaScript",
+        "1: Python",
+        "2: Rust",
+        "3: C++",
+        "4: Java",
+        "5: PHP",
+    ],
     answers: new Array(6).fill(0),
 
     // 1.
@@ -52,17 +59,31 @@ const poll = {
         for (const option of this.options) str += `\n${option}`;
 
         const pollAnswer = Number(prompt(`${this.question}${str}`));
-        console.log(pollAnswer);
 
-        if (typeof pollAnswer === "number" && pollAnswer >= 0 && pollAnswer < this.options.length) {
+        // 2.
+        if (
+            typeof pollAnswer === "number" &&
+            pollAnswer >= 0 &&
+            pollAnswer < this.options.length
+        ) {
             // increment the position of the respective index in the answers array
             this.answers[pollAnswer]++;
-            console.log(this.answers);
         } else {
             alert("Invalid Choice. Please choose either provided option!");
-            return
         }
-    }
+        // 4. Call the displayresults method
+        this.displayResults(this.options);
+    },
+
+    // 3.
+    displayResults: function (type) {
+        if (typeof type === "string") {
+            console.log(`Poll results are ${type}`);
+            return;
+        }
+
+        console.log(this.answers);
+    },
 };
 
 document.addEventListener("click", poll.registerNewAnswer.bind(poll));
