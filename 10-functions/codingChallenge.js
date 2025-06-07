@@ -52,15 +52,14 @@ const poll = {
         "5: PHP",
     ],
     answers: new Array(6).fill(0),
-
     // 1.
     registerNewAnswer: function () {
         let str = "";
         for (const option of this.options) str += `\n${option}`;
-
-        const pollAnswer = Number(prompt(`${this.question}${str}`));
-
-        // 2.
+        const pollAnswer = Number(
+            prompt(`${this.question}${str}\n(Write option number)`)
+        );
+        // 1.2.
         if (
             typeof pollAnswer === "number" &&
             pollAnswer >= 0 &&
@@ -74,20 +73,18 @@ const poll = {
         // 4. Call the displayresults method
         this.displayResults(this.answers);
     },
-
     // 3.
     displayResults: function (type) {
         if (typeof type === "string") {
             console.log(`Poll results are ${type}`);
             return;
         }
-
         console.log(type);
     },
 };
 
+// 2.
 document.addEventListener("click", poll.registerNewAnswer.bind(poll));
-
 // bonus
 const testData1 = [5, 2, 3];
 const testData2 = [1, 5, 3, 9, 6, 1];
