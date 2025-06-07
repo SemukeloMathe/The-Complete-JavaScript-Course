@@ -72,7 +72,7 @@ const poll = {
             alert("Invalid Choice. Please choose either provided option!");
         }
         // 4. Call the displayresults method
-        this.displayResults(this.options);
+        this.displayResults(this.answers);
     },
 
     // 3.
@@ -82,8 +82,16 @@ const poll = {
             return;
         }
 
-        console.log(this.answers);
+        console.log(type);
     },
 };
 
 document.addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+// bonus
+const testData1 = [5, 2, 3];
+const testData2 = [1, 5, 3, 9, 6, 1];
+poll.displayResults(testData1);
+poll.displayResults(testData2);
+poll.displayResults("1, 4, 6, 7");
+poll.displayResults("12, 1, 3, 6, 9, 0");
