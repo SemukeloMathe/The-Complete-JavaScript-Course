@@ -1,7 +1,6 @@
 'use strict';
 
 // BANKIST APP
-
 // Data
 const account1 = {
   owner: 'Jonas Schmedtmann',
@@ -42,15 +41,18 @@ const labelSumOut = document.querySelector('.summary__value--out');
 const labelSumInterest = document.querySelector('.summary__value--interest');
 const labelTimer = document.querySelector('.timer');
 
+// containers
 const containerApp = document.querySelector('.app');
 const containerMovements = document.querySelector('.movements');
 
+// buttons
 const btnLogin = document.querySelector('.login__btn');
 const btnTransfer = document.querySelector('.form__btn--transfer');
 const btnLoan = document.querySelector('.form__btn--loan');
 const btnClose = document.querySelector('.form__btn--close');
 const btnSort = document.querySelector('.btn--sort');
 
+// imputs
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
 const inputTransferTo = document.querySelector('.form__input--to');
@@ -59,8 +61,26 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-// LECTURES
 
+
+const displayMovements = function (movements) {
+    containerMovements.innerHTML = "";
+    movements.forEach(function (mov, i) {
+        const type = mov > 0 ? "deposit" : "withdrawal";
+        
+        const html = `
+            <div class="movements__row">
+                <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+                <div class="movements__value">${mov}€</div>
+            </div>  
+        `;
+        // insert adjacent html
+        containerMovements.insertAdjacentHTML("afterbegin",html);
+    });
+};
+
+displayMovements(account1.movements);
+// LECTURES
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // let arr = ["a", "b", "c", "d", "e"];
@@ -97,40 +117,40 @@ const inputClosePin = document.querySelector('.form__input--pin');
 // console.log(arr.at(-1));
 
 // forEach() method - requires a callback function as an argument. 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-for (const [i, movement] of movements.entries()) {
-    if (movement > 0) {
-        console.log(`Movement ${i + 1} ${movement}`);
-    } else {
-        console.log(`Movement ${i + 1} ${Math.abs(movement)}`);
-    }
-}
+// for (const [i, movement] of movements.entries()) {
+//     if (movement > 0) {
+//         console.log(`Movement ${i + 1} ${movement}`);
+//     } else {
+//         console.log(`Movement ${i + 1} ${Math.abs(movement)}`);
+//     }
+// }
 // the 1st param is the current element,
 // the 2nd param is the element index,
 // the 3rd is the array.
 // continue & break don't work in the forEach method.
-movements.forEach(function (mov, i, arr) {
-    if (mov > 0) {
-        console.log(`${i + 1}. You deposited ${mov}`);
-    } else {
-        console.log(`${i + 1}. You withdrew ${Math.abs(mov)}`);
-    }
-});
+// movements.forEach(function (mov, i, arr) {
+//     if (mov > 0) {
+//         console.log(`${i + 1}. You deposited ${mov}`);
+//     } else {
+//         console.log(`${i + 1}. You withdrew ${Math.abs(mov)}`);
+//     }
+// });
 
 // forEach is also available on maps & sets.
-const currencies = new Map([
-    ["USD", "United States dollar"],
-    ["EUR", "Euro"],
-    ["GBP", "Pound sterling"],
-]);
+// const currencies = new Map([
+//     ["USD", "United States dollar"],
+//     ["EUR", "Euro"],
+//     ["GBP", "Pound sterling"],
+// ]);
 
-currencies.forEach(function (val, key, map) {
-    console.log(`${key}: ${val}`);
-});
+// currencies.forEach(function (val, key, map) {
+//     console.log(`${key}: ${val}`);
+// });
 
-const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR"]);
-console.log(currenciesUnique);
-currenciesUnique.forEach(function (val, _, set) {
-  console.log(`${val}: ${val}`);
-})
+// const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR"]);
+// console.log(currenciesUnique);
+// currenciesUnique.forEach(function (val, _, set) {
+//     console.log(`${val}: ${val}`);
+// });
