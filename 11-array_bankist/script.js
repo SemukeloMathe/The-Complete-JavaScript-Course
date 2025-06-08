@@ -163,11 +163,10 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const usdMov = movements.map((mov) => mov * eurToUsd);
 console.log(usdMov);
 
-const movDesc = movements.map((mov, i, arr) => {
-    if (mov > 0) {
-        return `${i + 1}. You deposited ${mov}`;
-    } else {
-        return `${i + 1}. You withdrew ${Math.abs(mov)}`;
-    }
-});
+const movDesc = movements.map(
+    (mov, i) =>
+        `Movement ${i + 1}: ${
+            mov > 0 ? `You deposited ${mov}` : `You withdrew ${Math.abs(mov)}`
+        }`
+);
 console.log(movDesc);
