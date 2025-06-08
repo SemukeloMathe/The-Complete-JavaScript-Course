@@ -24,9 +24,11 @@
  * TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
  * TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
  */
-// test date 1
+
+// test data 1
 const juliaData = [3, 5, 2, 12, 7];
 const kateData = [4, 1, 15, 8, 3];
+
 // test data 2
 const juliaData2 = [9, 16, 6, 8, 3];
 const kateData2 = [10, 5, 6, 1, 4];
@@ -34,10 +36,11 @@ const kateData2 = [10, 5, 6, 1, 4];
 function checkDogs(dogsJulia = [], dogsKate = []) {
     // 1.
     const newDogsJulia = dogsJulia.slice(1, -2);
-
+    
     // 2.
     const dogs = newDogsJulia.concat(dogsKate);
     console.log(dogs);
+
     // 3.
     dogs.forEach(function (dog, i) {
         console.log(
