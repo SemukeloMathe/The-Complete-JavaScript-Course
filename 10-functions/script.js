@@ -95,17 +95,17 @@ createBooking("LH123", undefined, 2);
 // greet("Hello")("Legend");
 
 // Call & Apply method.
-const lufthansa = {
-    airline: "Lufthansa",
-    iataCode: "LH",
-    bookings: [],
-    book: function (flightNum, name) {
-        console.log(
-            `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
-        );
-        this.bookings.push({ flight: `${this.iataCode}${flightNum}` });
-    },
-};
+// const lufthansa = {
+//     airline: "Lufthansa",
+//     iataCode: "LH",
+//     bookings: [],
+//     book: function (flightNum, name) {
+//         console.log(
+//             `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+//         );
+//         this.bookings.push({ flight: `${this.iataCode}${flightNum}` });
+//     },
+// };
 
 // lufthansa.book(239, "Semukelo Mathe");
 // lufthansa.book(645, "Legend Supi");
@@ -156,18 +156,18 @@ const lufthansa = {
 // console.log(eurowings);
 
 // With event listeners
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-    console.log(this);
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function () {
+//     console.log(this);
 
-    this.planes++;
+//     this.planes++;
 
-    console.log(this.planes);
-};
+//     console.log(this.planes);
+// };
 
-document
-    .querySelector(".buy")
-    .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
+// document
+//     .querySelector(".buy")
+//     .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
 
 // partial application - preset parameters.
 // const addTax = (rate, value) => value + value * rate;
@@ -176,14 +176,30 @@ document
 // const addVAT = addTax.bind(null, 0.23);
 // console.log(addVAT(100));
 
-const addTax = function (rate) {
-    return function (value) {
-        return value + value * rate;
+// const addTax = function (rate) {
+//     return function (value) {
+//         return value + value * rate;
+//     };
+// };
+
+// const addTax2 = (rate) => (value) => value + value * rate;
+
+// const addVat = addTax(0.23);
+// console.log(addVat(100));
+// console.log(addTax(0.1)(200));
+
+// Closures
+const secureBooking = function () {
+    let passengerCount = 0;
+
+    return function () {
+        passengerCount++;
+        console.log(`${passengerCount} passengers`);
     };
 };
 
-const addTax2 = (rate) => (value) => value + value * rate;
-
-const addVat = addTax(0.23);
-console.log(addVat(100));
-console.log(addTax(0.1)(200));
+const booker = secureBooking();
+booker();
+booker();
+booker();
+console.dir(booker);
