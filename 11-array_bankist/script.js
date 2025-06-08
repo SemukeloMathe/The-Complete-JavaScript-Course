@@ -61,13 +61,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // let arr = ["a", "b", "c", "d", "e"];
 
@@ -96,8 +90,47 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // join() method - returns a string
 // console.log(letters.join(" - "));
 
-// at() method - retrieves an element at a specified index.
-const arr = [23, 11, 64];
+// at() method - retrieves an element at a specified index. 
+// also works on strings.
+// const arr = [23, 11, 64];
 // console.log(arr[arr.length - 1]);
-console.log(arr.at(-1));
+// console.log(arr.at(-1));
 
+// forEach() method - requires a callback function as an argument. 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const [i, movement] of movements.entries()) {
+    if (movement > 0) {
+        console.log(`Movement ${i + 1} ${movement}`);
+    } else {
+        console.log(`Movement ${i + 1} ${Math.abs(movement)}`);
+    }
+}
+// the 1st param is the current element,
+// the 2nd param is the element index,
+// the 3rd is the array.
+// continue & break don't work in the forEach method.
+movements.forEach(function (mov, i, arr) {
+    if (mov > 0) {
+        console.log(`${i + 1}. You deposited ${mov}`);
+    } else {
+        console.log(`${i + 1}. You withdrew ${Math.abs(mov)}`);
+    }
+});
+
+// forEach is also available on maps & sets.
+const currencies = new Map([
+    ["USD", "United States dollar"],
+    ["EUR", "Euro"],
+    ["GBP", "Pound sterling"],
+]);
+
+currencies.forEach(function (val, key, map) {
+    console.log(`${key}: ${val}`);
+});
+
+const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR"]);
+console.log(currenciesUnique);
+currenciesUnique.forEach(function (val, _, set) {
+  console.log(`${val}: ${val}`);
+})
