@@ -240,5 +240,17 @@ const boardPassengers = function (n, wait) {
 };
 
 const perGroup = 120;
-boardPassengers(180, 3);
-// 
+// boardPassengers(180, 3);
+
+
+let a;
+
+const b = function (name) {
+    let str = name;
+    return a = function () {
+        console.log(str);
+    }
+}
+
+b("Sem");
+a();
