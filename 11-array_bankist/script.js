@@ -192,3 +192,9 @@ console.log(deposits);
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+
+// the reduce method - takes in a callback function and returns a single value.
+const balance = movements.reduce(function (acc, cur, i, arr) {
+    return acc + cur;
+}, 0);
+console.log(balance);
