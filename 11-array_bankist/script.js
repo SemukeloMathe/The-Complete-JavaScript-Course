@@ -199,8 +199,8 @@ calcDisplayBalance(account1.movements);
 
 // Map, filter & reduce
 // 1. map() method - returns a new array
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const eurToUsd = 1.1;
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const eurToUsd = 1.1;
 
 // const usdMov = movements.map((mov) => mov * eurToUsd);
 // console.log(usdMov);
@@ -244,11 +244,11 @@ const eurToUsd = 1.1;
 // console.log(minValue);
 
 // chaining methods.
-const totalUsdDeposit = Number(
-    movements
-        .filter((mov) => mov > 0)
-        .map((mov) => mov * eurToUsd)
-        .reduce((acc, mov) => acc + mov, 0)
-);
+// const totalUsdDeposit = Number(
+//     movements
+//         .filter((mov) => mov > 0)
+//         .map((mov) => mov * eurToUsd)
+//         .reduce((acc, mov) => acc + mov, 0)
+// );
 
-console.log(totalUsdDeposit);
+// console.log(totalUsdDeposit);
