@@ -19,8 +19,6 @@
  * 
  * TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
  * TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
-
-GOOD LUCK 😀
 */
 
 const calcAverageHumanAge = function (ages = []) {
@@ -35,8 +33,10 @@ const calcAverageHumanAge = function (ages = []) {
     console.log(`Adult dogs: ${adultDogs}`);
 
     // 3.
-    const averageDogHumanAge =
-        adultDogs.reduce((acc, age) => acc + age, 0) / adultDogs.length;
+    const averageDogHumanAge = adultDogs.reduce(
+        (acc, age, _, arr) => acc + age / arr.length, // adultDogs.length
+        0
+    );
     console.log(
         `Average human age of adult dogs: ${averageDogHumanAge.toFixed(2)}`
     );
