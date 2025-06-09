@@ -22,3 +22,13 @@
 
 GOOD LUCK 😀
 */
+
+const calcAverageHumanAge = function (ages = []) {
+    // 1.
+    const dogToHumanAges = ages.map((age) =>
+        age > 2 ? 16 + age * 4 : 2 * age
+    );
+    console.log(dogToHumanAges);
+
+    // 2.
+};
