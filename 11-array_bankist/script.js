@@ -111,7 +111,7 @@ const calcDisplaySummary = function (movements) {
         .map((deposit) => deposit * 0.012)
         .filter((int) => int >= 1)
         .reduce((acc, int) => acc + int, 0);
-    labelSumInterest.textContent = interest;
+    labelSumInterest.textContent = `${interest}€`;
 };
 
 calcDisplaySummary(account1.movements);
