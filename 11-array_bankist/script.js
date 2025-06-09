@@ -80,6 +80,21 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+const createUsernames = function (accs = []) {
+    accs.forEach(function (acc = {}) {
+        acc.username = acc.owner
+            .toLowerCase()
+            .split(" ")
+            .map((name) => name[0])
+            .join("");
+    });
+};
+
+createUsernames(accounts);
+console.log(accounts);
+
+
 // LECTURES
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -161,7 +176,7 @@ const eurToUsd = 1.1;
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const usdMov = movements.map((mov) => mov * eurToUsd);
-console.log(usdMov);
+// console.log(usdMov);
 
 const movDesc = movements.map(
     (mov, i) =>
@@ -169,4 +184,4 @@ const movDesc = movements.map(
             mov > 0 ? `You deposited ${mov}` : `You withdrew ${Math.abs(mov)}`
         }`
 );
-console.log(movDesc);
+// console.log(movDesc);
