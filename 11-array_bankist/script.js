@@ -61,6 +61,7 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+// funcrtion that displays transactions
 const displayMovements = function (movements) {
     containerMovements.innerHTML = "";
     movements.forEach(function (mov, i) {
@@ -78,9 +79,9 @@ const displayMovements = function (movements) {
         containerMovements.insertAdjacentHTML("afterbegin", html);
     });
 };
-
 displayMovements(account1.movements);
 
+// function that creates usernames to the object.
 const createUsernames = function (accs = []) {
     accs.forEach(function (acc = {}) {
         acc.username = acc.owner
@@ -91,6 +92,9 @@ const createUsernames = function (accs = []) {
     });
 };
 
+createUsernames(accounts);
+
+// function that calculates & displays the account summary
 const calcDisplaySummary = function (movements) {
     const income = movements
         .filter((mov) => mov > 0)
@@ -112,9 +116,7 @@ const calcDisplaySummary = function (movements) {
 
 calcDisplaySummary(account1.movements);
 
-createUsernames(accounts);
-console.log(accounts);
-
+// function that calculates & displays the balance.
 const calcDisplayBalance = function (movements) {
     const balance = movements.reduce((acc, mov) => acc + mov, 0);
     labelBalance.textContent = `${balance} €`;
