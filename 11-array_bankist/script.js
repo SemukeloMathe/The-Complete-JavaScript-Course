@@ -201,8 +201,8 @@ calcDisplayBalance(account1.movements);
 
 // Map, filter & reduce
 // 1. map() method - returns a new array
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-// const eurToUsd = 1.1;
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
 
 // const usdMov = movements.map((mov) => mov * eurToUsd);
 // console.log(usdMov);
@@ -254,3 +254,22 @@ calcDisplayBalance(account1.movements);
 // );
 
 // console.log(totalUsdDeposit);
+
+// the find() method - retrieve one element in an array based on a condition.
+// doesn'treturn a new array, only the first element that meets the condition.
+
+const firstWithdrawal = movements.find((mov) => mov < 0);
+console.log(firstWithdrawal);
+
+// const account = accounts.find((acc) => acc.owner === "Jessica Davis");
+// console.log(account);
+
+let account;
+for (const acc of accounts) {
+    if (acc.owner === "Jessica Davis") {
+        // console.log(acc);
+        account = { ...acc };
+    }
+}
+
+console.log(account);
