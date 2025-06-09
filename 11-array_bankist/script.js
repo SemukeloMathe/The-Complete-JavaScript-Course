@@ -194,17 +194,30 @@ const movDesc = movements.map(
 
 // the filter method - returns a boolean value.
 const deposits = movements.filter((mov) => mov > 0);
-console.log(deposits);
+// console.log(deposits);
 
 const withdrawals = movements.filter((mov) => mov < 0);
-console.log(withdrawals);
+// console.log(withdrawals);
 
 // the reduce method - takes in a callback function and returns a single value.
 const balance = movements.reduce(function (acc, cur, i, arr) {
-    console.log(`Iteration ${i}: ${acc}====${cur}`);
+    // console.log(`Iteration ${i}: ${acc}====${cur}`);
     return acc + cur;
 }, 0);
-console.log(balance);
+// console.log(balance);
 
-console.log("Total deposits: ");
-console.log(deposits.reduce((acc, mov) => acc + mov, 0));
+// console.log("Total deposits: ");
+// console.log(deposits.reduce((acc, mov) => acc + mov, 0));
+
+// maximum value
+const maxValue = movements.reduce(
+    (acc, mov) => (acc > mov ? acc : mov),
+    movements.at(0)
+);
+console.log(maxValue);
+
+// minimum value
+const minValue = movements.reduce(
+    (acc, mov) => acc < mov ? acc : mov, movements.at(0)
+);
+console.log(minValue);
