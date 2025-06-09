@@ -185,3 +185,10 @@ const movDesc = movements.map(
         }`
 );
 // console.log(movDesc);
+
+// the filter method - returns a boolean value.
+const deposits = movements.filter(mov => mov > 0);
+console.log(deposits);
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
