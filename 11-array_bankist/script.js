@@ -91,6 +91,27 @@ const createUsernames = function (accs = []) {
     });
 };
 
+const calcDisplaySummary = function (movements) {
+    const income = movements
+        .filter((mov) => mov > 0)
+        .reduce((acc, mov) => acc + mov, 0);
+    labelSumIn.textContent = `${income}€`;
+
+    const out = movements
+        .filter((mov) => mov < 0)
+        .reduce((acc, mov) => acc + mov, 0);
+    labelSumOut.textContent = `${Math.abs(out)}€`;
+
+    const interest = movements
+        .filter((mov) => mov > 0)
+        .map((deposit) => deposit * 0.012)
+        .filter((int) => int >= 1)
+        .reduce((acc, int) => acc + int, 0);
+    labelSumInterest.textContent = interest;
+};
+
+calcDisplaySummary(account1.movements);
+
 createUsernames(accounts);
 console.log(accounts);
 
@@ -178,46 +199,56 @@ calcDisplayBalance(account1.movements);
 
 // Map, filter & reduce
 // 1. map() method - returns a new array
-const eurToUsd = 1.1;
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
 
-const usdMov = movements.map((mov) => mov * eurToUsd);
+// const usdMov = movements.map((mov) => mov * eurToUsd);
 // console.log(usdMov);
 
-const movDesc = movements.map(
-    (mov, i) =>
-        `Movement ${i + 1}: ${
-            mov > 0 ? `You deposited ${mov}` : `You withdrew ${Math.abs(mov)}`
-        }`
-);
+// const movDesc = movements.map(
+//     (mov, i) =>
+//         `Movement ${i + 1}: ${
+//             mov > 0 ? `You deposited ${mov}` : `You withdrew ${Math.abs(mov)}`
+//         }`
+// );
 // console.log(movDesc);
 
 // the filter method - returns a boolean value.
-const deposits = movements.filter((mov) => mov > 0);
+// const deposits = movements.filter((mov) => mov > 0);
 // console.log(deposits);
 
-const withdrawals = movements.filter((mov) => mov < 0);
+// const withdrawals = movements.filter((mov) => mov < 0);
 // console.log(withdrawals);
 
 // the reduce method - takes in a callback function and returns a single value.
-const balance = movements.reduce(function (acc, cur, i, arr) {
-    // console.log(`Iteration ${i}: ${acc}====${cur}`);
-    return acc + cur;
-}, 0);
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+// console.log(`Iteration ${i}: ${acc}====${cur}`);
+//     return acc + cur;
+// }, 0);
 // console.log(balance);
 
 // console.log("Total deposits: ");
 // console.log(deposits.reduce((acc, mov) => acc + mov, 0));
 
 // maximum value
-const maxValue = movements.reduce(
-    (acc, mov) => (acc > mov ? acc : mov),
-    movements.at(0)
-);
-console.log(maxValue);
+// const maxValue = movements.reduce(
+//     (acc, mov) => (acc > mov ? acc : mov),
+//     movements.at(0)
+// );
+// console.log(maxValue);
 
 // minimum value
-const minValue = movements.reduce(
-    (acc, mov) => acc < mov ? acc : mov, movements.at(0)
+// const minValue = movements.reduce(
+//     (acc, mov) => acc < mov ? acc : mov, movements.at(0)
+// );
+// console.log(minValue);
+
+// chaining methods.
+const totalUsdDeposit = Number(
+    movements
+        .filter((mov) => mov > 0)
+        .map((mov) => mov * eurToUsd)
+        .reduce((acc, mov) => acc + mov, 0)
 );
-console.log(minValue);
+
+console.log(totalUsdDeposit);
