@@ -459,24 +459,87 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(arr);
 
 // Array.from method
-const arr2 = Array.from({ length: 8 }, () => 1);
+// const arr2 = Array.from({ length: 8 }, () => 1);
 // console.log(arr2);
 
-let x = 0;
-const arr3 = Array.from({ length: 8 }, (_, i) => Array.from({ length: 2 }, () => x++));
+// let x = 0;
+// const arr3 = Array.from({ length: 8 }, (_, i) => Array.from({ length: 2 }, () => x++));
 // console.log(arr3);
 
-const randomDice100 = Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6) + 1);
+// const randomDice100 = Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6) + 1);
 // console.log(randomDice100);
 
-labelBalance.addEventListener("click", () => {
-    const movementsUI = Array.from(
-        document
-            .querySelectorAll(".movements__value"),
-            ((el) => Number(el.textContent.replace("€", "")))
-    );
-    console.log(movementsUI);
+// labelBalance.addEventListener("click", () => {
+//     const movementsUI = Array.from(
+//         document
+//             .querySelectorAll(".movements__value"),
+//             ((el) => Number(el.textContent.replace("€", "")))
+//     );
+//     console.log(movementsUI);
 
-    const movementsUI2 = [...document.querySelectorAll(".movements__value")];
-    console.log(movementsUI2);
-});
+//     const movementsUI2 = [...document.querySelectorAll(".movements__value")];
+//     console.log(movementsUI2);
+// });
+
+// 1.
+const bankDepositSum = accounts
+    .flatMap((acc) => acc.movements)
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+
+console.log(bankDepositSum);
+
+// 2.
+const numDeposits1000 = accounts
+    .flatMap((acc) => acc.movements)
+    .filter((mov) => mov >= 1000).length;
+
+console.log(countDeposits);
+
+const numDeposits1000_2 = accounts
+    .flatMap((acc) => acc.movements)
+    .reduce((count, mov) => (mov > 1000 ? ++count : count), 0);
+
+console.log(numDeposits1000_2);
+
+// 3.
+const { deposits, withdrawals } = accounts
+    .flatMap((acc) => acc.movements)
+    .reduce(
+        (sums, cur) => {
+            // cur > 0 ? (sums.deposits += cur) : sums.withdrawals += cur
+            sums[cur > 0 ? "deposits" : "withdrawals"] += cur;
+            return sums;
+        },
+        { deposits: 0, withdrawals: 0 }
+    );
+console.log(deposits, withdrawals);
+
+// 4.
+// this is a nice title -> This Is a Nice Title.
+const convertTitleCase = function (title = "") {
+    const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+    const exceptions = [
+        "a",
+        "an",
+        "the",
+        "but",
+        "or",
+        "on",
+        "in",
+        "with",
+        "and",
+    ];
+
+    const titleCase = title
+        .toLowerCase()
+        .split(" ")
+        .map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+        .join(" ");
+
+    return capitalize(titleCase);
+};
+
+console.log(convertTitleCase("this is a nice title"));
+console.log(convertTitleCase("this is a LONG title but not too long"));
+console.log(convertTitleCase("and here is another title with an EXAMPLE"));
