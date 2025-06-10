@@ -494,7 +494,7 @@ const numDeposits1000 = accounts
     .flatMap((acc) => acc.movements)
     .filter((mov) => mov >= 1000).length;
 
-console.log(countDeposits);
+console.log(numDeposits1000);
 
 const numDeposits1000_2 = accounts
     .flatMap((acc) => acc.movements)
