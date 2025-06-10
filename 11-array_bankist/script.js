@@ -383,13 +383,34 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //     }
 // }
 // console.log(account);
-console.log(movements);
+// console.log(movements);
 // console.log(movements.includes(-130));
 
 // the some() method - takes a callback function that checks a specific condition for any value that meets that condition.
-const anyDeposits = movements.some((mov) => mov > 1500);
-console.log(anyDeposits);
+// const anyDeposits = movements.some((mov) => mov > 1500);
+// console.log(anyDeposits);
 
 // the every() method - takes a callback function and returns true if all elements pass the requirement for a condition.
-console.log(movements.every((mov) => mov > 0));
-console.log(account4.movements.every((mov) => mov > 0));
+// console.log(movements.every((mov) => mov > 0));
+// console.log(account4.movements.every((mov) => mov > 0));
+
+// the flat() method - it removes nested arrays only 1 level deep.
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+// depending on the depth, you can pass an arg to specify the level of depth.
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+const accountMovements = accounts.map((acc) => acc.movements);
+console.log(accountMovements.flat().reduce((acc, mov) => acc + mov, 0));
+
+const overallBalance = accounts
+    .map((acc) => acc.movements)
+    .flat()
+    .reduce((acc, mov) => acc + mov, 0);
+
+// flatMap - combines the flat() & map() method.
+const overallBalance2 = accounts
+    .flatMap((acc) => acc.movements)
+    .reduce((acc, mov) => acc + mov, 0);
