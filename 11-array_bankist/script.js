@@ -117,12 +117,19 @@ const calcDisplaySummary = function (account) {
 // calcDisplaySummary(account1.movements);
 
 // function that calculates & displays the balance.
-const calcDisplayBalance = function (movements) {
-    const balance = movements.reduce((acc, mov) => acc + mov, 0);
-    labelBalance.textContent = `${balance} €`;
+const calcDisplayBalance = function (account) {
+    account.balance = account.movements.reduce((acc, mov) => acc + mov, 0);
+    labelBalance.textContent = `${account.balance} €`;
 };
 
-// calcDisplayBalance(account1.movements);
+const updateUI = function (account) {
+    // display movements
+    displayMovements(account.movements);
+    // display balance
+    calcDisplayBalance(account);
+    // display summary
+    calcDisplaySummary(account);
+};
 
 // Event handlers
 let currentAccount;
@@ -133,30 +140,49 @@ btnLogin.addEventListener("click", function (e) {
         (acc) => acc.username === inputLoginUsername.value
     );
 
-    console.log(currentAccount);
-    console.log("LOGIN");
-
     if (currentAccount?.pin === Number(inputLoginPin.value)) {
         // Display UI & Welcom welcome message.
         labelWelcome.textContent = `Welcome back ${currentAccount.owner
             .split(" ")
             .at(0)}`;
         containerApp.style.opacity = 100;
-
         // clear the inputs field
         inputLoginUsername.value = "";
         inputLoginPin.value = "";
         inputLoginPin.blur();
-
-        // display movements
-        displayMovements(currentAccount.movements);
-        // display balance
-        calcDisplayBalance(currentAccount.movements);
-        // display summary
-        calcDisplaySummary(currentAccount);
+        // Display movements
+        updateUI(currentAccount);
     }
 });
 
+btnTransfer.addEventListener("click", function (e) {
+    e.preventDefault(); // prevents page reloads.
+
+    const amount = Number(inputTransferAmount.value);
+    const transferTo = inputTransferTo.value;
+
+    const receiverAcc = accounts.find((acc) => acc.username === transferTo);
+    inputTransferAmount.value = "";
+    inputTransferTo.value = "";
+    inputTransferAmount.blur();
+
+    if (
+        amount > 0 &&
+        receiverAcc &&
+        currentAccount.balance >= amount &&
+        receiverAcc?.username !== currentAccount.username
+    ) {
+        // Doing the update
+        currentAccount.movements.push(-amount);
+        receiverAcc.movements.push(amount);
+        // console.log("Transfer valid.");
+
+        // update the ui.
+        updateUI(currentAccount);
+    } else {
+        console.log("Invalid Transfer!");
+    }
+});
 
 // LECTURES
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -235,8 +261,8 @@ btnLogin.addEventListener("click", function (e) {
 
 // Map, filter & reduce
 // 1. map() method - returns a new array
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const eurToUsd = 1.1;
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const eurToUsd = 1.1;
 
 // const usdMov = movements.map((mov) => mov * eurToUsd);
 // console.log(usdMov);
@@ -292,18 +318,17 @@ const eurToUsd = 1.1;
 // the find() method - retrieve one element in an array based on a condition.
 // doesn'treturn a new array, only the first element that meets the condition.
 
-const firstWithdrawal = movements.find((mov) => mov < 0);
-console.log(firstWithdrawal);
+// const firstWithdrawal = movements.find((mov) => mov < 0);
+// console.log(firstWithdrawal);
 
 // const account = accounts.find((acc) => acc.owner === "Jessica Davis");
 // console.log(account);
 
-let account;
-for (const acc of accounts) {
-    if (acc.owner === "Jessica Davis") {
-        // console.log(acc);
-        account = { ...acc };
-    }
-}
-
-console.log(account);
+// let account;
+// for (const acc of accounts) {
+//     if (acc.owner === "Jessica Davis") {
+//         // console.log(acc);
+//         account = { ...acc };
+//     }
+// }
+// console.log(account);
