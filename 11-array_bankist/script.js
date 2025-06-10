@@ -131,6 +131,24 @@ const updateUI = function (account) {
     calcDisplaySummary(account);
 };
 
+btnLoan.addEventListener("click", function (e) {
+    e.preventDefault();
+    const loanAmount = Number(inputLoanAmount.value);
+
+    if (!loanAmount) return;
+
+    if (
+        loanAmount > 0 &&
+        currentAccount.movements.some((mov) => mov >= loanAmount * 0.1)
+    ) {
+        console.log("You qualify for a loan");
+        currentAccount.movements.push(loanAmount);
+        // update UI
+        updateUI(currentAccount);
+    }
+    inputLoanAmount.value = "";
+});
+
 // Event handlers
 let currentAccount;
 btnLogin.addEventListener("click", function (e) {
@@ -294,7 +312,7 @@ btnClose.addEventListener("click", function (e) {
 
 // Map, filter & reduce
 // 1. map() method - returns a new array
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // const eurToUsd = 1.1;
 
 // const usdMov = movements.map((mov) => mov * eurToUsd);
@@ -365,3 +383,13 @@ btnClose.addEventListener("click", function (e) {
 //     }
 // }
 // console.log(account);
+console.log(movements);
+// console.log(movements.includes(-130));
+
+// the some() method - takes a callback function that checks a specific condition for any value that meets that condition.
+const anyDeposits = movements.some((mov) => mov > 1500);
+console.log(anyDeposits);
+
+// the every() method - takes a callback function and returns true if all elements pass the requirement for a condition.
+console.log(movements.every((mov) => mov > 0));
+console.log(account4.movements.every((mov) => mov > 0));
