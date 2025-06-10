@@ -62,9 +62,12 @@ const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
 // function that displays transactions
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
     containerMovements.innerHTML = "";
-    movements.forEach(function (mov, i) {
+
+    const movS = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+    movS.forEach(function (mov, i) {
         const type = mov > 0 ? "deposit" : "withdrawal";
 
         const html = `
@@ -113,8 +116,6 @@ const calcDisplaySummary = function (account) {
         .reduce((acc, int) => acc + int, 0);
     labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
-
-// calcDisplaySummary(account1.movements);
 
 // function that calculates & displays the balance.
 const calcDisplayBalance = function (account) {
@@ -233,6 +234,13 @@ btnClose.addEventListener("click", function (e) {
     }
     // hide ui
     containerApp.style.opacity = 0;
+});
+
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+    e.preventDefault();
+    sorted = !sorted;
+    displayMovements(currentAccount.movements, sorted);
 });
 
 // LECTURES
