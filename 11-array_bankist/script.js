@@ -184,6 +184,39 @@ btnTransfer.addEventListener("click", function (e) {
     }
 });
 
+btnClose.addEventListener("click", function (e) {
+    e.preventDefault(); // prevents page reloading
+    // console.log("Delete");
+    const username = inputCloseUsername.value;
+    const pin = Number(inputClosePin.value);
+
+    if (username !== currentAccount.username || currentAccount.pin !== pin) {
+        console.log("403 - Forbidden");
+        // update ui
+        inputCloseUsername.value = "";
+        inputClosePin.value = "";
+        inputClosePin.blur();
+        return;
+    }
+
+    const deleteAcc = accounts.find((acc) => acc.username === username);
+    const deleteAccIndex = accounts.findIndex(
+        (acc) => acc.username === username
+    );
+    // update ui
+    inputCloseUsername.value = "";
+    inputClosePin.value = "";
+    inputClosePin.blur();
+
+    if (deleteAccIndex >= 0) {
+        console.log(`Account to be deleted: ${JSON.stringify(deleteAcc)}`);
+        accounts.splice(deleteAccIndex, 1);
+        console.log(accounts);
+    }
+    // hide ui
+    containerApp.style.opacity = 0;
+});
+
 // LECTURES
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
