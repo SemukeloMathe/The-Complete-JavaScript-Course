@@ -395,22 +395,47 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(account4.movements.every((mov) => mov > 0));
 
 // the flat() method - it removes nested arrays only 1 level deep.
-const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
-console.log(arr.flat());
+// const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+// console.log(arr.flat());
 
 // depending on the depth, you can pass an arg to specify the level of depth.
-const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
-console.log(arrDeep.flat(2));
+// const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+// console.log(arrDeep.flat(2));
 
-const accountMovements = accounts.map((acc) => acc.movements);
-console.log(accountMovements.flat().reduce((acc, mov) => acc + mov, 0));
+// const accountMovements = accounts.map((acc) => acc.movements);
+// console.log(accountMovements.flat().reduce((acc, mov) => acc + mov, 0));
 
-const overallBalance = accounts
-    .map((acc) => acc.movements)
-    .flat()
-    .reduce((acc, mov) => acc + mov, 0);
+// const overallBalance = accounts
+//     .map((acc) => acc.movements)
+//     .flat()
+//     .reduce((acc, mov) => acc + mov, 0);
 
-// flatMap - combines the flat() & map() method.
-const overallBalance2 = accounts
-    .flatMap((acc) => acc.movements)
-    .reduce((acc, mov) => acc + mov, 0);
+// flatMap - combines the flat() & map() method. Introduced for perfomance
+// const overallBalance2 = accounts
+//     .flatMap((acc) => acc.movements)
+//     .reduce((acc, mov) => acc + mov, 0);
+
+// Sorting
+// sort() - mutates the original array
+const owners = ["Jonas", "Zach", "Adam", "Martha"];
+console.log(owners.sort());
+
+console.log(movements);
+
+// return < 0, A, B (keep order)
+// return > 0, B, A (switch order)
+// ascending
+// movements.sort((a, b) => {
+//     if (a > b) return 1;
+//     if (b > a) return -1;
+// });
+movements.sort((a, b) => a-b)
+console.log(movements)
+
+// descending.
+// movements.sort((a, b) => {
+//     if (a > b) return -1;
+//     if (b > a) return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
