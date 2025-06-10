@@ -425,10 +425,10 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // Sorting
 // sort() - mutates the original array
-const owners = ["Jonas", "Zach", "Adam", "Martha"];
-console.log(owners.sort());
+// const owners = ["Jonas", "Zach", "Adam", "Martha"];
+// console.log(owners.sort());
 
-console.log(movements);
+// console.log(movements);
 
 // return < 0, A, B (keep order)
 // return > 0, B, A (switch order)
@@ -437,13 +437,46 @@ console.log(movements);
 //     if (a > b) return 1;
 //     if (b > a) return -1;
 // });
-movements.sort((a, b) => a-b)
-console.log(movements)
+// movements.sort((a, b) => a-b)
+// console.log(movements)
 
 // descending.
 // movements.sort((a, b) => {
 //     if (a > b) return -1;
 //     if (b > a) return 1;
 // });
-movements.sort((a, b) => b - a);
-console.log(movements);
+// movements.sort((a, b) => b - a);
+// console.log(movements);
+
+// generating Arrays programatically.
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// const x = new Array(7);
+// console.log(x);
+// console.log(x.fill(1, 2, 5));
+// arr.fill(23, 1, 6);
+// console.log(arr);
+
+// Array.from method
+const arr2 = Array.from({ length: 8 }, () => 1);
+// console.log(arr2);
+
+let x = 0;
+const arr3 = Array.from({ length: 8 }, (_, i) => Array.from({ length: 2 }, () => x++));
+// console.log(arr3);
+
+const randomDice100 = Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6) + 1);
+// console.log(randomDice100);
+
+labelBalance.addEventListener("click", () => {
+    const movementsUI = Array.from(
+        document
+            .querySelectorAll(".movements__value"),
+            ((el) => Number(el.textContent.replace("€", "")))
+    );
+    console.log(movementsUI);
+
+    const movementsUI2 = [...document.querySelectorAll(".movements__value")];
+    console.log(movementsUI2);
+});
