@@ -56,3 +56,43 @@ const dogs = [
     { weight: 13, curFood: 275, owners: ["Sarah", "John"] },
     { weight: 32, curFood: 340, owners: ["Michael"] },
 ];
+
+// 1.
+// a. loop over dogs.
+// b. calculate recommended food portion.
+// c. add it as a new property.
+// recommendedFood = weight ** 0.75 * 28.
+dogs.forEach((dog) => {
+    dog.recommendedFood = Math.round(dog.weight ** 0.75 * 28);
+    console.log(dog);
+});
+
+// 2.
+// a. Find Sarah's dog.
+// b. log to the console whether it's eating too much or too little.
+const sarahDog = dogs.find((dog) => {
+    return dog.owners.includes("Sarah");
+});
+console.log(sarahDog);
+if (sarahDog.curFood > sarahDog.recommendedFood)
+    console.log(`Sarah's dog is eating too much.`);
+else console.log(`Sarah's dog is eating too little.`);
+
+// 3.
+// a. create an array of dogs "ownersEatTooMuch"
+// b. the dogs eat too much
+// c. create an array of dogs
+// d. the dogs eat too little "ownersEatTooLittle"
+const ownersEatTooMuch = dogs
+    .filter((dog) => dog.curFood > dog.recommendedFood)
+    .map((dog) => dog.owners)
+    .flat()
+    .join(", ");
+console.log(`Owners of dogs that eat too much: ${ownersEatTooMuch}`);
+
+const ownersEatTooLittle = dogs
+    .filter((dog) => dog.curFood < dog.recommendedFood)
+    .map((dog) => dog.owners)
+    .flat()
+    .join(", ");
+console.log(`Owners of dogs that eat too little: ${ownersEatTooLittle}`);
