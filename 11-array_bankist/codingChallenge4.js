@@ -66,3 +66,10 @@ const breeds = [
         activities: ["agility", "fetch"],
     },
 ];
+
+// 1.
+// a. store the average husky weight in "huskyWeight"
+const huskyWeight = breeds
+    .filter(breed => breed.breed === "Husky") 
+    .flatMap(breed => breed.averageWeight)[0];
+console.log(huskyWeight);
