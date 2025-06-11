@@ -106,7 +106,7 @@ console.log(`${ownersEatTooLittle.join(" and ")}'s dogs eat too little!`);
 // a. Log to the console if there is any dog eating exactly the recommended
 // amount. (log true or false)
 // b. Compare the current food with the recommended food.
-const anyDog = dogs.some(dog => dog.curFood === dog.recommendedFood);
+const anyDog = dogs.some((dog) => dog.curFood === dog.recommendedFood);
 console.log(anyDog);
 
 // 6.
@@ -116,6 +116,18 @@ console.log(anyDog);
 // current > (recommended * 0.90) && current < (recommended * 1.10);
 
 const okayDog = dogs.some(
-    dog => dog.curFood > (dog.recommendedFood * 0.90) &&
-        dog.curFood < (dog.recommendedFood * 1.10));
+    (dog) =>
+        dog.curFood > dog.recommendedFood * 0.9 &&
+        dog.curFood < dog.recommendedFood * 1.1
+);
 console.log(okayDog);
+
+// 7.
+// a. Create an array of dogs eating an OKAY amount of food.
+// b. reuse condition from task 6.
+const okayDogsArr = dogs.filter(
+    (dog) =>
+        dog.curFood > dog.recommendedFood * 0.9 &&
+        dog.curFood < dog.recommendedFood * 1.1
+);
+console.log(okayDogsArr);
