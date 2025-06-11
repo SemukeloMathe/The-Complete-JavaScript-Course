@@ -26,7 +26,8 @@
  * 7. Are there any breeds that are "active"? "Active" means that the dog has
  * 3 or more activities. Log to the console whether "true" or "false".
  *
- * BONUS: What's the average weight of the heaviest breed that likes to fetch? HINT: Use the "Math.max" method along with the ... operator.
+ * BONUS: What's the average weight of the heaviest breed that likes to fetch?
+ * HINT: Use the "Math.max" method along with the ... operator.
  */
 
 const breeds = [
@@ -106,12 +107,10 @@ swimmingAdjacent.splice(swimmingAdjacent.indexOf("swimming"), 1);
 console.log(swimmingAdjacent);
 
 // 6.
-// a. find the average weight of all breeds
-// b. check if avgWeight is equal to 10kg or more
-// c. log to the console whether "true" or "false".
-const avgWeight = breeds
-    .reduce((acc, breed, _, arr) => acc + breed.averageWeight / arr.length, 0);
-console.log(avgWeight >= 10);
+// a. check if the average weight of all breeds is >= 10 kg
+// b. log to the console whether "true" or "false".
+const avgWeight = breeds.every(breed => breed.averageWeight >= 10);
+console.log(avgWeight);
 
 // 7.
 // a. Check for active breeds. "active" means 3 or more activities.
