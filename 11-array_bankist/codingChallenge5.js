@@ -108,3 +108,14 @@ console.log(`${ownersEatTooLittle.join(" and ")}'s dogs eat too little!`);
 // b. Compare the current food with the recommended food.
 const anyDog = dogs.some(dog => dog.curFood === dog.recommendedFood);
 console.log(anyDog);
+
+// 6.
+// a. Log to the console if there is any dog eating an OKAY amount of food
+// (log true or false).
+// b. find what is considered an okay amount of food. The formula below:
+// current > (recommended * 0.90) && current < (recommended * 1.10);
+
+const okayDog = dogs.some(
+    dog => dog.curFood > (dog.recommendedFood * 0.90) &&
+        dog.curFood < (dog.recommendedFood * 1.10));
+console.log(okayDog);
