@@ -117,3 +117,13 @@ console.log(avgWeight);
 // b. log to the console whether "true" or "false".
 const activeBreeds = breeds.some(breed => breed.activities.length >= 3);
 console.log(activeBreeds);
+
+// Bonus
+// What's the average weight of the heaviest breed that likes to fetch?
+// a. Find all dogs that like to fetch.
+// b. Get the breed the highest averageWeight.
+// c. log to the console the average weight.
+const maxAvgWeightBreedLikesToFetch = Math.max(...breeds
+    .filter(breed => breed.activities.includes("fetch"))
+    .flatMap(breed => breed.averageWeight));
+console.log(maxAvgWeightBreedLikesToFetch);
