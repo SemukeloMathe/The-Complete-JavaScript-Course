@@ -87,5 +87,13 @@ console.log(dogBothActivities);
 // 3.
 // a. Create an array called "allActivities"
 // b. Contains all activies of the different breeds.
-const allActivities = [...new Set(breeds.flatMap((breed) => breed.activities))];
+const allActivities = breeds.flatMap((breed) => breed.activities);
 console.log(allActivities);
+
+// 4.
+// a. Create an array called "uniqueActivities"
+// b. Contains only the unique
+const uniqueActivities = [
+    ...new Set(breeds.flatMap((breed) => breed.activities)),
+];
+console.log(uniqueActivities);
