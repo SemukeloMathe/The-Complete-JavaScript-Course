@@ -115,19 +115,15 @@ console.log(anyDog);
 // b. find what is considered an okay amount of food. The formula below:
 // current > (recommended * 0.90) && current < (recommended * 1.10);
 
-const okayDog = dogs.some(
-    (dog) =>
-        dog.curFood > dog.recommendedFood * 0.9 &&
-        dog.curFood < dog.recommendedFood * 1.1
-);
+const checkDogOkay = (dog) =>
+    dog.curFood > dog.recommendedFood * 0.9 &&
+    dog.curFood < dog.recommendedFood * 1.1;
+
+const okayDog = dogs.some(checkDogOkay);
 console.log(okayDog);
 
 // 7.
 // a. Create an array of dogs eating an OKAY amount of food.
 // b. reuse condition from task 6.
-const okayDogsArr = dogs.filter(
-    (dog) =>
-        dog.curFood > dog.recommendedFood * 0.9 &&
-        dog.curFood < dog.recommendedFood * 1.1
-);
+const okayDogsArr = dogs.filter(checkDogOkay);
 console.log(okayDogsArr);
