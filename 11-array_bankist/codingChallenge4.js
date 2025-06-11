@@ -104,3 +104,11 @@ console.log(uniqueActivities);
 const swimmingAdjacent = uniqueActivities.slice();
 swimmingAdjacent.splice(swimmingAdjacent.indexOf("swimming"), 1);
 console.log(swimmingAdjacent);
+
+// 6.
+// a. find the average weight of all breeds
+// b. check if avgWeight is equal to 10kg or more
+// c. log to the console whether "true" or "false".
+const avgWeight = breeds
+    .reduce((acc, breed, _, arr) => acc + breed.averageWeight / arr.length, 0);
+console.log(avgWeight >= 10);
