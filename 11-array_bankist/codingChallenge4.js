@@ -112,3 +112,9 @@ console.log(swimmingAdjacent);
 const avgWeight = breeds
     .reduce((acc, breed, _, arr) => acc + breed.averageWeight / arr.length, 0);
 console.log(avgWeight >= 10);
+
+// 7.
+// a. Check for active breeds. "active" means 3 or more activities.
+// b. log to the console whether "true" or "false".
+const activeBreeds = breeds.some(breed => breed.activities.length >= 3);
+console.log(activeBreeds);
