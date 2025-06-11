@@ -86,13 +86,18 @@ else console.log(`Sarah's dog is eating too little.`);
 const ownersEatTooMuch = dogs
     .filter((dog) => dog.curFood > dog.recommendedFood)
     .map((dog) => dog.owners)
-    .flat()
-    .join(", ");
-console.log(`Owners of dogs that eat too much: ${ownersEatTooMuch}`);
+    .flat();
+console.log(ownersEatTooMuch);
 
 const ownersEatTooLittle = dogs
     .filter((dog) => dog.curFood < dog.recommendedFood)
     .map((dog) => dog.owners)
-    .flat()
-    .join(", ");
-console.log(`Owners of dogs that eat too little: ${ownersEatTooLittle}`);
+    .flat();
+console.log(ownersEatTooLittle);
+
+// 4.
+// a. Log a string to the console for each array created in task 3
+// b. "Matilda and Alice and Bob's dogs eat too much!"
+// c. "Sarah and John and Michael's dog eat too little!"
+console.log(`${ownersEatTooMuch.join(" and ")}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(" and ")}'s dogs eat too little!`);
