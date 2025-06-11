@@ -73,3 +73,13 @@ const huskyWeight = breeds
     .filter(breed => breed.breed === "Husky") 
     .flatMap(breed => breed.averageWeight)[0];
 console.log(huskyWeight);
+
+// 2.
+// a. Find the name of the only breed that likes both "running" and "fetch".
+// b. store in "dogBothActivities" variable
+const dogBothActivities = breeds
+    .filter(breed =>
+        breed.activities.includes("running") &&
+        breed.activities.includes("fetch"))
+    .map(breed => breed.breed)[0];
+console.log(dogBothActivities);
