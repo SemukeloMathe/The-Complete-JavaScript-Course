@@ -62,10 +62,10 @@ const dogs = [
 // b. calculate recommended food portion.
 // c. add it as a new property.
 // recommendedFood = weight ** 0.75 * 28.
-dogs.forEach((dog) => {
-    dog.recommendedFood = Math.round(dog.weight ** 0.75 * 28);
-    console.log(dog);
-});
+dogs.forEach(
+    (dog) => (dog.recommendedFood = Math.round(dog.weight ** 0.75 * 28))
+);
+console.log(dogs);
 
 // 2.
 // a. Find Sarah's dog.
@@ -73,7 +73,6 @@ dogs.forEach((dog) => {
 const sarahDog = dogs.find((dog) => {
     return dog.owners.includes("Sarah");
 });
-console.log(sarahDog);
 if (sarahDog.curFood > sarahDog.recommendedFood)
     console.log(`Sarah's dog is eating too much.`);
 else console.log(`Sarah's dog is eating too little.`);
