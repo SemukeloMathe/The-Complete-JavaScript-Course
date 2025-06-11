@@ -83,3 +83,9 @@ const dogBothActivities = breeds
         breed.activities.includes("fetch"))
     .map(breed => breed.breed)[0];
 console.log(dogBothActivities);
+
+// 3.
+// a. Create an array called "allActivities"
+// b. Contains all activies of the different breeds.
+const allActivities = [...new Set(breeds.flatMap((breed) => breed.activities))];
+console.log(allActivities);
