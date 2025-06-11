@@ -97,3 +97,10 @@ const uniqueActivities = [
     ...new Set(breeds.flatMap((breed) => breed.activities)),
 ];
 console.log(uniqueActivities);
+
+// 5.
+// a. Store the OTHER activities that are not "swimming" in a unique array
+// called "swimmingAdjacent".
+const swimmingAdjacent = uniqueActivities.slice();
+swimmingAdjacent.splice(swimmingAdjacent.indexOf("swimming"), 1);
+console.log(swimmingAdjacent);
