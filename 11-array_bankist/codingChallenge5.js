@@ -127,3 +127,10 @@ console.log(okayDog);
 // b. reuse condition from task 6.
 const okayDogsArr = dogs.filter(checkDogOkay);
 console.log(okayDogsArr);
+
+// 8.
+// a. Create a shallow copy of the dogs array
+// b. sort it by recommended food portion in an ascending order.
+const dogsShallow = dogs.slice();
+dogsShallow.sort((dog1, dog2) => dog1.recommendedFood - dog2.recommendedFood);
+console.log(dogsShallow);
