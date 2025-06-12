@@ -141,71 +141,65 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 
 const updateUI = function (acc) {
-  // Display movements
-  displayMovements(acc.movements);
-
-  // Display balance
-  calcDisplayBalance(acc);
-
-  // Display summary
-  calcDisplaySummary(acc);
+    // Display movements
+    displayMovements(acc.movements);
+    // Display balance
+    calcDisplayBalance(acc);
+    // Display summary
+    calcDisplaySummary(acc);
 };
 
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
 
-btnLogin.addEventListener('click', function (e) {
-  // Prevent form from submitting
-  e.preventDefault();
+btnLogin.addEventListener("click", function (e) {
+    // Prevent page reload on form submit.
+    e.preventDefault();
 
-  currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value
-  );
-  console.log(currentAccount);
+    currentAccount = accounts.find(
+        (acc) => acc.username === inputLoginUsername.value
+    );
+    console.log(currentAccount);
 
-  if (currentAccount?.pin === +inputLoginPin.value) {
-      // Display UI and message
-      labelWelcome.textContent = `Welcome back, ${
-          currentAccount.owner.split(" ")[0]
-      }`;
-      containerApp.style.opacity = 100;
-
-      // Clear input fields
-      inputLoginUsername.value = inputLoginPin.value = "";
-      inputLoginPin.blur();
-
-      // Update UI
-      updateUI(currentAccount);
-  }
+    if (currentAccount?.pin === +inputLoginPin.value) {
+        // Display UI and message
+        labelWelcome.textContent = `Welcome back, ${
+            currentAccount.owner.split(" ")[0]
+        }`;
+        containerApp.style.opacity = 100;
+        // Clear input fields
+        inputLoginUsername.value = inputLoginPin.value = "";
+        inputLoginPin.blur();
+        // Update UI
+        updateUI(currentAccount);
+    }
 });
 
-btnTransfer.addEventListener('click', function (e) {
-  e.preventDefault();
-  const amount = +inputTransferAmount.value;
-  const receiverAcc = accounts.find(
-    acc => acc.username === inputTransferTo.value
-  );
-  inputTransferAmount.value = inputTransferTo.value = '';
+btnTransfer.addEventListener("click", function (e) {
+    e.preventDefault();
+    const amount = +inputTransferAmount.value;
+    const receiverAcc = accounts.find(
+        (acc) => acc.username === inputTransferTo.value
+    );
+    inputTransferAmount.value = inputTransferTo.value = "";
 
-  if (
-    amount > 0 &&
-    receiverAcc &&
-    currentAccount.balance >= amount &&
-    receiverAcc?.username !== currentAccount.username
-  ) {
-    // Doing the transfer
-    currentAccount.movements.push(-amount);
-    receiverAcc.movements.push(amount);
-
-    // Update UI
-    updateUI(currentAccount);
-  }
+    if (
+        amount > 0 &&
+        receiverAcc &&
+        currentAccount.balance >= amount &&
+        receiverAcc?.username !== currentAccount.username
+    ) {
+        // Doing the transfer
+        currentAccount.movements.push(-amount);
+        receiverAcc.movements.push(amount);
+        // Update UI
+        updateUI(currentAccount);
+    }
 });
 
 btnLoan.addEventListener("click", function (e) {
     e.preventDefault();
-
     const amount = Math.floor(inputLoanAmount.value);
 
     if (
@@ -214,7 +208,6 @@ btnLoan.addEventListener("click", function (e) {
     ) {
         // Add movement
         currentAccount.movements.push(amount);
-
         // Update UI
         updateUI(currentAccount);
     }
@@ -223,7 +216,6 @@ btnLoan.addEventListener("click", function (e) {
 
 btnClose.addEventListener("click", function (e) {
     e.preventDefault();
-
     if (
         inputCloseUsername.value === currentAccount.username &&
         +inputClosePin.value === currentAccount.pin
@@ -233,14 +225,11 @@ btnClose.addEventListener("click", function (e) {
         );
         console.log(index);
         // .indexOf(23)
-
         // Delete account
         accounts.splice(index, 1);
-
         // Hide UI
         containerApp.style.opacity = 0;
     }
-
     inputCloseUsername.value = inputClosePin.value = "";
 });
 
@@ -302,7 +291,7 @@ console.log(Number.isInteger(23 / 0));
 // console.log(Math.trunc(Math.random() * 6) + 1)
 
 // const randomInt = (min, max) =>
-    // Math.trunc(Math.random() * (max - min) + 1) + min;
+// Math.trunc(Math.random() * (max - min) + 1) + min;
 // console.log(randomInt(10, 20));
 
 // Rounding Integers
@@ -322,16 +311,33 @@ console.log(Number.isInteger(23 / 0));
 // console.log(+(2.345).toFixed(2));
 
 // remainder operator
-const isEven = n => n % 2 === 0
-console.log(isEven(8));
-console.log(isEven(23));
-console.log(isEven(514));
-labelBalance.addEventListener("click", function () {
-    [...document.querySelectorAll(".movements__row")].forEach(function (
-        row,
-        i
-    ) {
-        if (i % 2 === 0) row.style.backgroundColor = "grey";
-        // if (i % 3 === 0) row.style.backgroundColor = "blue";
-    });
-});
+// const isEven = n => n % 2 === 0
+// console.log(isEven(8));
+// console.log(isEven(23));
+// console.log(isEven(514));
+// labelBalance.addEventListener("click", function () {
+//     [...document.querySelectorAll(".movements__row")].forEach(function (
+//         row,
+//         i
+//     ) {
+//         if (i % 2 === 0) row.style.backgroundColor = "grey";
+//         // if (i % 3 === 0) row.style.backgroundColor = "blue";
+//     });
+// });
+
+// Numeric separators
+// const diameter = 287_460_000_000;
+// console.log(diameter);
+
+// const price = 345_99;
+// console.log(price);
+
+// const transferFee1 = 15_00;
+// const transferFee2 = 1_500;
+
+// const PI = 3.141_5;
+// console.log(PI);
+
+// console.log(Number("2_300_000"));
+
+// BigInt
