@@ -301,23 +301,37 @@ console.log(Number.isInteger(23 / 0));
 // Random function
 // console.log(Math.trunc(Math.random() * 6) + 1)
 
-const randomInt = (min, max) =>
-    Math.trunc(Math.random() * (max - min) + 1) + min;
+// const randomInt = (min, max) =>
+    // Math.trunc(Math.random() * (max - min) + 1) + min;
 // console.log(randomInt(10, 20));
 
 // Rounding Integers
-console.log(Math.round(23.3));
-console.log(Math.round(23.9));
+// console.log(Math.round(23.3));
+// console.log(Math.round(23.9));
 
-console.log(Math.ceil(23.3));
-console.log(Math.ceil(23.9));
+// console.log(Math.ceil(23.3));
+// console.log(Math.ceil(23.9));
 
-console.log(Math.floor(23.3));
-console.log(Math.floor(23.9));
+// console.log(Math.floor(23.3));
+// console.log(Math.floor(23.9));
 
 // rounding decimals
-console.log((2.7).toFixed(0));
-console.log((2.7).toFixed(3));
-console.log((2.345).toFixed(2));
-console.log(+(2.345).toFixed(2));
+// console.log((2.7).toFixed(0));
+// console.log((2.7).toFixed(3));
+// console.log((2.345).toFixed(2));
+// console.log(+(2.345).toFixed(2));
 
+// remainder operator
+const isEven = n => n % 2 === 0
+console.log(isEven(8));
+console.log(isEven(23));
+console.log(isEven(514));
+labelBalance.addEventListener("click", function () {
+    [...document.querySelectorAll(".movements__row")].forEach(function (
+        row,
+        i
+    ) {
+        if (i % 2 === 0) row.style.backgroundColor = "grey";
+        // if (i % 3 === 0) row.style.backgroundColor = "blue";
+    });
+});
