@@ -186,9 +186,33 @@ const updateUI = function (acc) {
     calcDisplaySummary(acc);
 };
 
+const startLogoutTimer = function () {
+    const tick = function () {
+        const min = String(Math.trunc(time / 60)).padStart(2, 0);
+        const sec = String(time % 60).padStart(2, 0);
+        // In each call, print the remaining time to UI
+        labelTimer.textContent = `${min}:${sec}`;
+        // When 0 seconds, stop timer & logout user.
+        if (time === 0) {
+            clearInterval(timer);
+            labelWelcome.textContent = "Log in to get started";
+            containerApp.style.opacity = 0;
+        }
+        // decrease time by one second
+        time--;
+    };
+    // Set time to 5 mins
+    let time = 599;
+    // Call the timer every second
+    tick();
+    const timer = setInterval(tick, 1000);
+
+    return timer;
+};
+
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 // Experimenting Api
 // const now = new Date();
@@ -205,9 +229,9 @@ let currentAccount;
 // labelDate.textContent = new Intl.DateTimeFormat("en-ZW", options).format(now);
 
 // Fake always logged in
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 btnLogin.addEventListener("click", function (e) {
     // Prevent page reload on form submit.
@@ -242,6 +266,10 @@ btnLogin.addEventListener("click", function (e) {
 
         // Clear input fields
         inputLoginUsername.value = inputLoginPin.value = "";
+
+        if (timer) clearInterval(timer);
+        timer = startLogoutTimer();
+
         inputLoginPin.blur();
         // Update UI
         updateUI(currentAccount);
@@ -270,6 +298,9 @@ btnTransfer.addEventListener("click", function (e) {
         receiverAcc.movementsDates.push(new Date().toISOString());
         // Update UI
         updateUI(currentAccount);
+        // reset timer
+        clearInterval(timer);
+        timer = startLogoutTimer();
     }
 });
 
@@ -288,6 +319,9 @@ btnLoan.addEventListener("click", function (e) {
             currentAccount.movementsDates.push(new Date().toISOString());
             // Update UI
             updateUI(currentAccount);
+            // reset timer
+            clearInterval(timer);
+            timer = startLogoutTimer();
         }, 2500);
     }
     inputLoanAmount.value = "";
@@ -493,24 +527,24 @@ console.log(Number.isInteger(23 / 0));
 
 // time functions
 // setTimeout()
-const ingredients = ["olives"];
-const pizzaTimer = setTimeout(
-    (ing1, ing2) => console.log(`Here is your pizza with ${ing1} & ${ing2} 🍕`),
-    3000,
-    ...ingredients
-);
-console.log("Waiting...");
+// const ingredients = ["olives"];
+// const pizzaTimer = setTimeout(
+//     (ing1, ing2) => console.log(`Here is your pizza with ${ing1} & ${ing2} 🍕`),
+//     3000,
+//     ...ingredients
+// );
+// console.log("Waiting...");
 
-if (ingredients.includes("spinach")) clearTimeout(pizzaTimer);
+// if (ingredients.includes("spinach")) clearTimeout(pizzaTimer);
 
-// setInterval
-const interval = setInterval(function () {
-    const now = new Date();
-    const hour = now.getHours();
-    const min = now.getMinutes();
-    const sec = now.getSeconds();
+// // setInterval
+// const interval = setInterval(function () {
+//     const now = new Date();
+//     const hour = now.getHours();
+//     const min = now.getMinutes();
+//     const sec = now.getSeconds();
 
-    console.log(`${hour}:${min}.${sec}`);
-}, 1000);
+//     console.log(`${hour}:${min}.${sec}`);
+// }, 1000);
 
-setTimeout(() => clearInterval(interval), 10000);
+// setTimeout(() => clearInterval(interval), 10000);
