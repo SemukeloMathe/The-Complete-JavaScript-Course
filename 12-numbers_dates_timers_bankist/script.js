@@ -79,20 +79,21 @@ const inputClosePin = document.querySelector(".form__input--pin");
 /////////////////////////////////////////////////
 // Functions
 
-const formatMovementDate = function (date) {
+const formatMovementDate = function (date, locale) {
     const calcDaysPassed = (date1, date2) => {
         return Math.round(Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)));
     };
     const daysPassed = calcDaysPassed(new Date(), date);
- 
+
     if (daysPassed === 0) return "Today";
     if (daysPassed === 1) return "Yesterday";
     if (daysPassed <= 7) return `${daysPassed} days ago`;
 
-    const day = `${date.getDate()}`.padStart(2, 0);
-    const month = `${date.getMonth() + 1}`.padStart(2, 0);
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
+    // const day = `${date.getDate()}`.padStart(2, 0);
+    // const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    // const year = date.getFullYear();
+    // return `${day}/${month}/${year}`;
+    return new Intl.DateTimeFormat(locale).format(date);
 };
 
 const displayMovements = function (account, sort = false) {
@@ -105,7 +106,9 @@ const displayMovements = function (account, sort = false) {
     movs.forEach(function (mov, i) {
         const type = mov > 0 ? "deposit" : "withdrawal";
         const date = new Date(account.movementsDates[i]);
-        const displayDate = formatMovementDate(date);
+        // console.log(date);
+        const displayDate = formatMovementDate(date, account.locale);
+        // console.log(displayDate);
 
         const html = `
       <div class="movements__row">
@@ -172,6 +175,20 @@ const updateUI = function (acc) {
 // Event handlers
 let currentAccount;
 
+// Experimenting Api
+// const now = new Date();
+// const options = {
+//     hour: "numeric",
+//     minute: "numeric",
+//     day: "numeric",
+//     month: "long",
+//     year: "numeric",
+//     weekday: "short"
+// };
+// const locale = navigator.language;
+// console.log(locale);
+// labelDate.textContent = new Intl.DateTimeFormat("en-ZW", options).format(now);
+
 // Fake always logged in
 currentAccount = account1;
 updateUI(currentAccount);
@@ -195,12 +212,19 @@ btnLogin.addEventListener("click", function (e) {
 
         // create new date & time
         const now = new Date();
-        const day = `${now.getDate()}`.padStart(2, 0);
-        const month = `${now.getMonth() + 1}`.padStart(2, 0);
-        const year = now.getFullYear();
-        const hour = `${now.getHours()}`.padStart(2, 0);
-        const min = `${now.getMinutes()}`.padStart(2, 0);
-        labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+        const options = {
+            hour: "numeric",
+            minute: "numeric",
+            day: "numeric",
+            month: "numeric",
+            year: "numeric",
+            // weekday: "long",
+        };
+        labelDate.textContent = new Intl.DateTimeFormat(
+            currentAccount.locale,
+            options
+        ).format(now);
+
         // Clear input fields
         inputLoginUsername.value = inputLoginPin.value = "";
         inputLoginPin.blur();
@@ -432,3 +456,6 @@ console.log(Number.isInteger(23 / 0));
 
 // const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 4));
 // console.log(days1);
+
+
+// Internationalizing Dates (Itnl8)
