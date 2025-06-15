@@ -70,3 +70,16 @@ document
         // message.remove();
         message.parentElement.removeChild(message);
     });
+
+// Styles
+message.style.backgroundColor = "#37383d";
+message.style.width = "105%";
+
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+const height = message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px";
+console.log(height);
+
