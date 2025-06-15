@@ -54,9 +54,9 @@ console.log(btns);
 // .insertAdjacentHTML
 const message = document.createElement("div");
 message.classList.add("cookie-message");
-message.textContent = "We use cookies for improved functionality & analytics.";
-message.innerHTML =
-    "<p>We use cookies for improved functionality & analytics.</p><button class=btn btn--close-cookie>Got it!</button>";
+// message.textContent = "We use cookies for improved functionality & analytics.";
+message.innerHTML = `We use cookies for improved functionality & analytics.
+    <button class="btn btn--close-cookie">Got it!</button>`;
 // header.prepend(message);
 header.append(message);
 // header.append(message.cloneNode(true));
@@ -64,3 +64,9 @@ header.append(message);
 // header.after(message);
 
 // Delete elements
+document
+    .querySelector(".btn--close-cookie")
+    .addEventListener("click", function () {
+        // message.remove
+        message.parentElement.removeChild(message);
+    });
