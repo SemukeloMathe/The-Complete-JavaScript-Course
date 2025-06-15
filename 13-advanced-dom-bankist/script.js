@@ -36,19 +36,19 @@ document.addEventListener("keydown", function (e) {
 ///////////////////////////////////////////////////////////////
 
 // Selecting elements
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.body);
 const header = document.querySelector(".header");
 const allSections = document.querySelectorAll(".section");
-console.log(allSections);
+// console.log(allSections);
 
 document.getElementById("section--1");
 const allButtons = document.getElementsByTagName("button");
-console.log(allButtons);
+// console.log(allButtons);
 
 const btns = document.getElementsByClassName("btn");
-console.log(btns);
+// console.log(btns);
 
 // Creating & inseting elements.
 // .insertAdjacentHTML
@@ -75,11 +75,34 @@ document
 message.style.backgroundColor = "#37383d";
 message.style.width = "105%";
 
-console.log(message.style.color);
-console.log(message.style.backgroundColor);
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+// console.log(message.style.color);
+// console.log(message.style.backgroundColor);
+// console.log(getComputedStyle(message).color);
+// console.log(getComputedStyle(message).height);
 
-const height = message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px";
-console.log(height);
+const height = (message.style.height =
+    Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px");
+// console.log(height);
+document.documentElement.style.setProperty("--color-primary", "orangered");
 
+// Attributes
+const logo = document.querySelector(".nav__logo");
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+// non-standard
+console.log(logo.getAttribute("designer"));
+// set attributes
+logo.alt = "Beautiful miminalist logo";
+console.log(logo.alt);
+logo.setAttribute("company", "Bankist");
+console.log(logo.getAttribute("src"));
+const link = document.querySelector(".nav__link--btn");
+console.log(link.href);
+console.log(link.getAttribute("href"));
+
+// classes
+// logo.classList.add()
+// logo.classList.remove()
+// logo.classList.toggle()
+// logo.classList.contains()
