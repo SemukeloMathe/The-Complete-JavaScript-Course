@@ -141,4 +141,8 @@ const alertH1 = function (e) {
 
 h1.addEventListener("mouseenter", alertH1);
 
-setTimeout(() => h1.removeEventListener("mouseenter", h1), 5000);
+setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 5000);
+
+// old way
+// h1.onmouseenter = (e) =>
+    // alert("addEventListener: Great! You are reading the heading :D");
