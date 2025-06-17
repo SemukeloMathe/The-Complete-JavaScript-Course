@@ -29,6 +29,23 @@ document.addEventListener("keydown", function (e) {
     }
 });
 
+// Scrolling
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+btnScrollTo.addEventListener("click",
+    (e) => section1.scrollIntoView({ behavior: "smooth" }));
+
+// Page navigation
+document.querySelectorAll(".nav__link").forEach(
+    function (el) {
+        el.addEventListener("click", function (e) {
+            e.preventDefault();
+            const id = this.getAttribute("href");
+            document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+        });
+    }
+);
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -108,12 +125,12 @@ document.documentElement.style.setProperty("--color-primary", "orangered");
 // logo.classList.contains()
 
 // Scrolling
-const btnScrollTo = document.querySelector(".btn--scroll-to");
-const section1 = document.querySelector("#section--1");
+// const btnScrollTo = document.querySelector(".btn--scroll-to");
+// const section1 = document.querySelector("#section--1");
 
-btnScrollTo.addEventListener("click", (e) => {
-    const s1coords = section1.getBoundingClientRect();
-    console.log(s1coords);
+// btnScrollTo.addEventListener("click", (e) => {
+//     const s1coords = section1.getBoundingClientRect();
+//     console.log(s1coords);
 
     // console.log(e.target.getBoundingClientRect())
     // console.log(`Current scroll (x/y)`, window.pageXOffset, window.pageYOffset);
@@ -129,8 +146,8 @@ btnScrollTo.addEventListener("click", (e) => {
     // });
 
     // modern way
-    section1.scrollIntoView({ behavior: "smooth" });
-});
+//     section1.scrollIntoView({ behavior: "smooth" });
+// });
 
 // different ways of handling events.
 const h1 = document.querySelector("h1");
