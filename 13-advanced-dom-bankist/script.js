@@ -51,15 +51,12 @@ btnScrollTo.addEventListener("click",
 // 2. determine what element created the event.
 document.querySelector(".nav__links").addEventListener("click", function (e) {
     e.preventDefault();
-
     // Matching strategy.
     if (e.target.classList.contains("nav__link")) {
         const id = e.target.getAttribute("href");
         document.querySelector(id).scrollIntoView({ behavior: "smooth" });
     }
 });
-
-
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -146,34 +143,66 @@ document.documentElement.style.setProperty("--color-primary", "orangered");
 //     const s1coords = section1.getBoundingClientRect();
 //     console.log(s1coords);
 
-    // console.log(e.target.getBoundingClientRect())
-    // console.log(`Current scroll (x/y)`, window.pageXOffset, window.pageYOffset);
-    // console.log("height/width", document.documentElement.clientHeight, document.documentElement.clientWidth);
+// console.log(e.target.getBoundingClientRect())
+// console.log(`Current scroll (x/y)`, window.pageXOffset, window.pageYOffset);
+// console.log("height/width", document.documentElement.clientHeight, document.documentElement.clientWidth);
 
-    // scrolling
-    // old way
-    // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset);
-    // window.scrollTo({
-    //     left: s1coords.left + window.pageXOffset,
-    //     top: s1coords.top + window.pageYOffset,
-    //     behavior: "smooth",
-    // });
+// scrolling
+// old way
+// window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset);
+// window.scrollTo({
+//     left: s1coords.left + window.pageXOffset,
+//     top: s1coords.top + window.pageYOffset,
+//     behavior: "smooth",
+// });
 
-    // modern way
+// modern way
 //     section1.scrollIntoView({ behavior: "smooth" });
 // });
 
 // different ways of handling events.
-const h1 = document.querySelector("h1");
+// const h1 = document.querySelector("h1");
 
-const alertH1 = function (e) {
-    alert("addEventListener: Great! You are reading the heading :D");
-};
+// const alertH1 = function (e) {
+//     alert("addEventListener: Great! You are reading the heading :D");
+// };
 
-h1.addEventListener("mouseenter", alertH1);
+// h1.addEventListener("mouseenter", alertH1);
 
-setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 5000);
+// setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 5000);
 
 // old way
 // h1.onmouseenter = (e) =>
-    // alert("addEventListener: Great! You are reading the heading :D");
+// alert("addEventListener: Great! You are reading the heading :D");
+
+const h1 = document.querySelector("h1");
+
+// going downwards.
+console.log(h1.querySelectorAll(".highlight"));
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// console.log(h1.firstElementChild);
+// console.log(h1.lastElementChild);
+
+h1.firstElementChild.style.color = "white";
+h1.lastElementChild.style.color = "white";
+
+// going upwards
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest(".header").style.background = "var(--gradient-secondary)";
+h1.closest("h1").style.background = "var(--gradient-primary)";
+
+// going sideways: siblings
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+
+[...h1.parentElement.children].forEach(function (el) {
+    if (el !== h1) el.style.transform = "scale(0.5)";
+});
