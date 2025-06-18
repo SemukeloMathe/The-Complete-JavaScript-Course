@@ -101,15 +101,42 @@ nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
 // sticky navigation.
-const initialCoords = section1.getBoundingClientRect();
-console.log(initialCoords);
+// const initialCoords = section1.getBoundingClientRect();
+// console.log(initialCoords);
 
-window.addEventListener("scroll", function (e) {
-    // console.log(window.scrollY);
-    if (window.scrollY > initialCoords.top) nav.classList.add("sticky");
+// window.addEventListener("scroll", function (e) {
+//     // console.log(window.scrollY);
+//     if (window.scrollY > initialCoords.top) nav.classList.add("sticky");
+//     else nav.classList.remove("sticky");
+// });
+
+// Sticky navigation: Intersection Observer API
+// const obsCallback = function (entries, observer) {
+//     entries.forEach(entry => {
+//         console.log(entry);
+//     })
+// };
+
+// const obsOptions = {
+//     root: null,
+//     threshold: [0,0.2],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+const header = document.querySelector(".header");
+const navHeight = nav.getBoundingClientRect();
+
+const stickyNav = function (entries) {
+    const [entry] = entries;
+    if (!entry.isIntersecting) nav.classList.add("sticky");
     else nav.classList.remove("sticky");
-});
-
+}
+const headerObserver = new IntersectionObserver(
+    stickyNav, { root: null, threshold: 0,rootMargin: `-${navHeight.height}px` }
+);
+headerObserver.observe(header)
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -120,51 +147,51 @@ window.addEventListener("scroll", function (e) {
 // console.log(document.documentElement);
 // console.log(document.head);
 // console.log(document.body);
-const header = document.querySelector(".header");
-const allSections = document.querySelectorAll(".section");
+// const header = document.querySelector(".header");
+// const allSections = document.querySelectorAll(".section");
 // console.log(allSections);
 
-document.getElementById("section--1");
-const allButtons = document.getElementsByTagName("button");
+// document.getElementById("section--1");
+// const allButtons = document.getElementsByTagName("button");
 // console.log(allButtons);
 
-const btns = document.getElementsByClassName("btn");
+// const btns = document.getElementsByClassName("btn");
 // console.log(btns);
 
 // Creating & inseting elements.
 // .insertAdjacentHTML
-const message = document.createElement("div");
-message.classList.add("cookie-message");
+// const message = document.createElement("div");
+// message.classList.add("cookie-message");
 // message.textContent = "We use cookies for improved functionality & analytics.";
-message.innerHTML = `We use cookies for improved functionality & analytics.
-    <button class="btn btn--close-cookie">Got it!</button>`;
+// message.innerHTML = `We use cookies for improved functionality & analytics.
+//     <button class="btn btn--close-cookie">Got it!</button>`;
 // header.prepend(message);
-header.append(message);
+// header.append(message);
 // header.append(message.cloneNode(true));
 // header.before(message);
 // header.after(message);
 
 // Delete elements
-document
-    .querySelector(".btn--close-cookie")
-    .addEventListener("click", function () {
-        // message.remove();
-        message.parentElement.removeChild(message);
-    });
+// document
+//     .querySelector(".btn--close-cookie")
+//     .addEventListener("click", function () {
+//         // message.remove();
+//         message.parentElement.removeChild(message);
+//     });
 
 // Styles
-message.style.backgroundColor = "#37383d";
-message.style.width = "105%";
+// message.style.backgroundColor = "#37383d";
+// message.style.width = "105%";
 
 // console.log(message.style.color);
 // console.log(message.style.backgroundColor);
 // console.log(getComputedStyle(message).color);
 // console.log(getComputedStyle(message).height);
 
-const height = (message.style.height =
-    Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px");
-// console.log(height);
-document.documentElement.style.setProperty("--color-primary", "orangered");
+// const height = (message.style.height =
+//     Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px");
+// // console.log(height);
+// document.documentElement.style.setProperty("--color-primary", "orangered");
 
 // Attributes
 // const logo = document.querySelector(".nav__logo");
@@ -228,7 +255,7 @@ document.documentElement.style.setProperty("--color-primary", "orangered");
 // h1.onmouseenter = (e) =>
 // alert("addEventListener: Great! You are reading the heading :D");
 
-const h1 = document.querySelector("h1");
+// const h1 = document.querySelector("h1");
 
 // going downwards.
 // console.log(h1.querySelectorAll(".highlight"));
