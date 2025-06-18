@@ -38,15 +38,6 @@ btnScrollTo.addEventListener("click", (e) =>
 );
 
 // Page navigation
-// document.querySelectorAll(".nav__link").forEach(
-//     function (el) {
-//         el.addEventListener("click", function (e) {
-//             e.preventDefault();
-//             const id = this.getAttribute("href");
-//             document.querySelector(id).scrollIntoView({ behavior: "smooth" });
-//         });
-//     }
-// );
 // event delegation.
 // 1. add event listener to common parent element.
 // 2. determine what element created the event.
@@ -102,31 +93,7 @@ const handleHover = function (e) {
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
-// sticky navigation.
-// const initialCoords = section1.getBoundingClientRect();
-// console.log(initialCoords);
-
-// window.addEventListener("scroll", function (e) {
-//     // console.log(window.scrollY);
-//     if (window.scrollY > initialCoords.top) nav.classList.add("sticky");
-//     else nav.classList.remove("sticky");
-// });
-
 // Sticky navigation: Intersection Observer API
-// const obsCallback = function (entries, observer) {
-//     entries.forEach(entry => {
-//         console.log(entry);
-//     })
-// };
-
-// const obsOptions = {
-//     root: null,
-//     threshold: [0,0.2],
-// };
-
-// const observer = new IntersectionObserver(obsCallback, obsOptions);
-// observer.observe(section1);
-
 const header = document.querySelector(".header");
 const navHeight = nav.getBoundingClientRect();
 
@@ -158,7 +125,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 });
 allSections.forEach(function (section) {
     sectionObserver.observe(section);
-    section.classList.add("section--hidden");
+    // section.classList.add("section--hidden");
 });
 
 // Lazy loading images.
@@ -185,6 +152,45 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTargets.forEach((img) => imgObserver.observe(img));
+
+// Slider
+const slides = document.querySelectorAll(".slide");
+const slider = document.querySelector(".slider");
+const btnLeft = document.querySelector(".slider__btn--left");
+const btnRight = document.querySelector(".slider__btn--right");
+let curSlide = 0;
+const maxSlide = slides.length;
+slider.style.transform = "scale() translateX(500px";
+slider.style.overflow = "visible";
+
+// slides.forEach((s, i) => s.style.transform = `translateX(${100 * i}%)`)
+// 0%, 100%, 200%, 300%
+
+const goToSlide = function (slide) {
+    slides.forEach(
+        (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+};
+goToSlide(0);
+
+// next slide
+const nextSlide = function () {
+    if (curSlide === maxSlide - 1) curSlide = 0;
+    else curSlide++;
+    goToSlide(curSlide);
+};
+
+// prev slide
+const prevSlide = function () {
+    if (curSlide === 0) curSlide = maxSlide - 1;
+    else curSlide--;
+    goToSlide(curSlide);
+};
+
+btnRight.addEventListener("click", nextSlide);
+btnLeft.addEventListener("click", prevSlide);
+
+
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -334,3 +340,38 @@ imgTargets.forEach((img) => imgObserver.observe(img));
 // [...h1.parentElement.children].forEach(function (el) {
 //     if (el !== h1) el.style.transform = "scale(0.5)";
 // });
+
+// Page navigation
+// document.querySelectorAll(".nav__link").forEach(
+//     function (el) {
+//         el.addEventListener("click", function (e) {
+//             e.preventDefault();
+//             const id = this.getAttribute("href");
+//             document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+//         });
+//     }
+// );
+
+// sticky navigation.
+// const initialCoords = section1.getBoundingClientRect();
+// console.log(initialCoords);
+
+// window.addEventListener("scroll", function (e) {
+//     // console.log(window.scrollY);
+//     if (window.scrollY > initialCoords.top) nav.classList.add("sticky");
+//     else nav.classList.remove("sticky");
+// });
+
+// const obsCallback = function (entries, observer) {
+//     entries.forEach(entry => {
+//         console.log(entry);
+//     })
+// };
+
+// const obsOptions = {
+//     root: null,
+//     threshold: [0,0.2],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
