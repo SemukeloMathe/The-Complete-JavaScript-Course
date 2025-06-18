@@ -155,14 +155,14 @@ imgTargets.forEach((img) => imgObserver.observe(img));
 
 // Slider
 const slides = document.querySelectorAll(".slide");
-const slider = document.querySelector(".slider");
+// const slider = document.querySelector(".slider");
 const btnLeft = document.querySelector(".slider__btn--left");
 const btnRight = document.querySelector(".slider__btn--right");
 let curSlide = 0;
 const maxSlide = slides.length;
-slider.style.transform = "scale() translateX(500px";
-slider.style.overflow = "visible";
 
+// slider.style.transform = "scale() translateX(500px";
+// slider.style.overflow = "visible";
 // slides.forEach((s, i) => s.style.transform = `translateX(${100 * i}%)`)
 // 0%, 100%, 200%, 300%
 
@@ -190,7 +190,12 @@ const prevSlide = function () {
 btnRight.addEventListener("click", nextSlide);
 btnLeft.addEventListener("click", prevSlide);
 
-
+// attaching keyboard events
+document.addEventListener("keydown", function (e) {
+    console.log(e)
+    if (e.key === "ArrowLeft") prevSlide();
+    if (e.key === "ArrorRight") nextSlide();
+});
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
