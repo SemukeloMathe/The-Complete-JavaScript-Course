@@ -46,7 +46,17 @@ susan.calcAge();
 
 // console.log(jay.calcAge());
 console.log(sem.__proto__);
-console.log(sem.__proto__ === Person.prototype);
+console.log(sem.__proto__ === Person.prototype); // true
 
 console.log(Person.prototype.isPrototypeOf(Person));
 console.log(sem.__proto__.isPrototypeOf(Person));
+
+// set properties
+Person.prototype.species = "Homo Sapiens";
+console.log(sem, jack, matilda);
+
+console.log(sem.species, matilda.species);
+console.log(sem.hasOwnProperty("name")); // true
+console.log(sem.hasOwnProperty("species")); // false
+console.log(Person.hasOwnProperty("species")); // false
+console.log(Person.prototype.hasOwnProperty("species")); // true
