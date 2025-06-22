@@ -5,15 +5,16 @@ const Person = function (name, year) {
     this.name = name;
     this.year = year;
 
-    this.calcAge = function () {
-        console.log(new Date().getFullYear() - this.year);
-    }
-}
+    // // never do this.
+    // this.calcAge = function () {
+    //     console.log(new Date().getFullYear() - this.year);
+    // }
+};
 
 // call the constructor with the "new" operator
 const sem = new Person("Sem", 1998);
 // console.log(sem.calcAge());
-sem.calcAge()
+// sem.calcAge()
 
 // Using new
 // 1.New {} is created.
@@ -25,8 +26,27 @@ const matilda = new Person("Matilda", 2017);
 const jack = new Person("Jack", 2003);
 const susan = new Person("Susan", 1988);
 
-const jay = { name: "Jay", year: 2000 }
+const jay = { name: "Jay", year: 2000 };
 // console.log(jay);
-// console.log(sem instanceof Person);
-// console.log(jay instanceof Person)
+// console.log(sem instanceof Person); // true
+// console.log(jay instanceof Person); // false
 
+// Prototypes
+// console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+    console.log(new Date().getFullYear() - this.year);
+};
+
+console.log(sem);
+sem.calcAge();
+jack.calcAge();
+matilda.calcAge();
+susan.calcAge();
+
+// console.log(jay.calcAge());
+console.log(sem.__proto__);
+console.log(sem.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(Person));
+console.log(sem.__proto__.isPrototypeOf(Person));
