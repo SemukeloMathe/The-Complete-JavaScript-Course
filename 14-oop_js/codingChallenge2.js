@@ -19,20 +19,29 @@ class Car {
 
     accelerate() {
         this.speed += 10;
-        console.log(`${this.make} is going ${this.speed} km/h`);
+        console.log(`${this.make} going ${this.speed} km/h`);
     }
 
     brake() {
         this.speed -= 5;
-        console.log(`${this.make} is going ${this.speed} km/h`);
+        console.log(`${this.make} going ${this.speed} km/h`);
     }
 
-    get speedUS() {}
+    // 2.
+    get speedUS() {
+        console.log(
+            `${this.make} going at ${this.speed / (1.6).toFixed(0)} m/h`
+        );
+    }
 
-    set speedUS(speed) {}
+    // set speedUS(speed) {
+    // this.speed =
+    // }
 }
 
 const ford = new Car("Ford", 120);
 console.log(ford);
 ford.accelerate();
 ford.brake();
+ford.speedUS;
+
