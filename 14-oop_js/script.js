@@ -90,47 +90,47 @@
 // const Person = class { }
 
 // class declarations
-class Person {
-    constructor(name, year) {
-        this.fullName = name;
-        this.birthYear = year;
-    }
+// class Person {
+//     constructor(name, year) {
+//         this.fullName = name;
+//         this.birthYear = year;
+//     }
 
-    // Class methods are added to the .prototype property.
-    calcAge() {
-        console.log(new Date().getFullYear() - this.birthYear);
-    }
+//     // Class methods are added to the .prototype property.
+//     calcAge() {
+//         console.log(new Date().getFullYear() - this.birthYear);
+//     }
 
-    greet() {
-        console.log(`Hey ${this.fullName}`);
-    }
+//     greet() {
+//         console.log(`Hey ${this.fullName}`);
+//     }
 
-    get age() {
-        return new Date().getFullYear() - this.birthYear;
-    }
+//     get age() {
+//         return new Date().getFullYear() - this.birthYear;
+//     }
 
-    // Set a property that already exists.
-    set fullName(name) {
-        if (name.includes(" ")) {
-            this._fullName = name;
-        } else {
-            alert(`${name} is not a full name`);
-        }
-    }
+//     // Set a property that already exists.
+//     set fullName(name) {
+//         if (name.includes(" ")) {
+//             this._fullName = name;
+//         } else {
+//             alert(`${name} is not a full name`);
+//         }
+//     }
 
-    get fullName() {
-        return this._fullName;
-    }
+//     get fullName() {
+//         return this._fullName;
+//     }
 
-    // Static method
-    static hey() {
-        console.log(`Hey there 👋🏽`);
-    }
-}
+//     // Static method
+//     static hey() {
+//         console.log(`Hey there 👋🏽`);
+//     }
+// }
 
-const sem = new Person("Sem Mathe", 1998);
+// const sem = new Person("Sem Mathe", 1998);
 // sem.hey();
-Person.hey()
+// Person.hey()
 // sem.calcAge();
 // sem.greet();
 // console.log(sem.age);
@@ -176,3 +176,30 @@ Person.hey()
 // Person.hey();
 // sem.hey();
 // static methods are not available to instances of a class.
+
+// Object create
+const Person = {
+    calcAge() {
+        console.log(new Date().getFullYear() - this.year);
+    },
+
+    init(name, year) {
+        this.name = name;
+        this.year = year;
+    }
+}
+// {
+//     calcAge: function () {
+//         console.log(new Date().getFullYear() - this.year);
+//     }
+// }
+const sem = Object.create(Person);
+
+// sem.name = "Sem";
+// sem.year = 1998;
+sem.init("Sem", 1998)
+
+console.log(sem.__proto__ === Person);
+sem.calcAge()
+console.log(sem);
+console.log(sem.__proto__);
