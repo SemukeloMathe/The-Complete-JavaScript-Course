@@ -60,3 +60,26 @@ console.log(sem.hasOwnProperty("name")); // true
 console.log(sem.hasOwnProperty("species")); // false
 console.log(Person.hasOwnProperty("species")); // false
 console.log(Person.prototype.hasOwnProperty("species")); // true
+
+// Prototype inheritance & prototype chain.
+console.log(sem.__proto__);
+// Object.prototype (top of prototype chain)
+console.log(sem.__proto__.__proto__);
+console.log(sem.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+
+// Prototypes of Arrays
+const arr = [4, 6, 8, 2, 9, 3, 4, 3, 0, 2, 2, 3, 4, 5]
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+    return [...new Set(this)];
+}
+
+console.log(arr.unique());
+
+const h1 = document.querySelector("h1");
