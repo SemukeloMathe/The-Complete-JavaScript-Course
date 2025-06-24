@@ -8,8 +8,8 @@
  * 4. Create 2 car objects and experiment with calling "accelerate" and "brake"
  * multiple times on each of them.
  *
- * CAR DATA 1: "BMW" going at 120km/h
- * CAR DATA 2: "Mercedes" going at 95km/h
+ * CAR DATA 1: "BMW" going at 120 km/h
+ * CAR DATA 2: "Mercedes" going at 95 km/h
  */
 
 // 1.
@@ -17,21 +17,39 @@ const Car = function (make, speed) {
     this.make = make;
     this.speed = speed;
 };
-const bmw = new Car("BMW", 120);
-const mercedes = new Car("Mercedes", 95);
 
 // 2.
 Car.prototype.accelerate = function () {
     this.speed += 10;
-    console.log(`"${this.make}" going at ${this.speed}km/h`);
+    console.log(`"${this.make}" going at ${this.speed} km/h`);
 };
-bmw.accelerate();
-mercedes.accelerate();
 
 // 3.
 Car.prototype.brake = function () {
     this.speed -= 5;
-    console.log(`"${this.make}" going at ${this.speed}km/h`);
-}
+    console.log(`"${this.make}" going at ${this.speed} km/h`);
+};
+
+// 4.
+const bmw = new Car("BMW", 120);
+bmw.accelerate();
+bmw.accelerate();
+bmw.accelerate();
+bmw.accelerate();
+bmw.accelerate();
 bmw.brake();
+bmw.brake();
+bmw.brake();
+bmw.brake();
+bmw.brake();
+bmw.brake();
+
+const mercedes = new Car("Mercedes", 95);
+mercedes.accelerate();
+mercedes.accelerate();
+mercedes.accelerate();
+mercedes.accelerate();
+mercedes.brake();
+mercedes.brake();
+mercedes.brake();
 mercedes.brake();
