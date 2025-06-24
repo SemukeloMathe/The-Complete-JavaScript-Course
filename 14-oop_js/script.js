@@ -178,28 +178,62 @@
 // static methods are not available to instances of a class.
 
 // Object create
-const Person = {
-    calcAge() {
-        console.log(new Date().getFullYear() - this.year);
-    },
+// const Person = {
+//     calcAge() {
+//         console.log(new Date().getFullYear() - this.year);
+//     },
 
-    init(name, year) {
-        this.name = name;
-        this.year = year;
-    }
-}
+//     init(name, year) {
+//         this.name = name;
+//         this.year = year;
+//     }
+// }
 // {
 //     calcAge: function () {
 //         console.log(new Date().getFullYear() - this.year);
 //     }
 // }
-const sem = Object.create(Person);
+// const sem = Object.create(Person);
 
 // sem.name = "Sem";
 // sem.year = 1998;
-sem.init("Sem", 1998)
+// sem.init("Sem", 1998)
 
-console.log(sem.__proto__ === Person);
-sem.calcAge()
-console.log(sem);
-console.log(sem.__proto__);
+// console.log(sem.__proto__ === Person);
+// sem.calcAge()
+// console.log(sem);
+// console.log(sem.__proto__);
+
+// Inheritance
+const Person = function (name, year) {
+    this.name = name;
+    this.year = year;
+
+};
+
+Person.prototype.calcAge = function () {
+    console.log(new Date().getFullYear() - this.year);
+};
+
+const Student = function (name, year, course) {
+    Person.call(this, name, year);
+    this.course = course;
+}
+
+// Linking prototypes
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+    console.log(`Hi, my name is ${this.name} & I am studying ${this.course}`);
+}
+
+const mike = new Student("Mike", 2008, "Computer Science");
+mike.introduce();
+// mike.calcAge();
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
