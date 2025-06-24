@@ -29,14 +29,11 @@ class Car {
 
     // 2.
     get speedUS() {
-        console.log(
-            `${this.make} going at ${this.speed / (1.6).toFixed(0)} m/h`
-        );
+        return this.speed / 1.6;
     }
 
     // 3.
     set speedUS(speed) {
-        console.log(`${this.make} going at ${speed} m/h`);
         this.speed = speed * 1.6;
     }
 }
