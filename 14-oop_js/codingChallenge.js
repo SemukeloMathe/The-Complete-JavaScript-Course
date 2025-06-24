@@ -12,7 +12,14 @@
  * CAR DATA 2: "Mercedes" going at 95km/h
  */
 
+// 1.
 const Car = function (make, speed) {
     this.make = make;
     this.speed = speed;
 };
+
+// 2.
+Car.prototype.accelerate = function () {
+    this.speed += 10
+    console.log(`"${this.make}" going at ${this.speed}km/h`);
+}
