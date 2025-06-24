@@ -92,30 +92,70 @@
 // class declarations
 class Person {
     constructor(name, year) {
-        this.firstName = name;
+        this.fullName = name;
         this.birthYear = year;
     }
 
-    // Methods are added to the .prototype property.
+    // Class methods are added to the .prototype property.
     calcAge() {
         console.log(new Date().getFullYear() - this.birthYear);
     }
 
     greet() {
-        console.log(`Hey ${this.firstName}`);
+        console.log(`Hey ${this.fullName}`);
+    }
+
+    get age() {
+        return new Date().getFullYear() - this.birthYear;
+    }
+
+    // Set a property that already exists.
+    set fullName(name) {
+        if (name.includes(" ")) {
+            this._fullName = name;
+        } else {
+            alert(`${name} is not a full name`);
+        }
+    }
+
+    get fullName() {
+        return this._fullName;
     }
 }
 
-const sem = new Person("Sem", 1998);
+const sem = new Person("Sem Mathe", 1998);
 sem.calcAge();
 sem.greet();
+console.log(sem.age);
 
 // console.log(sem.__proto__ === Person.prototype);
 // Person.prototype.greet = function () {
-    //     console.log(`Hey ${this.firstName}`);
-    // };
+//     console.log(`Hey ${this.firstName}`);
+// };
 
 // 1. Classes are NOT hoisted.
 // 2. CLasses are first class citizens. - we can pass them in functions &
 // return them from functions.
 // 3. Classes are executed in Strict mode.
+
+const walter = new Person("Walter White", 1965);
+
+// Getters & setters
+// getters & setters in regular objects.
+const account = {
+    owner: "Sem",
+    movements: [200, 400, 120, 300],
+
+    get latest() {
+        return this.movements.slice(-1).pop();
+    },
+
+    set latest(mov) {
+        this.movements.push(mov);
+    },
+};
+
+console.log(account.latest);
+account.latest = 250;
+console.log(account.movements);
+
