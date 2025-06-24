@@ -18,10 +18,11 @@ const Car = function (make, speed) {
     this.speed = speed;
 };
 const bmw = new Car("BMW", 120);
-
+const mercedes = new Car("Mercedes", 95);
 // 2.
 Car.prototype.accelerate = function () {
     this.speed += 10;
     console.log(`"${this.make}" going at ${this.speed}km/h`);
 };
 bmw.accelerate();
+mercedes.accelerate();
