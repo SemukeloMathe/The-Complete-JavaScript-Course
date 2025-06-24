@@ -34,14 +34,18 @@ class Car {
         );
     }
 
-    // set speedUS(speed) {
-    // this.speed =
-    // }
+    // 3.
+    set speedUS(speed) {
+        console.log(`${this.make} going at ${speed} m/h`);
+        this.speed = speed * 1.6;
+    }
 }
 
+// 4.
 const ford = new Car("Ford", 120);
 console.log(ford);
 ford.accelerate();
 ford.brake();
 ford.speedUS;
-
+ford.speedUS = 90;
+console.log(ford.speed);
