@@ -121,12 +121,19 @@ class Person {
     get fullName() {
         return this._fullName;
     }
+
+    // Static method
+    static hey() {
+        console.log(`Hey there 👋🏽`);
+    }
 }
 
 const sem = new Person("Sem Mathe", 1998);
-sem.calcAge();
-sem.greet();
-console.log(sem.age);
+// sem.hey();
+Person.hey()
+// sem.calcAge();
+// sem.greet();
+// console.log(sem.age);
 
 // console.log(sem.__proto__ === Person.prototype);
 // Person.prototype.greet = function () {
@@ -138,24 +145,34 @@ console.log(sem.age);
 // return them from functions.
 // 3. Classes are executed in Strict mode.
 
-const walter = new Person("Walter White", 1965);
+// const walter = new Person("Walter White", 1965);
 
 // Getters & setters
 // getters & setters in regular objects.
-const account = {
-    owner: "Sem",
-    movements: [200, 400, 120, 300],
+// const account = {
+//     owner: "Sem",
+//     movements: [200, 400, 120, 300],
 
-    get latest() {
-        return this.movements.slice(-1).pop();
-    },
+//     get latest() {
+//         return this.movements.slice(-1).pop();
+//     },
 
-    set latest(mov) {
-        this.movements.push(mov);
-    },
-};
+//     set latest(mov) {
+//         this.movements.push(mov);
+//     },
+// };
 
-console.log(account.latest);
-account.latest = 250;
-console.log(account.movements);
+// console.log(account.latest);
+// account.latest = 250;
+// console.log(account.movements);
 
+// static methods
+// to add a static method
+// Person.hey = function () {
+//     console.log(`Hey there 👋🏽`)
+//     console.log(this);
+// }
+
+// Person.hey();
+// sem.hey();
+// static methods are not available to instances of a class.
