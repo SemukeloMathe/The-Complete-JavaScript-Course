@@ -57,18 +57,18 @@ EV.prototype.constructor = EV;
 // 4.
 const tesla = new EV("Tesla", 120, 23);
 console.log(tesla);
-tesla.chargeBattery(90);
-console.log();
+// tesla.chargeBattery(90);
+// console.log();
 
-console.log(tesla);
-tesla.accelerate();
-tesla.accelerate();
-tesla.accelerate();
-tesla.accelerate();
-console.log();
+// console.log(tesla);
+// tesla.accelerate();
+// tesla.accelerate();
+// tesla.accelerate();
+// tesla.accelerate();
+// console.log();
 
-tesla.brake();
-console.log(tesla);
-console.log();
+// tesla.brake();
+// console.log(tesla);
+// console.log();
 
-console.log(EV.prototype.constructor);
+// console.log(EV.prototype.constructor);
