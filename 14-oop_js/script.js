@@ -305,30 +305,74 @@
 // sem.greet();
 
 // inheritance using Object.create
-const PersonProto = {
-    calcAge() {
-        console.log(new Date().getFullYear() - this.year);
-    },
+// const PersonProto = {
+//     calcAge() {
+//         console.log(new Date().getFullYear() - this.year);
+//     },
 
-    init(name, year) {
-        this.name = name;
-        this.year = year;
-    },
-};
+//     init(name, year) {
+//         this.name = name;
+//         this.year = year;
+//     },
+// };
 
-const sem = Object.create(PersonProto);
+// const sem = Object.create(PersonProto);
 
-const StudentProto = Object.create(PersonProto);
-StudentProto.init = function (name, year, course) {
-    PersonProto.init.call(this, name, year);
-    this.course = course;
-};
+// const StudentProto = Object.create(PersonProto);
+// StudentProto.init = function (name, year, course) {
+//     PersonProto.init.call(this, name, year);
+//     this.course = course;
+// };
 
-StudentProto.introduce = function () {
-    console.log(`My name is ${this.name} and I study ${this.course}`);
-};
+// StudentProto.introduce = function () {
+//     console.log(`My name is ${this.name} and I study ${this.course}`);
+// };
 
-const pali = Object.create(StudentProto);
-pali.init("Pali ", 2005, "Computer Science");
-pali.introduce();
-pali.calcAge();
+// const pali = Object.create(StudentProto);
+// pali.init("Pali ", 2005, "Computer Science");
+// pali.introduce();
+// pali.calcAge();
+
+// class examples
+class Account {
+    constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        this.pin = pin;
+        this.movements = new Array();
+        this.locale = navigator.language;
+
+        console.log(`Thank you for opening an account, ${owner}`);
+    }
+
+    deposit(val) {
+        this.movements.push(val);
+    }
+
+    withdraw(val) {
+        this.deposit(-val);
+    }
+
+    approveLoan(val) {
+        return true;
+    }
+
+    requestLoan(val) {
+        if (this.approveLoan(val)) {
+            this.deposit(val);
+            console.log("Loan approved");
+        }
+    }
+}
+
+const acc1 = new Account("Sem", "ZAR", 1111);
+// acc1.movements.push(250);
+// acc1.movements.push(-140);
+acc1.deposit(250);
+acc1.withdraw(140);
+console.log(acc1);
+acc1.movements.push(2500);
+console.log(acc1.pin);
+acc1.requestLoan(1000);
+
+console.log(acc1.approveLoan(2000));
