@@ -335,38 +335,45 @@
 
 // class examples
 class Account {
+    // 1) Public fields (only available on the instances)
+    locale = navigator.language;
+
+    // 2) Private fields
+    #movements = new Array();
+    #pin;
+
     constructor(owner, currency, pin) {
         this.owner = owner;
         this.currency = currency;
-        this._pin = pin;
-        this._movements = new Array(); // protected
-        this.locale = navigator.language;
+        this.#pin = pin;
 
         console.log(`Thank you for opening an account, ${owner}`);
     }
 
+    // 3) public methods.
     // public interface
     getMovements() {
-        return this._movements;
+        return this.#movements;
     }
 
     deposit(val) {
-        this._movements.push(val);
+        this.#movements.push(val);
     }
 
     withdraw(val) {
         this.deposit(-val);
     }
 
-    _approveLoan() {
-        return true;
-    }
-
     requestLoan(val) {
-        if (this._approveLoan()) {
+        if (this.#approveLoan()) {
             this.deposit(val);
             console.log("Loan approved");
         }
+    }
+
+    // 4) Private methods
+    #approveLoan() {
+        return true;
     }
 }
 
@@ -382,3 +389,15 @@ acc1.requestLoan(1000);
 // console.log(acc1.approveLoan(2000));
 // console.log(acc1.pin);
 console.log(acc1.getMovements());
+
+// private class fields & methods.
+// 1. public fields
+// 2. private fields
+// 3. public methods
+// 4. private methods
+// 5. static methods (only available on the class itself.)
+//
+
+// console.log(acc1.#movements);
+// console.log(acc1.#pin);
+console.log(acc1);
