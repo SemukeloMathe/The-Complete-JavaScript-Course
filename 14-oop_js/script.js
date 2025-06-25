@@ -358,16 +358,19 @@ class Account {
 
     deposit(val) {
         this.#movements.push(val);
+        return this;
     }
 
     withdraw(val) {
         this.deposit(-val);
+        return this;
     }
 
     requestLoan(val) {
         if (this.#approveLoan()) {
             this.deposit(val);
             console.log("Loan approved");
+            return this;
         }
     }
 
@@ -380,15 +383,15 @@ class Account {
 const acc1 = new Account("Sem", "ZAR", 1111);
 // acc1.movements.push(250);
 // acc1.movements.push(-140);
-acc1.deposit(250);
-acc1.withdraw(140);
+// acc1.deposit(250);
+// acc1.withdraw(140);
 // console.log(acc1);
 // acc1._movements.push(2500);
-acc1.requestLoan(1000);
+// acc1.requestLoan(1000);
 
 // console.log(acc1.approveLoan(2000));
 // console.log(acc1.pin);
-console.log(acc1.getMovements());
+// console.log(acc1.getMovements());
 
 // private class fields & methods.
 // 1. public fields
@@ -396,8 +399,10 @@ console.log(acc1.getMovements());
 // 3. public methods
 // 4. private methods
 // 5. static methods (only available on the class itself.)
-//
 
 // console.log(acc1.#movements);
 // console.log(acc1.#pin);
-console.log(acc1);
+// console.log(acc1);
+
+// Chaining class methods.
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
