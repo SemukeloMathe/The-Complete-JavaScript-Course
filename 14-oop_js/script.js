@@ -338,27 +338,32 @@ class Account {
     constructor(owner, currency, pin) {
         this.owner = owner;
         this.currency = currency;
-        this.pin = pin;
-        this.movements = new Array();
+        this._pin = pin;
+        this._movements = new Array(); // protected
         this.locale = navigator.language;
 
         console.log(`Thank you for opening an account, ${owner}`);
     }
 
+    // public interface
+    getMovements() {
+        return this._movements;
+    }
+
     deposit(val) {
-        this.movements.push(val);
+        this._movements.push(val);
     }
 
     withdraw(val) {
         this.deposit(-val);
     }
 
-    approveLoan(val) {
+    _approveLoan() {
         return true;
     }
 
     requestLoan(val) {
-        if (this.approveLoan(val)) {
+        if (this._approveLoan()) {
             this.deposit(val);
             console.log("Loan approved");
         }
@@ -370,9 +375,10 @@ const acc1 = new Account("Sem", "ZAR", 1111);
 // acc1.movements.push(-140);
 acc1.deposit(250);
 acc1.withdraw(140);
-console.log(acc1);
-acc1.movements.push(2500);
-console.log(acc1.pin);
+// console.log(acc1);
+// acc1._movements.push(2500);
 acc1.requestLoan(1000);
 
-console.log(acc1.approveLoan(2000));
+// console.log(acc1.approveLoan(2000));
+// console.log(acc1.pin);
+console.log(acc1.getMovements());
