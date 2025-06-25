@@ -239,67 +239,96 @@
 // console.dir(Student.prototype.constructor);
 
 // Inheritance using es6 classes
-class Person {
-    constructor(name, year) {
-        this.fullName = name;
-        this.birthYear = year;
-    }
+// class Person {
+//     constructor(name, year) {
+//         this.fullName = name;
+//         this.birthYear = year;
+//     }
 
-    // Class methods are added to the .prototype property.
+//     // Class methods are added to the .prototype property.
+//     calcAge() {
+//         console.log(new Date().getFullYear() - this.birthYear);
+//     }
+
+//     greet() {
+//         console.log(`Hey ${this.fullName}`);
+//     }
+
+//     get age() {
+//         return new Date().getFullYear() - this.birthYear;
+//     }
+
+//     // Set a property that already exists.
+//     set fullName(name) {
+//         if (name.includes(" ")) {
+//             this._fullName = name;
+//         } else {
+//             alert(`${name} is not a full name`);
+//         }
+//     }
+
+//     get fullName() {
+//         return this._fullName;
+//     }
+
+//     // Static method
+//     static hey() {
+//         console.log(`Hey there 👋🏽`);
+//     }
+// }
+
+// class Student extends Person {
+//     constructor(name, year, course) {
+//         // Always needs to happen first!
+//         super(name, year);
+//         this.course = course;
+//     }
+
+//     introduce() {
+//         console.log(`My name is ${this.fullName} and I study ${this.course}`);
+//     }
+
+//     calcAge() {
+//         console.log(
+//             `I'm ${
+//                 new Date().getFullYear() - this.birthYear
+//             } year's old, but as a student i feel more like i'm ${
+//                 new Date().getFullYear() - this.birthYear + 10
+//             } years old.`
+//         );
+//     }
+// }
+
+// const sem = new Student("Sem Mathe", 1998, "Computer Science");
+// sem.introduce();
+// sem.calcAge();
+// sem.greet();
+
+// inheritance using Object.create
+const PersonProto = {
     calcAge() {
-        console.log(new Date().getFullYear() - this.birthYear);
-    }
+        console.log(new Date().getFullYear() - this.year);
+    },
 
-    greet() {
-        console.log(`Hey ${this.fullName}`);
-    }
+    init(name, year) {
+        this.name = name;
+        this.year = year;
+    },
+};
 
-    get age() {
-        return new Date().getFullYear() - this.birthYear;
-    }
+const sem = Object.create(PersonProto);
 
-    // Set a property that already exists.
-    set fullName(name) {
-        if (name.includes(" ")) {
-            this._fullName = name;
-        } else {
-            alert(`${name} is not a full name`);
-        }
-    }
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (name, year, course) {
+    PersonProto.init.call(this, name, year);
+    this.course = course;
+};
 
-    get fullName() {
-        return this._fullName;
-    }
+StudentProto.introduce = function () {
+    console.log(`My name is ${this.name} and I study ${this.course}`);
+};
 
-    // Static method
-    static hey() {
-        console.log(`Hey there 👋🏽`);
-    }
-}
-
-class Student extends Person {
-    constructor(name, year, course) {
-        // Always needs to happen first!
-        super(name, year);
-        this.course = course;
-    }
-
-    introduce() {
-        console.log(`My name is ${this.fullName} and I study ${this.course}`);
-    }
-
-    calcAge() {
-        console.log(
-            `I'm ${
-                new Date().getFullYear() - this.birthYear
-            } year's old, but as a student i feel more like i'm ${
-                new Date().getFullYear() - this.birthYear + 10
-            } years old.`
-        );
-    }
-}
-
-const sem = new Student("Sem Mathe", 1998, "Computer Science");
-sem.introduce();
-sem.calcAge();
-sem.greet();
+const pali = Object.create(StudentProto);
+pali.init("Pali ", 2005, "Computer Science");
+pali.introduce();
+pali.calcAge();
