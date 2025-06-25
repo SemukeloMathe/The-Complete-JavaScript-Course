@@ -205,35 +205,101 @@
 // console.log(sem.__proto__);
 
 // Inheritance
-const Person = function (name, year) {
-    this.name = name;
-    this.year = year;
+// const Person = function (name, year) {
+//     this.name = name;
+//     this.year = year;
 
-};
+// };
 
-Person.prototype.calcAge = function () {
-    console.log(new Date().getFullYear() - this.year);
-};
+// Person.prototype.calcAge = function () {
+//     console.log(new Date().getFullYear() - this.year);
+// };
 
-const Student = function (name, year, course) {
-    Person.call(this, name, year);
-    this.course = course;
-}
+// const Student = function (name, year, course) {
+//     Person.call(this, name, year);
+//     this.course = course;
+// }
 
 // Linking prototypes
-Student.prototype = Object.create(Person.prototype);
+// Student.prototype = Object.create(Person.prototype);
 
-Student.prototype.introduce = function () {
-    console.log(`Hi, my name is ${this.name} & I am studying ${this.course}`);
-}
+// Student.prototype.introduce = function () {
+//     console.log(`Hi, my name is ${this.name} & I am studying ${this.course}`);
+// }
 
-const mike = new Student("Mike", 2008, "Computer Science");
-mike.introduce();
+// const mike = new Student("Mike", 2008, "Computer Science");
+// mike.introduce();
 // mike.calcAge();
 
-console.log(mike instanceof Student);
-console.log(mike instanceof Person);
-console.log(mike instanceof Object);
+// console.log(mike instanceof Student);
+// console.log(mike instanceof Person);
+// console.log(mike instanceof Object);
 
-Student.prototype.constructor = Student;
-console.dir(Student.prototype.constructor);
+// Student.prototype.constructor = Student;
+// console.dir(Student.prototype.constructor);
+
+// Inheritance using es6 classes
+class Person {
+    constructor(name, year) {
+        this.fullName = name;
+        this.birthYear = year;
+    }
+
+    // Class methods are added to the .prototype property.
+    calcAge() {
+        console.log(new Date().getFullYear() - this.birthYear);
+    }
+
+    greet() {
+        console.log(`Hey ${this.fullName}`);
+    }
+
+    get age() {
+        return new Date().getFullYear() - this.birthYear;
+    }
+
+    // Set a property that already exists.
+    set fullName(name) {
+        if (name.includes(" ")) {
+            this._fullName = name;
+        } else {
+            alert(`${name} is not a full name`);
+        }
+    }
+
+    get fullName() {
+        return this._fullName;
+    }
+
+    // Static method
+    static hey() {
+        console.log(`Hey there 👋🏽`);
+    }
+}
+
+class Student extends Person {
+    constructor(name, year, course) {
+        // Always needs to happen first!
+        super(name, year);
+        this.course = course;
+    }
+
+    introduce() {
+        console.log(`My name is ${this.fullName} and I study ${this.course}`);
+    }
+
+    calcAge() {
+        console.log(
+            `I'm ${
+                new Date().getFullYear() - this.birthYear
+            } year's old, but as a student i feel more like i'm ${
+                new Date().getFullYear() - this.birthYear + 10
+            } years old.`
+        );
+    }
+}
+
+const sem = new Student("Sem Mathe", 1998, "Computer Science");
+sem.introduce();
+sem.calcAge();
+sem.greet();
