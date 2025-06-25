@@ -55,6 +55,7 @@ class EV extends Car {
 
     hardBrake() {
         this.speed -= 50;
+        console.log(`${this.make} going at ${this.speed} km/h.`);
         return this;
     }
 
@@ -65,21 +66,7 @@ class EV extends Car {
 
 const rivian = new EV("Rivian", 120, 10);
 
-while (rivian.getCharge() !== 0) {
-    rivian.accelerate();
-
-    while (rivian.getCharge() < 1) {
-        if (rivian.speed > 20) {
-            rivian.hardBrake();
-        } else if (rivian.speed <= 20 && rivian.speed > 0) {
-            rivian.brake();
-        } else {
-            break;
-        }
-    }
-}
-
+rivian.accelerate().brake().brake().brake();
 rivian.chargeBattery(60);
-rivian.accelerate().accelerate();
 
 console.log(rivian);
