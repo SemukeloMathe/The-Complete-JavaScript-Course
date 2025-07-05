@@ -12,7 +12,7 @@ const inputCadence = document.querySelector(".form__input--cadence");
 const inputElevation = document.querySelector(".form__input--elevation");
 
 // Geolocation API
-// takes in 2 callback functions. the first is the success callback and the 
+// takes in 2 callback functions. the first is the success callback and the
 // second is the error callback for handling errors
 navigator.geolocation.getCurrentPosition(
   function (position) {
@@ -20,19 +20,25 @@ navigator.geolocation.getCurrentPosition(
     // console.log(latitude, longitude);
     console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
     const coords = new Array(latitude, longitude);
-    const map = L.map("map").setView(coords, 20);
+    const map = L.map("map").setView(coords, 13);
+    // console.log(map);
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    L.marker(coords)
-      .addTo(map)
-      .bindPopup("A pretty CSS popup.<br> Easily customizable.")
-      .openPopup();
+    map.on("click", function (mapEvent) {
+        console.log(mapEvent);
+        const { lat, lng } = mapEvent.latlng;
+        console.log(lat, lng);
+
+        L.marker([lat, lng]).addTo(map).bindPopup("Workout").openPopup();
+    });
   },
   function () {
     alert("Could not get your position.");
   }
 );
+
+// get markers from the map.
