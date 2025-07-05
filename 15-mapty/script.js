@@ -15,30 +15,42 @@ const inputElevation = document.querySelector(".form__input--elevation");
 // takes in 2 callback functions. the first is the success callback and the
 // second is the error callback for handling errors
 navigator.geolocation.getCurrentPosition(
-  function (position) {
-    const { latitude, longitude } = position.coords;
-    // console.log(latitude, longitude);
-    console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
-    const coords = new Array(latitude, longitude);
-    const map = L.map("map").setView(coords, 13);
-    // console.log(map);
+    function (position) {
+        const { latitude, longitude } = position.coords;
+        // console.log(latitude, longitude);
+        console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
+        const coords = new Array(latitude, longitude);
+        const map = L.map("map").setView(coords, 13);
+        // console.log(map);
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
 
-    map.on("click", function (mapEvent) {
-        console.log(mapEvent);
-        const { lat, lng } = mapEvent.latlng;
-        console.log(lat, lng);
+        map.on("click", function (mapEvent) {
+            console.log(mapEvent);
+            const { lat, lng } = mapEvent.latlng;
+            console.log(lat, lng);
 
-        L.marker([lat, lng]).addTo(map).bindPopup("Workout").openPopup();
-    });
-  },
-  function () {
-    alert("Could not get your position.");
-  }
+            L.marker([lat, lng])
+                .addTo(map)
+                .bindPopup(
+                    L.popup({
+                        maxWidth: 250,
+                        minWidth: 100,
+                        autoClose: false,
+                        closeOnClick: false,
+                        className: "running-popup",
+                    })
+                )
+                .setPopupContent("Workout")
+                .openPopup();
+        });
+    },
+    function () {
+        alert("Could not get your position.");
+    }
 );
 
 // get markers from the map.
