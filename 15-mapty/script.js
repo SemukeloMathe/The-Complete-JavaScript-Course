@@ -55,6 +55,7 @@ form.addEventListener("submit", function (e) {
         .addTo(map)
         .bindPopup(
             L.popup({
+                // pop up options
                 maxWidth: 250,
                 minWidth: 100,
                 autoClose: false,
