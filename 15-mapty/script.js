@@ -24,8 +24,8 @@ const inputCadence = document.querySelector(".form__input--cadence");
 const inputElevation = document.querySelector(".form__input--elevation");
 
 // global var
-let map;
-let mapEvent;
+// let map;
+// let mapEvent;
 // Geolocation API
 // takes in 2 callback functions. the first is the success callback and the
 // second is the error callback for handling errors
@@ -63,6 +63,9 @@ inputType.addEventListener("change", function (e) {
 });
 
 class App {
+    #map;
+    #mapEvent;
+
     constructor() {
         // call the getPosition function.
         this._getPosition();
@@ -71,7 +74,7 @@ class App {
     _getPosition() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-                this._loadMap,
+                this._loadMap.bind(this),
                 function () {
                     alert("Could not get your position.");
                 }
@@ -83,16 +86,16 @@ class App {
         const { latitude, longitude } = position.coords;
         const coords = new Array(latitude, longitude);
 
-        map = L.map("map").setView(coords, 13);
+        this.#map = L.map("map").setView(coords, 13);
 
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution:
                 '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(map);
+        }).addTo(this.#map);
 
         // get markers from the map.
-        map.on("click", function (mapE) {
-            mapEvent = mapE;
+        this.#map.on("click", function (mapE) {
+            this.#mapEvent = mapE;
             form.classList.remove("hidden");
             inputDistance.focus();
         });
@@ -106,4 +109,3 @@ class App {
 }
 
 const app = new App();
-// app._getPosition();
