@@ -63,12 +63,20 @@ inputType.addEventListener("change", function (e) {
 });
 
 class App {
-    constructor() {}
+    constructor() {
+        // call the getPosition function.
+        this._getPosition();
+    }
 
     _getPosition() {
-        navigator.geolocation.getCurrentPosition(this._loadMap(), function () {
-            alert("Could not get your position.");
-        });
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                this._loadMap,
+                function () {
+                    alert("Could not get your position.");
+                }
+            );
+        }
     }
 
     _loadMap(position) {
@@ -96,3 +104,6 @@ class App {
 
     _newWorkout() {}
 }
+
+const app = new App();
+// app._getPosition();
