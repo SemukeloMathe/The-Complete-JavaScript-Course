@@ -37,17 +37,8 @@ class App {
     constructor() {
         // call the getPosition function.
         this._getPosition();
-
         form.addEventListener("submit", this._newWorkout.bind(this));
-
-        inputType.addEventListener("change", function (e) {
-            inputElevation
-                .closest(".form__row")
-                .classList.toggle("form__row--hidden");
-            inputCadence
-                .closest(".form__row")
-                .classList.toggle("form__row--hidden");
-        });
+        inputType.addEventListener("change", this._toggleElevationField);
     }
 
     _getPosition() {
@@ -82,7 +73,14 @@ class App {
         inputDistance.focus();
     }
 
-    _toggleElevationField() {}
+    _toggleElevationField(e) {
+        inputElevation
+            .closest(".form__row")
+            .classList.toggle("form__row--hidden");
+        inputCadence
+            .closest(".form__row")
+            .classList.toggle("form__row--hidden");
+    }
 
     _newWorkout(e) {
         e.preventDefault();
@@ -109,6 +107,5 @@ class App {
             .openPopup();
     }
 }
-
 
 const app = new App();
