@@ -161,14 +161,14 @@ class App {
     }
 
     _newWorkout(e) {
+        e.preventDefault();
+
         // helper function
         const validInputs = (...inputs) =>
             inputs.every((input) => Number.isFinite(input));
 
         const allPositiveNum = (...inputs) =>
             inputs.every((input) => input > 0);
-
-        e.preventDefault();
 
         // get data from the form
         const type = inputType.value;
@@ -217,7 +217,6 @@ class App {
 
         // add new object to workout array
         this.#workouts.push(workout);
-        console.log(this.#workouts);
 
         // render workout on map as marker
         this._renderWorkoutMarker(workout);
@@ -315,15 +314,12 @@ class App {
 
     _moveToPopup(e) {
         const workoutEl = e.target.closest(".workout");
-        // console.log(workoutEl);
-
         if (!workoutEl) return;
 
         const workout = this.#workouts.find(
             (workout) => workout.id === workoutEl.dataset.id
         );
 
-        console.log(workout);
         this.#map.setView(workout.coords, this.#mapZoomLevel, {
             animate: true,
             pan: { duration: 2 },
@@ -336,16 +332,17 @@ class App {
 
     _getLocalStorage() {
         const data = JSON.parse(localStorage.getItem("workouts"));
-        console.log(data);
-
         if (!data) return;
 
         this.#workouts = data;
-        this.#workouts.forEach((workout) => {
-            this._renderWorkout(workout);
-        });
+
+        this.#workouts.forEach((workout) => this._renderWorkout(workout));
+    }
+
+    reset() {
+        localStorage.removeItem("workouts");
+        location.reload();
     }
 }
 
 const app = new App();
-console.log(app);
