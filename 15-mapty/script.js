@@ -15,7 +15,6 @@ class Workout {
     }
 
     _setDescription() {
-        // prettier ignore
         const months = [
             "January",
             "February",
@@ -126,6 +125,17 @@ class App {
         inputDistance.focus();
     }
 
+    _hideForm() {
+        inputDistance.value =
+            inputCadence.value =
+            inputDuration.value =
+            inputElevation.value =
+                "";
+        form.style.display = "none";
+        form.classList.add("hidden");
+        setTimeout(() => (form.style.display = "grid"), 1000);
+    }
+
     _toggleElevationField(e) {
         inputElevation
             .closest(".form__row")
@@ -201,9 +211,7 @@ class App {
         this._renderWorkout(workout);
 
         // hide the form and clear input infields
-
-        // clear inputfields.
-        inputDistance.value = inputDuration.value = inputElevation.value = "";
+        this._hideForm();
     }
 
     // render workout marker
@@ -220,7 +228,11 @@ class App {
                     className: `${workout.type}-popup`,
                 })
             )
-            .setPopupContent("workout")
+            .setPopupContent(
+                `${workout.type === "running" ? "🏃‍♂️" : "🚴‍♀️"} ${
+                    workout.description
+                }`
+            )
             .openPopup();
     }
 
