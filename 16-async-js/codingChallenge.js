@@ -44,19 +44,31 @@
  * TEST COORDINATES 3: -33.933, 18.474
  */
 
+const btn = document.querySelector(".btn-country");
+const countriesContainer = document.querySelector(".countries");
+
 // task 1
 function whereAmI(lat, lng) {
     // task 2
     const url = `https://geocode.xyz/${lat},${lng}?geoit=json&auth=721577283605504662142x125674`;
     fetch(url)
-        .then((res) => res.json())
+        .then((res) => {
+            // task 5: handle 403 status
+            console.log(res);
+            if (!res.ok)
+                throw new Error(`(${res.status}) - Unauthorized request.`);
+            return res.json();
+        })
         .then((data) => {
             const { city, country } = data;
             // Task 3: Log to the console.
             console.log(`You are in ${city}, ${country}`);
         })
         // task 4: handle errors
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            countriesContainer.insertAdjacentText("beforeend", err.message);
+            countriesContainer.style.opacity = 1;
+        });
 }
 
 // Test Data 1:
