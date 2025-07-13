@@ -120,12 +120,19 @@ const renderCountry = function (data, className = "") {
 
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
-      console.log(data);
+    .then((res) => res.json())
+    .then((data) => {
       renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+
+      // Country 2
+      return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      renderCountry(data[0], "neighbour");
     });
 };
 
