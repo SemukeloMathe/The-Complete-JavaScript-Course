@@ -9,20 +9,22 @@
  * PART 1:
  * 1. Create a function 'whereAmI' which takes as inputs a latitude value (lat)
  * and a longitude value (lng) (these are GPS coordinates, examples are below).
+ * 
  * 2. Do 'reverse geocoding' of the provided coordinates. Reverse geocoding
  * means to convert coordinates to a meaningful location, like a city and
  * country name. Use this API to do reverse geocoding:
- * https://api.bigdatacloud.net/data/reverse-geocode-client?
- * latitude=${lat}&longitude=${lng}.
+ * https://geocode.xyz/api.
  * The AJAX call will be done to a URL with this format:
- * https://api.bigdatacloud.net/data/reverse-geocode-client?
- * latitude=52.508&longitude=13.381. Use the fetch API and promises to get the
- * data. Do NOT use the getJSON function we created, that is cheating 😉
+ * https:geocode.xyz/52.508,13.381?geoit=json. Use the fetch API and promises 
+ * to get the data. Don't use the getJSON function we created, that is cheating
+ * 
  * 3. Once you have the data, take a look at it in the console to see all the
  * attributes that you recieved about the provided location. Then, using this
  * data, log a messsage like this to the console: 'You are in Berlin, Germany'
+ * 
  * 4. Chain a .catch method to the end of the promise chain and log errors to
  * the console
+ * 
  * 5. This API allows you to make only 3 requests per second. If you reload
  * fast, you will get this error with code 403. This is an error with the
  * request. Remember, fetch() does NOT reject the promise in this case. So
@@ -33,6 +35,7 @@
  * 6. Now it's time to use the received data to render a country. So take the
  * relevant attribute from the geocoding API result, and plug it into the
  * countries API that we have been using.
+ * 
  * 7. Render the country and catch any errors, just like we have done in the
  * last lecture (you can even copy this code, no need to type the same code)
  *
@@ -41,13 +44,23 @@
  * TEST COORDINATES 3: -33.933, 18.474
  */
 
+// task 1
 function whereAmI(lat, lng) {
-    console.log(lat, lng);
+    // task 2
+    const url = `https://geocode.xyz/${lat},${lng}?geoit=json&auth=721577283605504662142x125674`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const country = data.country;
+            const city = data.city;
+
+            console.log(`${city}, ${country}`);
+        });
 }
 
 // Test Data 1:
 whereAmI(52.508, 13.381);
 // Test Data 2:
-whereAmI(19.037, 72.873);
+// whereAmI(19.037, 72.873);
 // Test Data 3:
-whereAmI(-33.933, 18.474);
+// whereAmI(-33.933, 18.474);
