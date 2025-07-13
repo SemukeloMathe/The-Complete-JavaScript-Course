@@ -54,7 +54,7 @@ function whereAmI(lat, lng) {
     fetch(url)
         .then((res) => {
             // task 5: handle 403 status
-            console.log(res);
+            // console.log(res);
             if (!res.ok)
                 throw new Error(`(${res.status}) - Unauthorized request.`);
             return res.json();
@@ -63,7 +63,15 @@ function whereAmI(lat, lng) {
             const { city, country } = data;
             // Task 3: Log to the console.
             console.log(`You are in ${city}, ${country}`);
+            return country;
         })
+        .then((country) => {
+            // task 6: Use the countries api
+            const url = `https://restcountries.com/v3.1/name/${country}`;
+            return fetch(url);
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
         // task 4: handle errors
         .catch((err) => {
             countriesContainer.insertAdjacentText("beforeend", err.message);
