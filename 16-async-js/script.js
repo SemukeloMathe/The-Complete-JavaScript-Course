@@ -103,7 +103,6 @@ const renderCountry = function (data, className = "") {
     `;
 
     countriesContainer.insertAdjacentHTML("beforeend", html);
-    countriesContainer.style.opacity = 1;
 };
 
 // getCountryDataAndNeighbour("portugal");
@@ -120,7 +119,6 @@ const renderCountry = function (data, className = "") {
 
 const renderError = function (message) {
     countriesContainer.insertAdjacentText("beforeend", message);
-    countriesContainer.style.opacity = 1;
 };
 
 const getCountryData = function (country) {
@@ -140,9 +138,13 @@ const getCountryData = function (country) {
             console.error(`${err} 💣💣💣`);
             renderError(`Something went wrong 🔥🔥 ${err.message}. Try again!`);
         })
-        .finally(() => console.log("Finished executing"));
+        .finally(() => {
+            countriesContainer.style.opacity = 1;
+        });
 };
 
 btn.addEventListener("click", function () {
     getCountryData("portugal");
 });
+
+getCountryData("hello");
