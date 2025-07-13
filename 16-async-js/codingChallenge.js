@@ -49,12 +49,14 @@ function whereAmI(lat, lng) {
     // task 2
     const url = `https://geocode.xyz/${lat},${lng}?geoit=json&auth=721577283605504662142x125674`;
     fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            const {city, country} = data;
+        .then((res) => res.json())
+        .then((data) => {
+            const { city, country } = data;
             // Task 3: Log to the console.
             console.log(`You are in ${city}, ${country}`);
-        });
+        })
+        // task 4: handle errors
+        .catch((err) => console.log(err));
 }
 
 // Test Data 1:
