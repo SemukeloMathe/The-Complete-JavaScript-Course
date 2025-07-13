@@ -46,11 +46,12 @@
 
 const btn = document.querySelector(".btn-country");
 const countriesContainer = document.querySelector(".countries");
+const API_KEY = "";
 
 // task 1
 function whereAmI(lat, lng) {
     // task 2
-    const url = `https://geocode.xyz/${lat},${lng}?geoit=json&auth=721577283605504662142x125674`;
+    const url = `https://geocode.xyz/${lat},${lng}?geoit=json&auth=${API_KEY}`;
     fetch(url)
         .then((res) => {
             // task 5: handle 403 status
