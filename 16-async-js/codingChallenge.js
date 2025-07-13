@@ -19,7 +19,7 @@
  * to get the data. Don't use the getJSON function we created, that is cheating
  * 
  * 3. Once you have the data, take a look at it in the console to see all the
- * attributes that you recieved about the provided location. Then, using this
+ * attributes that you received about the provided location. Then, using this
  * data, log a messsage like this to the console: 'You are in Berlin, Germany'
  * 
  * 4. Chain a .catch method to the end of the promise chain and log errors to
@@ -51,10 +51,9 @@ function whereAmI(lat, lng) {
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            const country = data.country;
-            const city = data.city;
-
-            console.log(`${city}, ${country}`);
+            const {city, country} = data;
+            // Task 3: Log to the console.
+            console.log(`You are in ${city}, ${country}`);
         });
 }
 
