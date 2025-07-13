@@ -13,6 +13,7 @@ const countriesContainer = document.querySelector(".countries");
 const renderError = function (message) {
     countriesContainer.insertAdjacentText("beforeend", message);
 };
+
 const renderCountry = function (data = {}, className = "") {
     const html = `
         <article class="country ${className}">

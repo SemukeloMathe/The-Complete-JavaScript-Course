@@ -71,17 +71,46 @@ function whereAmI(lat, lng) {
             return fetch(url);
         })
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+            //task 7: render the country
+            const [country] = data;
+            renderCountry(country);
+            // console.log(country);
+        })
         // task 4: handle errors
         .catch((err) => {
             countriesContainer.insertAdjacentText("beforeend", err.message);
             countriesContainer.style.opacity = 1;
-        });
+        })
+        .finally(() => (countriesContainer.style.opacity = 1));
 }
+
+const renderCountry = function (data = {}, className = "") {
+    const html = `
+        <article class="country ${className}">
+          <img class="country__img" src="${data.flags.png}" />
+          <div class="country__data">
+            <h3 class="country__name">${data.name.common}</h3>
+            <h4 class="country__region">${data.region}</h4>
+            <p class="country__row"><span>👫</span>${(
+                +data.population / 1000000
+            ).toFixed(1)}</p>
+            <p class="country__row"><span>🗣️</span>${JSON.stringify(
+                data.languages
+            )}</p>
+            <p class="country__row"><span>💰</span>${JSON.stringify(
+                data.currencies
+            )}</p>
+          </div>
+        </article>
+    `;
+
+    countriesContainer.insertAdjacentHTML("beforeend", html);
+};
 
 // Test Data 1:
 whereAmI(52.508, 13.381);
 // Test Data 2:
-// whereAmI(19.037, 72.873);
+whereAmI(19.037, 72.873);
 // Test Data 3:
-// whereAmI(-33.933, 18.474);
+whereAmI(-33.933, 18.474);
