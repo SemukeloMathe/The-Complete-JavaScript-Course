@@ -94,18 +94,18 @@ const renderCountry = function (data = {}, className = "") {
             <h3 class="country__name">${data.name.common}</h3>
             <h4 class="country__region">${data.region}</h4>
             <p class="country__row"><span>👫</span>${(
-                +data.population / 1000000
+              +data.population / 1000000
             ).toFixed(1)}</p>
             <p class="country__row"><span>🗣️</span>${JSON.stringify(
-                data.languages
+              data.languages
             )}</p>
             <p class="country__row"><span>💰</span>${JSON.stringify(
-                data.currencies
+              data.currencies
             )}</p>
           </div>
         </article>
     `;
-
+    
     countriesContainer.insertAdjacentHTML("beforeend", html);
 };
 
