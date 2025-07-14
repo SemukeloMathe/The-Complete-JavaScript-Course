@@ -191,13 +191,24 @@ const renderCountry = function (data = {}, className = "") {
 // getCountryData("australia");
 
 // event loop
-console.log("Test start");
-setTimeout(() => console.log("0 sec timeer"), 0);
-Promise.resolve("Resolved promise 1").then(res => console.log(res));
-Promise.resolve("Resolved promise 2").then(res => {
-    for (let i = 0; i < 100000000; i++) { i; };
-    console.log(res);
-});
-console.log("Test end");
+// console.log("Test start");
+// setTimeout(() => console.log("0 sec timeer"), 0);
+// Promise.resolve("Resolved promise 1").then(res => console.log(res));
+// Promise.resolve("Resolved promise 2").then(res => {
+//     for (let i = 0; i < 100000000; i++) { i; };
+//     console.log(res);
+// });
+// console.log("Test end");
 
 // building a simple promise
+const lotteryPromise = new Promise(function (resolve, reject) {
+    if (Math.random() >= 0.5) {
+        resolve("You Win 💰");
+    } else {
+        reject("You Lost 🥲");
+    }
+});
+
+lotteryPromise.then((res) => console.log(res))
+    .catch((err) => console.error(err));
+
