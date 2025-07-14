@@ -202,13 +202,15 @@ const renderCountry = function (data = {}, className = "") {
 
 // building a simple promise
 const lotteryPromise = new Promise(function (resolve, reject) {
-    if (Math.random() >= 0.5) {
+    console.log("Lottery draw is happening.");
+    setTimeout(function () {
+      if (Math.random() >= 0.5) {
         resolve("You Win 💰");
-    } else {
-        reject("You Lost 🥲");
-    }
+      } else {
+        reject(new Error("You Lost 🥲"));
+      }
+    }, 2000);
 });
 
 lotteryPromise.then((res) => console.log(res))
     .catch((err) => console.error(err));
-
