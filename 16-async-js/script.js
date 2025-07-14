@@ -227,3 +227,7 @@ wait(2)
     return wait(1);
   })
   .then(() => console.log("I waited for one second"));
+
+// easy way to create a fulfilled promise
+Promise.resolve("abc").then(x => console.log(x));
+Promise.reject(new Error("abc")).then(x => console.error(x));
