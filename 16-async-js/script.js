@@ -214,3 +214,16 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 
 lotteryPromise.then((res) => console.log(res))
     .catch((err) => console.error(err));
+
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(2)
+  .then(() => {
+    console.log("I waited for 2 seconds");
+    return wait(1);
+  })
+  .then(() => console.log("I waited for one second"));
