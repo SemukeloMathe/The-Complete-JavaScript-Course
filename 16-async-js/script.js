@@ -233,10 +233,10 @@ const renderCountry = function (data = {}, className = "") {
 // Promise.reject(new Error("abc")).then(x => console.error(x));
 
 // Promisifying the geolocation api
-navigator.geolocation.getCurrentPosition(
-  position => console.log(position),
-  err => console.error(err)
-)
+// navigator.geolocation.getCurrentPosition(
+//   position => console.log(position),
+//   err => console.error(err)
+// )
 
 console.log("Getting position");
 
@@ -250,4 +250,42 @@ const getPosition = function () {
   });
 }
 
-getPosition().then(pos => console.log(pos)).catch();
+getPosition()
+  .then((pos) => console.log(pos))
+  .catch((err) => console.log(err));
+
+function whereAmI() {
+
+  getPosition().then(pos => {
+    // console.log(pos.coords);
+    const { latitude: lat, longitude: lng } = pos.coords;
+    const url = `https://geocode.xyz/${lat},${lng}?geoit=json&auth=${API_KEY}`;
+    return fetch(url);
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error(`(${res.status}) - Unauthorized request.`);
+      return res.json();
+    })
+    .then((data) => {
+      const { city, country } = data;
+      console.log(`You are in ${city}, ${country}`);
+      return country;
+    })
+    .then((country) => {
+      const url = `https://restcountries.com/v3.1/name/${country}`;
+      return fetch(url);
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      const [country] = data;
+      renderCountry(country);
+    })
+
+    .catch((err) => {
+      countriesContainer.insertAdjacentText("beforeend", err.message);
+      countriesContainer.style.opacity = 1;
+    })
+    .finally(() => (countriesContainer.style.opacity = 1));
+}
+
+btn.addEventListener("click", whereAmI);
