@@ -291,9 +291,25 @@ const renderCountry = function (data = {}, className = "") {
 // btn.addEventListener("click", whereAmI);
 
 // handling promises with async await
+const getPosition = function () {
+    return new Promise(function (resolve, reject) {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+};
+
 const whereAmI = async function (country) {
-    const res = await fetch(`https://restcountries.eu/rest/v2/name${country}`);
-    console.log(res);
+    // geolocation
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+
+    // reverse geocoding
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    const dataGeo = await resGeo.json();
+
+    // country data
+    const res = await fetch(
+        `https://restcountries.eu/rest/v2/name${dataGeo.country}`
+    );
     const data = await res.json();
     console.log(data);
     renderCountry(data[0]);
