@@ -32,45 +32,37 @@
 // grab elements.
 const btn = document.querySelector(".btn-country");
 const images = document.querySelector(".images");
-const imgEl = document.createElement("img");
-let num = 1;
+let imgEl;
 
 // set default
 btn.style.display = "none";
 
-// imgEl.src = `./img/img-1.jpg`;
-// images.appendChild(imgEl);
-
-// setTimeout(() => {
-//     imgEl.style.display = "none"
-// }, 3000)
- 
+const wait = function (seconds) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, seconds * 1000);
+    });
+};
 
 // task 1: create "createImage" function. has @param: imgPath
-const createImage = function (imgPath) { 
-    
-    return new Promise(function (resolve, reject) {
-        resolve(imgEl.src = imgPath);
-    })
-}
+const createImage = function (imgPath) {
+    return new Promise(function (resolve) {
+        imgEl = document.createElement("img");
+        imgEl.src = imgPath;
+        resolve(images.appendChild(imgEl));
+    });
+};
 
 createImage(`./img/img-1.jpg`)
-    .then(res => {
-        images.appendChild(imgEl);
-        console.log(res);
-        // console.log(res)
-        // setTimeout(() => { }, 2000);
-        // return createImage(`./img/img-2.jpg`);
+    .then(() => wait(2))
+    .then(() => {
+        images.removeChild(images.childNodes[0]);
+        return wait(2);
     })
-    // .then(res => {
-    //     console.log(res);
-    //     console.log(imgEl)
-    //     return createImage(`./img/img-3.jpg`);
-    // })
-    // .then(res => {
-    //     console.log(res);
-    //     console.log(imgEl.src);
-    //     // setTimeout(() => { }, 2000)
-    // })
-    .catch(err => console.log(err));
-
+    .then(() => createImage(`./img/img-2.jpg`))
+    .then(() => wait(2))
+    .then(() => {
+        images.removeChild(images.childNodes[0]);
+        return wait(2);
+    })
+    .then(() => createImage(`./img/img-3.jpg`))
+    .catch((err) => console.log(err));
