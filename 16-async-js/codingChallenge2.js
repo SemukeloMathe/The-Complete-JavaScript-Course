@@ -32,7 +32,7 @@
 // grab elements.
 const btn = document.querySelector(".btn-country");
 const images = document.querySelector(".images");
-let imgEl;
+let curImage;
 
 // set default
 btn.style.display = "none";
@@ -45,24 +45,46 @@ const wait = function (seconds) {
 
 // task 1: create "createImage" function. has @param: imgPath
 const createImage = function (imgPath) {
-    return new Promise(function (resolve) {
-        imgEl = document.createElement("img");
+    return new Promise(function (resolve, reject) {
+        const imgEl = document.createElement("img");
         imgEl.src = imgPath;
-        resolve(images.appendChild(imgEl));
+
+        imgEl.addEventListener("load", function () {
+            images.append(imgEl);
+            resolve(imgEl);
+        });
+
+        imgEl.addEventListener("error", function () {
+            reject(new Error("Image not found"));
+        });
     });
 };
 
 createImage(`./img/img-1.jpg`)
-    .then(() => wait(2))
-    .then(() => {
-        images.removeChild(images.childNodes[0]);
+    .then((img) => {
+        curImage = img;
         return wait(2);
     })
-    .then(() => createImage(`./img/img-2.jpg`))
-    .then(() => wait(2))
     .then(() => {
-        images.removeChild(images.childNodes[0]);
+        // images.removeChild(images.childNodes[0]);
+        curImage.style.display = "none";
+        return createImage(`./img/img-2.jpg`);
+    })
+    .then((img) => {
+        curImage = img;
         return wait(2);
     })
-    .then(() => createImage(`./img/img-3.jpg`))
-    .catch((err) => console.log(err));
+    .then(() => {
+        curImage.style.display = "none";
+        return createImage(`./img/img-3.jpg`);
+    })
+    .then((img) => {
+        // images.removeChild(images.childNodes[0]);
+        curImage = img;
+        return wait(2);
+    })
+    .then(() => curImage.style.display = "none")
+    .catch((err) => console.error(err));
+    
+    // .then(() => wait(2))
+    // .then(() => images.removeChild(images.childNodes[0]))
