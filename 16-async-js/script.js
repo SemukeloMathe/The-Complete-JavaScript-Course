@@ -238,54 +238,66 @@ const renderCountry = function (data = {}, className = "") {
 //   err => console.error(err)
 // )
 
-console.log("Getting position");
+// console.log("Getting position");
 
-const getPosition = function () {
-  return new Promise(function (resolve, reject) {
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
     // navigator.geolocation.getCurrentPosition(
     //   (position) => resolve(position),
     //   (err) => reject(err)
     // );
-    navigator.geolocation.getCurrentPosition(resolve, reject)
-  });
-}
+//     navigator.geolocation.getCurrentPosition(resolve, reject)
+//   });
+// }
 
-getPosition()
-  .then((pos) => console.log(pos))
-  .catch((err) => console.log(err));
+// getPosition()
+//   .then((pos) => console.log(pos))
+//   .catch((err) => console.log(err));
 
-function whereAmI() {
+// function whereAmI() {
 
-  getPosition().then(pos => {
-    // console.log(pos.coords);
-    const { latitude: lat, longitude: lng } = pos.coords;
-    const url = `https://geocode.xyz/${lat},${lng}?geoit=json&auth=${API_KEY}`;
-    return fetch(url);
-  })
-    .then((res) => {
-      if (!res.ok) throw new Error(`(${res.status}) - Unauthorized request.`);
-      return res.json();
-    })
-    .then((data) => {
-      const { city, country } = data;
-      console.log(`You are in ${city}, ${country}`);
-      return country;
-    })
-    .then((country) => {
-      const url = `https://restcountries.com/v3.1/name/${country}`;
-      return fetch(url);
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      const [country] = data;
-      renderCountry(country);
-    })
+//   getPosition().then(pos => {
+//     // console.log(pos.coords);
+//     const { latitude: lat, longitude: lng } = pos.coords;
+//     const url = `https://geocode.xyz/${lat},${lng}?geoit=json&auth=${API_KEY}`;
+//     return fetch(url);
+//   })
+//     .then((res) => {
+//       if (!res.ok) throw new Error(`(${res.status}) - Unauthorized request.`);
+//       return res.json();
+//     })
+//     .then((data) => {
+//       const { city, country } = data;
+//       console.log(`You are in ${city}, ${country}`);
+//       return country;
+//     })
+//     .then((country) => {
+//       const url = `https://restcountries.com/v3.1/name/${country}`;
+//       return fetch(url);
+//     })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       const [country] = data;
+//       renderCountry(country);
+//     })
 
-    .catch((err) => {
-      countriesContainer.insertAdjacentText("beforeend", err.message);
-      countriesContainer.style.opacity = 1;
-    })
-    .finally(() => (countriesContainer.style.opacity = 1));
-}
+//     .catch((err) => {
+//       countriesContainer.insertAdjacentText("beforeend", err.message);
+//       countriesContainer.style.opacity = 1;
+//     })
+//     .finally(() => (countriesContainer.style.opacity = 1));
+// }
 
-btn.addEventListener("click", whereAmI);
+// btn.addEventListener("click", whereAmI);
+
+// handling promises with async await
+const whereAmI = async function (country) {
+    const res = await fetch(`https://restcountries.eu/rest/v2/name${country}`);
+    console.log(res);
+    const data = await res.json();
+    console.log(data);
+    renderCountry(data[0]);
+};
+
+whereAmI("portugal");
+console.log("First");
