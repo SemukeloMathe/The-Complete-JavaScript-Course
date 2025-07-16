@@ -1,6 +1,7 @@
 /**
  * Build the image loading functionality that I just showed you on the screen.
- * Tasks are not super-descriptive this time, so that you can figure out some stuff on your own. Pretend you're working on your own 😉
+ * Tasks are not super-descriptive this time, so that you can figure out some
+ * stuff on your own. Pretend you're working on your own 😉
  *
  * PART 1
  * 1. Create a function 'createImage' which receives imgPath as an input. This
@@ -27,3 +28,49 @@
  * wrong image path. Set the network speed to 'Fast 3G' in the dev tools
  * Network tab, otherwise images load too fast.
  */
+
+// grab elements.
+const btn = document.querySelector(".btn-country");
+const images = document.querySelector(".images");
+const imgEl = document.createElement("img");
+let num = 1;
+
+// set default
+btn.style.display = "none";
+
+// imgEl.src = `./img/img-1.jpg`;
+// images.appendChild(imgEl);
+
+// setTimeout(() => {
+//     imgEl.style.display = "none"
+// }, 3000)
+ 
+
+// task 1: create "createImage" function. has @param: imgPath
+const createImage = function (imgPath) { 
+    
+    return new Promise(function (resolve, reject) {
+        resolve(imgEl.src = imgPath);
+    })
+}
+
+createImage(`./img/img-1.jpg`)
+    .then(res => {
+        images.appendChild(imgEl);
+        console.log(res);
+        // console.log(res)
+        // setTimeout(() => { }, 2000);
+        // return createImage(`./img/img-2.jpg`);
+    })
+    // .then(res => {
+    //     console.log(res);
+    //     console.log(imgEl)
+    //     return createImage(`./img/img-3.jpg`);
+    // })
+    // .then(res => {
+    //     console.log(res);
+    //     console.log(imgEl.src);
+    //     // setTimeout(() => { }, 2000)
+    // })
+    .catch(err => console.log(err));
+
