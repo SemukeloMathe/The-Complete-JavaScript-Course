@@ -20,3 +20,58 @@
  * TEST DATA: ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']. To test,
  * turn off the 'loadNPause' function.
  */
+
+// grab elements.
+const btn = document.querySelector(".btn-country");
+const images = document.querySelector(".images");
+let curImage;
+
+// set default
+btn.style.display = "none";
+
+const wait = function (seconds) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, seconds * 1000);
+    });
+};
+
+// task 1: create "createImage" function. has @param: imgPath
+const createImage = function (imgPath) {
+    return new Promise(function (resolve, reject) {
+        const imgEl = document.createElement("img");
+        imgEl.src = imgPath;
+
+        imgEl.addEventListener("load", function () {
+            images.append(imgEl);
+            resolve(imgEl);
+        });
+
+        imgEl.addEventListener("error", function () {
+            reject(new Error("Image not found"));
+        });
+    });
+};
+
+const loadNPause = async function () {
+    try {
+        // load image 1
+        let img = await createImage("./img/img-1.jpg");
+        console.log("Image 1 loaded.");
+        await wait(2);
+        img.style.display = "none";
+        // load image 2
+        img = await createImage("./img/img-2.jpg");
+        console.log("Image 2 loaded.");
+        await wait(2);
+        img.style.display = "none";
+        // load image 3
+        img = await createImage("./img/img-3.jpg");
+        console.log("Image 3 loaded.");
+        await wait(2);
+        img.style.display = "none";
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+loadNPause();
