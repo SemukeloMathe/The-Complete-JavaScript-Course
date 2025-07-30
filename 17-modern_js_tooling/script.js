@@ -17,12 +17,41 @@ console.log("Importing Module");
 // const data = await res.json();
 // console.log(data);
 
-const getLastPost = async function () {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const data = await res.json();
-    console.log(data.at(-1))
-    return {title: data.at(-1).title, text: data.at(-1).body}
-};
+// const getLastPost = async function () {
+//     const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+//     const data = await res.json();
+//     console.log(data.at(-1))
+//     return {title: data.at(-1).title, text: data.at(-1).body}
+// };
 
-const lastPost = await getLastPost();
-console.log(lastPost);
+// const lastPost = await getLastPost();
+// console.log(lastPost);
+
+// the module pattern
+
+const ShoppingCart = (function () {
+    const cart = [];
+    const shippingCost = 10;
+    const totalPrice = 237;
+    const totalQuantity = 23
+    const addToCart = function (product, quantity) {
+      cart.push({ product, quantity });
+      console.log(`${quantity} ${product} added to cart`);
+    };
+
+    const orderStock = function (product, quantity) {
+      cart.push({ product, quantity });
+      console.log(`${quantity} ${product} ordered from supplier`);
+    };
+    
+    return {
+        addToCart,
+        cart,
+        totalPrice,
+        totalQuantity
+    }
+})();
+
+ShoppingCart.addToCart("apple", 4)
+ShoppingCart.addToCart("pizza", 2)
+console.log(ShoppingCart);
