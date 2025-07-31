@@ -34,13 +34,12 @@ const newBudget2 = addExpense(
 // console.log(newBudget2);
 const newBudget3 = addExpense(newBudget2, spendingLimits, 200, "Stuff");
 
-const checkExpenses = function (state, limits) {
-    return state.map((entry) => {
-        return entry.value < -getLimit(limits, entry.user)
+const checkExpenses = (state, limits) =>
+    state.map((entry) =>
+        entry.value < -getLimit(limits, entry.user)
             ? { ...entry, flag: "limit" }
-            : entry;
-    });
-};
+            : entry
+    );
 
 const finalBudget = checkExpenses(newBudget3, spendingLimits);
 console.log(newBudget3);
