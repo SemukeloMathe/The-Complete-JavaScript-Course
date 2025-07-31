@@ -7,21 +7,26 @@ console.log("Exporting Module");
 // console.log("Finish fetching users")
 
 // named exports
-const shippingCost = 10;
-export const cart = [];
+// const shippingCost = 10;
+// export const cart = [];
 
-export const addToCart = function (product, quantity) {
-  cart.push({ product, quantity });
-  console.log(`${quantity} ${product} added to cart`);
-};
+// export const addToCart = function (product, quantity) {
+//   cart.push({ product, quantity });
+//   console.log(`${quantity} ${product} added to cart`);
+// };
 
-const totalPrice = 237;
-const totalQuantity = 23;
+// const totalPrice = 237;
+// const totalQuantity = 23;
 
-export { totalPrice, totalQuantity };
+// export { totalPrice, totalQuantity };
 
-// default exports
-export default function (product, quantity) {
-  cart.push({ product, quantity });
-  console.log(`${quantity} ${product} added to cart`);
-}
+// // default exports
+// export default function (product, quantity) {
+//   cart.push({ product, quantity });
+//   console.log(`${quantity} ${product} added to cart`);
+// }
+
+// export.addToCart = function (product, quantity) {
+//     cart.push({ product, quantity });
+//     console.log(`${quantity} ${product} added to cart`);
+// };

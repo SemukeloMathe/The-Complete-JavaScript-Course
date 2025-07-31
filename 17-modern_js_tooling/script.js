@@ -29,29 +29,49 @@ console.log("Importing Module");
 
 // the module pattern
 
-const ShoppingCart = (function () {
-    const cart = [];
-    const shippingCost = 10;
-    const totalPrice = 237;
-    const totalQuantity = 23
-    const addToCart = function (product, quantity) {
-      cart.push({ product, quantity });
-      console.log(`${quantity} ${product} added to cart`);
-    };
+// const ShoppingCart = (function () {
+//     const cart = [];
+//     const shippingCost = 10;
+//     const totalPrice = 237;
+//     const totalQuantity = 23
+//     const addToCart = function (product, quantity) {
+//       cart.push({ product, quantity });
+//       console.log(`${quantity} ${product} added to cart`);
+//     };
 
-    const orderStock = function (product, quantity) {
-      cart.push({ product, quantity });
-      console.log(`${quantity} ${product} ordered from supplier`);
-    };
+//     const orderStock = function (product, quantity) {
+//       cart.push({ product, quantity });
+//       console.log(`${quantity} ${product} ordered from supplier`);
+//     };
     
-    return {
-        addToCart,
-        cart,
-        totalPrice,
-        totalQuantity
-    }
-})();
+//     return {
+//         addToCart,
+//         cart,
+//         totalPrice,
+//         totalQuantity
+//     }
+// })();
 
-ShoppingCart.addToCart("apple", 4)
-ShoppingCart.addToCart("pizza", 2)
-console.log(ShoppingCart);
+// ShoppingCart.addToCart("apple", 4)
+// ShoppingCart.addToCart("pizza", 2)
+// console.log(ShoppingCart);
+
+
+// import
+// const addTo Cart = require("./shoppingCart.js")
+
+import cloneDeep from "./node_modules/lodash-es/cloneDeep.js"
+
+const state = {
+    cart: [
+        { product: "bread", quantity: 5 },
+        {product: "pizza", quantity: 2}
+    ],
+    user: {loggedIn: true}
+}
+
+const stateClone = Object.assign({}, state);
+const stateDeepClone = cloneDeep(state);
+state.user.loggedIn = false;
+console.log(stateClone);
+console.log(stateDeepClone);
