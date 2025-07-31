@@ -2,9 +2,14 @@
 import "./shoppingCart.js";
 // import { addToCart, totalPrice, totalQuantity } from "./shoppingCart.js";
 
+if (module.hot) {
+    module.hot.accept();
+}
+
 console.log("Importing Module");
 // addToCart("bread", 5);
 // console.log(totalPrice, totalQuantity);
+
 // import add, { cart } from "./shoppingCart.js";
 // add("pizza", 2);
 // add("bread", 5);
@@ -12,6 +17,7 @@ console.log("Importing Module");
 // add("eggs", 2);
 // console.log(cart);
 
+// using await in top level
 // console.log("Start fetching...")
 // const res = await fetch("https://jsonplaceholder.typicode.com/posts");
 // const data = await res.json();
@@ -28,7 +34,6 @@ console.log("Importing Module");
 // console.log(lastPost);
 
 // the module pattern
-
 // const ShoppingCart = (function () {
 //     const cart = [];
 //     const shippingCost = 10;
@@ -43,7 +48,7 @@ console.log("Importing Module");
 //       cart.push({ product, quantity });
 //       console.log(`${quantity} ${product} ordered from supplier`);
 //     };
-    
+
 //     return {
 //         addToCart,
 //         cart,
@@ -56,11 +61,19 @@ console.log("Importing Module");
 // ShoppingCart.addToCart("pizza", 2)
 // console.log(ShoppingCart);
 
-
 // import
 // const addTo Cart = require("./shoppingCart.js")
 
-import cloneDeep from "./node_modules/lodash-es/cloneDeep.js";
+import add, { cart } from "./shoppingCart.js";
+
+add("pizza", 2);
+add("bread", 5);
+add("apples", 6);
+add("eggs", 2);
+console.log(cart);
+
+// import cloneDeep from "./node_modules/lodash-es/cloneDeep.js";
+import cloneDeep from "lodash-es";
 
 const state = {
     cart: [
