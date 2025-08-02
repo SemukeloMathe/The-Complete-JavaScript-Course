@@ -13,8 +13,22 @@ const timeout = function (s) {
     });
 };
 ///////////////////////////////////////
+const renderSpinner = function (parentEl) {
+    const markup = `
+        <div class="spinner">
+          <svg>
+            <use href="${icons}#icon-loader"></use>
+          </svg>
+        </div>
+    `;
+    parentEl.innerHTML = "";
+    parentEl.insertAdjacentHTML("afterbegin", markup);
+};
+
 const showRecipe = async function (params) {
     try {
+        // 1) loading recipe
+        renderSpinner(recipeContainer);
         const res = await fetch(
             // "https://forkify-api.jonas.io/api/v2/recipes/664c8f193e7aa067e94e8658"
             "https://forkify-api.jonas.io/api/v2/recipes/5ed6604591c37cdc054bc886"
