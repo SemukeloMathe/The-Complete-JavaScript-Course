@@ -1,5 +1,6 @@
 import icons from "url:../img/icons.svg";
-console.log(icons);
+import "core-js";
+import "regenerator-runtime/runtime";
 
 const recipeContainer = document.querySelector(".recipe");
 
