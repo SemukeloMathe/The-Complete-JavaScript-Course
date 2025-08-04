@@ -146,4 +146,3 @@ class RecipeView {
 }
 
 export default new RecipeView();
-// remember to install the "fractional" dependency
